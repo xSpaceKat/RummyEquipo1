@@ -193,9 +193,8 @@ public class Avatar_Nombre extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(jLabel8))
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel4)
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(51, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -212,8 +211,7 @@ public class Avatar_Nombre extends javax.swing.JFrame {
         Fondo.add(FondoPt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         FondoPt2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/FondoProyecto.jpg"))); // NOI18N
-        FondoPt2.setText("jLabel2");
-        Fondo.add(FondoPt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 269, -1));
+        Fondo.add(FondoPt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 269, 440));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
