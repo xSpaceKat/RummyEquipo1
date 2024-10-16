@@ -211,7 +211,7 @@ public class Avatar_Nombre extends javax.swing.JFrame {
         Fondo.add(FondoPt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         FondoPt2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/FondoProyecto.jpg"))); // NOI18N
-        Fondo.add(FondoPt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 269, 440));
+        Fondo.add(FondoPt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 280, 450));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
