@@ -26,10 +26,10 @@ public class ModeloPerfil implements Observable<ModeloObserver> {
     /**
      * Funcion sumar. Incrementa el valor.
      */
-    public void mostrarMenu() {
-        notificarObservadoresCambioVentana(ConstantesVentanas.JMENU);
+    
+    public void mostrarUnirsePartida() {
+        notificarObservadoresCambioVentana(ConstantesVentanas.JUNIRSEPARTIDA);
     }
-
 
     /**
      * addObservador: Añade observadores a nuestro modelo
@@ -75,5 +75,7 @@ public class ModeloPerfil implements Observable<ModeloObserver> {
             o.cambiarVentana(ventana);
         }
     }
+
+    
 
 }

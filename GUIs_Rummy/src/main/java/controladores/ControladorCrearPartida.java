@@ -29,6 +29,10 @@ public class ControladorCrearPartida {
         m.mostrarMenu();
     }
     
+    public void mostrarLobbyPartida() {
+        m.mostrarLobbyPartida();
+    }
+    
     /**
      * Función sumar. Notifica al modelo que quiere incrementar el valor del rango de fichas.
      */
@@ -56,5 +60,7 @@ public class ControladorCrearPartida {
     public void restarComodines(){
         m.restarComodines();
     }
+
+    
     
 }

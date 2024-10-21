@@ -2,8 +2,10 @@ package vistas;
 
 import cambioFrames.CambioFrameCrearPartida;
 import controladores.ControladorCrearPartida;
+import controladores.ControladorLobbyPartida;
 import controladores.ControladorMenu;
 import modelos.ConstantesVentanas;
+import modelos.ModeloLobbyPartida;
 import modelos.ModeloMenu;
 import modelos.ModeloObserver;
 import modelos.Observable;
@@ -42,6 +44,7 @@ public class JCrearPartida extends javax.swing.JFrame implements ModeloObserver 
         btnIncrementarRango = new javax.swing.JButton();
         btnIncrementarComodin = new javax.swing.JButton();
         btnRestarComodin = new javax.swing.JButton();
+        btnListo = new javax.swing.JButton();
         labelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,13 +60,11 @@ public class JCrearPartida extends javax.swing.JFrame implements ModeloObserver 
         getContentPane().add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 160, 60));
 
         labelRangoFichas.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        labelRangoFichas.setForeground(new java.awt.Color(0, 0, 0));
         labelRangoFichas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelRangoFichas.setText("0");
         getContentPane().add(labelRangoFichas, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, 50, 50));
 
         labelComodines.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        labelComodines.setForeground(new java.awt.Color(0, 0, 0));
         labelComodines.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelComodines.setText("0");
         getContentPane().add(labelComodines, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 50, -1));
@@ -108,7 +109,16 @@ public class JCrearPartida extends javax.swing.JFrame implements ModeloObserver 
         });
         getContentPane().add(btnRestarComodin, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 30, 20));
 
-        labelFondo.setIcon(new javax.swing.ImageIcon("C:\\Documentos\\ITSON\\Quinto Semestre\\Arquitectura de Software\\RummyEquipo6\\GUIs_Rummy\\src\\main\\java\\recursos\\fondos\\CrearPartidaImg.png")); // NOI18N
+        btnListo.setBorderPainted(false);
+        btnListo.setContentAreaFilled(false);
+        btnListo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnListo, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, 170, 50));
+
+        labelFondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\OMEN\\Documents\\GitHub\\RummyEquipo6\\GUIs_Rummy\\src\\main\\java\\recursos\\fondos\\CrearPartidaImg.png")); // NOI18N
         getContentPane().add(labelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 450));
 
         pack();
@@ -134,12 +144,18 @@ public class JCrearPartida extends javax.swing.JFrame implements ModeloObserver 
         controlador.sumarComodines();
     }//GEN-LAST:event_btnIncrementarComodinActionPerformed
 
+    private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
+        // TODO add your handling code here:
+         controlador.mostrarLobbyPartida();
+    }//GEN-LAST:event_btnListoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnIRestarRango;
     private javax.swing.JButton btnIncrementarComodin;
     private javax.swing.JButton btnIncrementarRango;
+    private javax.swing.JButton btnListo;
     private javax.swing.JButton btnRestarComodin;
     private javax.swing.JLabel labelComodines;
     private javax.swing.JLabel labelFondo;
@@ -177,6 +193,15 @@ public class JCrearPartida extends javax.swing.JFrame implements ModeloObserver 
             JMenu v = new JMenu(c);
             //añadimos observadores al modelo. En este caso, dos vistas.
             m.addObservador(v);
-        }
+        } else if (ventana == ConstantesVentanas.JLOBBYPARTY) {
+            this.setVisible(false);
+            ModeloLobbyPartida m = new ModeloLobbyPartida();
+            //Cargamos controlador y le asignamos qué modelo controlar
+            ControladorLobbyPartida c = new ControladorLobbyPartida(m);
+            //Cargamos 2 vistas y asignamos cual queremos que sea su controlador 
+            JLobbyPartida v = new JLobbyPartida(c);
+            //añadimos observadores al modelo. En este caso, dos vistas.
+            m.addObservador(v);
+        } 
     }
 }

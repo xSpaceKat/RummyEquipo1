@@ -4,7 +4,7 @@
  */
 package controladores;
 
-import modelos.ModeloMenu;
+import modelos.ModeloUnirsePartida;
 
 /**
  * Controlador del MVC. Se encuentra dentro de la vista y es llamado por esta para controlar a la lógica.
@@ -12,28 +12,24 @@ import modelos.ModeloMenu;
  * @author galan
  */
 public class ControladorUnirsePartida {
-    ModeloMenu m; //Nuestra lógica del programa
+    ModeloUnirsePartida m; //Nuestra lógica del programa
     
     /**
      * Constructora del controlador. Creará un controlador, y se le asignará el modelo correspondiente.
      * @param m 
      */
-    public ControladorUnirsePartida(ModeloMenu m){
+    public ControladorUnirsePartida(ModeloUnirsePartida m){
         this.m = m;
     }
 
     /**
      * 
      */
-    public void mostrarCrearPartida() {
-        m.mostrarCrearPartida();
+    public void mostrarMenu() {
+        m.mostrarMenu();
     }
-    
-    /**
-     * 
-     */
-    public void mostrarUnirsePartida() {
-        m.mostrarUnirsePartida();
+    public void mostrarPerfil() {
+        m.mostrarPerfil();
     }
-    
+
 }

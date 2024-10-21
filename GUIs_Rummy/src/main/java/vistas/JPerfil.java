@@ -1,17 +1,30 @@
 package vistas;
 
+import controladores.ControladorCrearPartida;
+import controladores.ControladorPerfil;
+import controladores.ControladorUnirsePartida;
+import modelos.ConstantesVentanas;
+import modelos.ModeloCrearPartida;
+import modelos.ModeloObserver;
+import modelos.ModeloUnirsePartida;
+import modelos.Observable;
+
 /**
  *
  * @author Katt
  */
-public class JPerfil extends javax.swing.JFrame {
-
+public class JPerfil extends javax.swing.JFrame implements ModeloObserver{
+    private ControladorPerfil controlador;
+    
+    
     /**
      * Creates new form JPerfil
      */
-    public JPerfil() {
+    public JPerfil(ControladorPerfil controlador) {
         initComponents();
+        this.controlador = controlador;
         this.setLocationRelativeTo(null);
+        this.setVisible(true);
     }
 
     /**
@@ -23,53 +36,58 @@ public class JPerfil extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnConfirmar = new javax.swing.JButton();
         labelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        labelFondo.setIcon(new javax.swing.ImageIcon("C:\\Documentos\\ITSON\\Quinto Semestre\\Arquitectura de Software\\RummyEquipo6\\GUIs_Rummy\\src\\main\\java\\recursos\\fondos\\Perfilimg.png")); // NOI18N
+        btnConfirmar.setBorderPainted(false);
+        btnConfirmar.setContentAreaFilled(false);
+        btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 270, 80));
+
+        labelFondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\OMEN\\Documents\\GitHub\\RummyEquipo6\\GUIs_Rummy\\src\\main\\java\\recursos\\fondos\\Perfilimg.png")); // NOI18N
         getContentPane().add(labelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
+        // TODO add your handling code here:
+        controlador.mostrarUnirsePartida();
+    }//GEN-LAST:event_btnConfirmarActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JPerfil().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConfirmar;
     private javax.swing.JLabel labelFondo;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object arg) {
+        
+    }
+
+    @Override
+    public void cambiarVentana(int ventana) {
+        if (ventana == ConstantesVentanas.JUNIRSEPARTIDA) {
+            this.setVisible(false);
+            ModeloUnirsePartida m = new ModeloUnirsePartida();
+            //Cargamos controlador y le asignamos qué modelo controlar
+            ControladorUnirsePartida c = new ControladorUnirsePartida(m);
+            //Cargamos 2 vistas y asignamos cual queremos que sea su controlador 
+            JUnirsePartida v = new JUnirsePartida(c);
+            //añadimos observadores al modelo. En este caso, dos vistas.
+            m.addObservador(v);
+        }
+    }
 }

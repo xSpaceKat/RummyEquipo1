@@ -28,7 +28,7 @@ public class JResultados extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        labelFondo.setIcon(new javax.swing.ImageIcon("C:\\Documentos\\ITSON\\Quinto Semestre\\Arquitectura de Software\\RummyEquipo6\\GUIs_Rummy\\src\\main\\java\\recursos\\fondos\\ResultadosImg.png")); // NOI18N
+        labelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/fondos/ResultadosImg.png"))); // NOI18N
         getContentPane().add(labelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();

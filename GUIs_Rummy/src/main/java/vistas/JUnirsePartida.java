@@ -1,17 +1,30 @@
 package vistas;
 
+import controladores.ControladorMenu;
+import controladores.ControladorPerfil;
+import controladores.ControladorUnirsePartida;
+import modelos.ConstantesVentanas;
+import modelos.ModeloMenu;
+import modelos.ModeloObserver;
+import modelos.ModeloPerfil;
+import modelos.Observable;
+
 /**
  *
  * @author Katt
  */
-public class JUnirsePartida extends javax.swing.JFrame {
-
+public class JUnirsePartida extends javax.swing.JFrame implements ModeloObserver{
+    
+    private ControladorUnirsePartida controlador;
     /**
      * Creates new form JUnirsePartida
      */
-    public JUnirsePartida() {
+    public JUnirsePartida(ControladorUnirsePartida controlador) {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.controlador = controlador;
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
     }
 
     /**
@@ -23,53 +36,102 @@ public class JUnirsePartida extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnPerfil = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
+        btnListo = new javax.swing.JButton();
         labelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        labelFondo.setIcon(new javax.swing.ImageIcon("C:\\Documentos\\ITSON\\Quinto Semestre\\Arquitectura de Software\\RummyEquipo6\\GUIs_Rummy\\src\\main\\java\\recursos\\fondos\\UnirsePartidaImg.png")); // NOI18N
+        btnPerfil.setBorderPainted(false);
+        btnPerfil.setContentAreaFilled(false);
+        btnPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPerfilActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, 100, 130));
+
+        btnBack.setBorderPainted(false);
+        btnBack.setContentAreaFilled(false);
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 180, 60));
+
+        btnListo.setBorderPainted(false);
+        btnListo.setContentAreaFilled(false);
+        btnListo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnListo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 400, 190, 60));
+
+        labelFondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\OMEN\\Documents\\GitHub\\RummyEquipo6\\GUIs_Rummy\\src\\main\\java\\recursos\\fondos\\UnirsePartidaImg.png")); // NOI18N
         getContentPane().add(labelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        controlador.mostrarMenu();
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
+        // TODO add your handling code here:
+        controlador.mostrarPerfil();
+    }//GEN-LAST:event_btnPerfilActionPerformed
+
+    private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnListoActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JUnirsePartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JUnirsePartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JUnirsePartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JUnirsePartida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JUnirsePartida().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnListo;
+    private javax.swing.JButton btnPerfil;
     private javax.swing.JLabel labelFondo;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object arg) {
+        // Fuerza la actualización visual
+        this.revalidate();
+        this.repaint();
+        
+    }
+
+    @Override
+    public void cambiarVentana(int ventana) {
+        if (ventana == ConstantesVentanas.JMENU) {
+            this.setVisible(false);
+            ModeloMenu m = new ModeloMenu();
+            //Cargamos controlador y le asignamos qué modelo controlar
+            ControladorMenu c = new ControladorMenu(m);
+            //Cargamos 2 vistas y asignamos cual queremos que sea su controlador 
+            JMenu v = new JMenu(c);
+            //añadimos observadores al modelo. En este caso, dos vistas.
+            m.addObservador(v);
+        } else {if (ventana == ConstantesVentanas.JPERFIL) {
+            this.setVisible(false);
+            ModeloPerfil m = new ModeloPerfil();
+            //Cargamos controlador y le asignamos qué modelo controlar
+            ControladorPerfil c = new ControladorPerfil(m);
+            //Cargamos 2 vistas y asignamos cual queremos que sea su controlador 
+            JPerfil v = new JPerfil(c);
+            //añadimos observadores al modelo. En este caso, dos vistas.
+            m.addObservador(v);
+            }
+        }
+    }
 }

@@ -2,9 +2,11 @@ package vistas;
 
 import controladores.ControladorCrearPartida;
 import controladores.ControladorMenu;
+import controladores.ControladorUnirsePartida;
 import modelos.ConstantesVentanas;
 import modelos.ModeloCrearPartida;
 import modelos.ModeloObserver;
+import modelos.ModeloUnirsePartida;
 import modelos.Observable;
 
 /**
@@ -36,6 +38,7 @@ public class JMenu extends javax.swing.JFrame implements ModeloObserver {
 
         btnCrearPartida = new javax.swing.JButton();
         btnUnirsePartida = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
         labelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,7 +62,16 @@ public class JMenu extends javax.swing.JFrame implements ModeloObserver {
         });
         getContentPane().add(btnUnirsePartida, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 220, 140, 200));
 
-        labelFondo.setIcon(new javax.swing.ImageIcon("C:\\Documentos\\ITSON\\Quinto Semestre\\Arquitectura de Software\\RummyEquipo6\\GUIs_Rummy\\src\\main\\java\\recursos\\fondos\\MenuImg.png")); // NOI18N
+        btnSalir.setBorderPainted(false);
+        btnSalir.setContentAreaFilled(false);
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 100, 140));
+
+        labelFondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\OMEN\\Documents\\GitHub\\RummyEquipo6\\GUIs_Rummy\\src\\main\\java\\recursos\\fondos\\MenuImg.png")); // NOI18N
         getContentPane().add(labelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -73,18 +85,23 @@ public class JMenu extends javax.swing.JFrame implements ModeloObserver {
         controlador.mostrarUnirsePartida();
     }//GEN-LAST:event_btnUnirsePartidaActionPerformed
 
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrearPartida;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnUnirsePartida;
     private javax.swing.JLabel labelFondo;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void update(Observable o, Object arg) {
-
+        
     }
-
+    
     @Override
     public void cambiarVentana(int ventana) {
         if (ventana == ConstantesVentanas.JCREARPARTIDA) {
@@ -97,7 +114,14 @@ public class JMenu extends javax.swing.JFrame implements ModeloObserver {
             //añadimos observadores al modelo. En este caso, dos vistas.
             m.addObservador(v);
         } else if (ventana == ConstantesVentanas.JUNIRSEPARTIDA) {
-            
+            this.setVisible(false);
+            ModeloUnirsePartida m = new ModeloUnirsePartida();
+            //Cargamos controlador y le asignamos qué modelo controlar
+            ControladorUnirsePartida c = new ControladorUnirsePartida(m);
+            //Cargamos 2 vistas y asignamos cual queremos que sea su controlador 
+            JUnirsePartida v = new JUnirsePartida(c);
+            //añadimos observadores al modelo. En este caso, dos vistas.
+            m.addObservador(v);
         } 
     }
 }

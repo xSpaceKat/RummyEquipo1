@@ -5,6 +5,7 @@
 package controladores;
 
 import modelos.ModeloMenu;
+import vistas.JCrearPartida;
 
 /**
  * Controlador del MVC. Se encuentra dentro de la vista y es llamado por esta para controlar a la lógica.

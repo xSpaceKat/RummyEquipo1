@@ -35,6 +35,10 @@ public class ModeloCrearPartida implements Observable<ModeloObserver> {
     public void mostrarMenu() {
         notificarObservadoresCambioVentana(ConstantesVentanas.JMENU);
     }
+    
+    public void mostrarLobbyPartida() {
+        notificarObservadoresCambioVentana(ConstantesVentanas.JLOBBYPARTY);
+    }
 
     /**
      * Funcion sumar. Incrementa el valor del rango de fichas.

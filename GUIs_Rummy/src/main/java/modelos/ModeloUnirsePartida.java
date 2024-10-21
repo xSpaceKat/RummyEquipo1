@@ -1,5 +1,6 @@
 package modelos;
 
+import cambioFrames.CambioFrameUnirsePartida;
 import java.util.ArrayList;
 
 /**
@@ -13,11 +14,13 @@ public class ModeloUnirsePartida implements Observable<ModeloObserver> {
 
     //Aquí añadiremos la liste de nuestros observadores
     private ArrayList<ModeloObserver> observadores;
-
+    private CambioFrameUnirsePartida frame;
     /**
      * Constructora del modelo. Crea un modelo, inicializa variables. Crea la
      * lista de los observadores.
      */
+    
+    
     public ModeloUnirsePartida() {
         //Inicializamos atributos...
         observadores = new ArrayList<ModeloObserver>();
@@ -28,6 +31,10 @@ public class ModeloUnirsePartida implements Observable<ModeloObserver> {
      */
     public void mostrarMenu() {
         notificarObservadoresCambioVentana(ConstantesVentanas.JMENU);
+    }
+    
+    public void mostrarPerfil() {
+        notificarObservadoresCambioVentana(ConstantesVentanas.JPERFIL);
     }
 
 
@@ -64,6 +71,7 @@ public class ModeloUnirsePartida implements Observable<ModeloObserver> {
         for (ModeloObserver o : observadores) {
             //Le a cada observador que el valor se ha cambiado al nuevo valor "t".
             //Recuerdo que para este caso, estamos notificando a cada vista que tengamos
+            frame= new CambioFrameUnirsePartida();
             o.update(this, o);
         }
     }
@@ -72,6 +80,7 @@ public class ModeloUnirsePartida implements Observable<ModeloObserver> {
         for (ModeloObserver o : observadores) {
             //Le a cada observador que el valor se ha cambiado al nuevo valor "t".
             //Recuerdo que para este caso, estamos notificando a cada vista que tengamos
+            
             o.cambiarVentana(ventana);
         }
     }
