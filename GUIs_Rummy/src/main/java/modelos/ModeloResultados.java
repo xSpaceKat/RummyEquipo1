@@ -1,8 +1,6 @@
 package modelos;
 
-import cambioFrames.CambioFrameCrearPartida;
 import java.util.ArrayList;
-import javax.swing.JLabel;
 
 /**
  * Modelo de mi programa, aquí estará toda la lógica y el funcionamiento interno
@@ -11,64 +9,27 @@ import javax.swing.JLabel;
  *
  * @author galan
  */
-public class ModeloCrearPartida implements Observable<ModeloObserver> {
+public class ModeloResultados implements Observable<ModeloObserver> {
 
     //Aquí añadiremos la liste de nuestros observadores
     private ArrayList<ModeloObserver> observadores;
-    private int rangoFichas, comodines;
-    private CambioFrameCrearPartida frame;
 
     /**
      * Constructora del modelo. Crea un modelo, inicializa variables. Crea la
      * lista de los observadores.
      */
-    public ModeloCrearPartida() {
+    public ModeloResultados() {
         //Inicializamos atributos...
         observadores = new ArrayList<ModeloObserver>();
-        rangoFichas = 0;
-        comodines = 0;
     }
 
     /**
-     *
+     * Funcion sumar. Incrementa el valor.
      */
     public void mostrarMenu() {
         notificarObservadoresCambioVentana(ConstantesVentanas.JMENU);
     }
 
-    /**
-     * Funcion sumar. Incrementa el valor del rango de fichas.
-     */
-    public void sumarRangoFichas() {
-        rangoFichas++;
-        notificarObservadores();
-    }
-
-    /**
-     * Funcion sumar. Incrementa el valor del rango de fichas.
-     */
-    public void sumarComodines() {
-        comodines++;
-        notificarObservadores();
-    }
-
-    /**
-     * Función restar. Notifica al modelo que quiere decrementar el valor del
-     * rango de fichas.
-     */
-    public void restarRangoFichas() {
-        rangoFichas--;
-        notificarObservadores();
-    }
-
-    /**
-     * Función restar. Notifica al modelo que quiere decrementar el valor de los
-     * comodines.
-     */
-    public void restarComodines() {
-        comodines--;
-        notificarObservadores();
-    }
 
     /**
      * addObservador: Añade observadores a nuestro modelo
@@ -103,8 +64,7 @@ public class ModeloCrearPartida implements Observable<ModeloObserver> {
         for (ModeloObserver o : observadores) {
             //Le a cada observador que el valor se ha cambiado al nuevo valor "t".
             //Recuerdo que para este caso, estamos notificando a cada vista que tengamos
-            frame= new CambioFrameCrearPartida(rangoFichas, comodines);
-            o.update(this, frame);
+            o.update(this, o);
         }
     }
 

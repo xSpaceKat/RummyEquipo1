@@ -29,4 +29,32 @@ public class ControladorCrearPartida {
         m.mostrarMenu();
     }
     
+    /**
+     * Función sumar. Notifica al modelo que quiere incrementar el valor del rango de fichas.
+     */
+    public void sumarRangoFichas(){
+        m.sumarRangoFichas();
+    }
+    
+    /**
+     * Función sumar. Notifica al modelo que quiere incrementar el valor de los comodines.
+     */
+    public void sumarComodines(){
+        m.sumarComodines();
+    }
+    
+    /**
+     * Función restar. Notifica al modelo que quiere decrementar el valor del rango de fichas.
+     */
+    public void restarRangoFichas(){
+        m.restarRangoFichas();
+    }
+    
+    /**
+     * Función restar. Notifica al modelo que quiere decrementar el valor de los comodines.
+     */
+    public void restarComodines(){
+        m.restarComodines();
+    }
+    
 }
