@@ -9,19 +9,8 @@ package entidades;
  * @author galan
  */
 public class Ficha {
-    protected int puntos;
 
-    // Constructor
-    public Ficha(int puntos) {
-        this.puntos = puntos;
+    public Ficha() {
     }
-
-    // Getter y Setter
-    public int getPuntos() {
-        return puntos;
-    }
-
-    public void setPuntos(int puntos) {
-        this.puntos = puntos;
-    }
+    
 }

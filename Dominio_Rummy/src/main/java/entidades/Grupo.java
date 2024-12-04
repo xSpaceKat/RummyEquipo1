@@ -4,36 +4,36 @@
  */
 package entidades;
 
-import java.util.List;
-
 /**
  *
  * @author galan
  */
 public class Grupo {
-    private List<Ficha> fichas;
-    private Jugador dueno;
+    private Color color;
+    private int numeroGrupo;
 
-    // Constructor
-    public Grupo(List<Ficha> fichas, Jugador dueno) {
-        this.fichas = fichas;
-        this.dueno = dueno;
+    public Grupo() {
     }
 
-    // Getters y Setters
-    public List<Ficha> getFichas() {
-        return fichas;
+    public Grupo(Color color, int numeroGrupo) {
+        this.color = color;
+        this.numeroGrupo = numeroGrupo;
+    }
+    
+    public Color getColor() {
+        return color;
     }
 
-    public void setFichas(List<Ficha> fichas) {
-        this.fichas = fichas;
+    public void setColor(Color color) {
+        this.color = color;
     }
 
-    public Jugador getDueno() {
-        return dueno;
+    public int getNumeroGrupo() {
+        return numeroGrupo;
     }
 
-    public void setDueno(Jugador dueno) {
-        this.dueno = dueno;
+    public void setNumeroGrupo(int numeroGrupo) {
+        this.numeroGrupo = numeroGrupo;
     }
+    
 }

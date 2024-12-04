@@ -9,9 +9,8 @@ package entidades;
  * @author galan
  */
 public class Comodin extends Ficha{
-    
-    public Comodin(int puntos) {
-        super(puntos);
+
+    public Comodin() {
     }
-    
+ 
 }

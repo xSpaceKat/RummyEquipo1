@@ -9,21 +9,34 @@ package entidades;
  * @author galan
  */
 public class FichaNormal extends Ficha{
-    private int numero;
-    private Color color;
+    private int valor;
+    private Grupo grupo;
 
-    // Constructor
-    public FichaNormal(int puntos, int numero, Color color) {
-        super(puntos);
-        this.numero = numero;
-        this.color = color;
+    public FichaNormal() {
     }
 
-    public FichaNormal(int numero, Color color, int puntos) {
-        super(puntos);
-        this.numero = numero;
-        this.color = color;
+    public FichaNormal(int valor, Grupo grupo) {
+        this.valor = valor;
+        this.grupo = grupo;
     }
+
+    public int getValor() {
+        return valor;
+    }
+
+    public void setValor(int valor) {
+        this.valor = valor;
+    }
+
+    public Grupo getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
+    }
+
+    
     
     
 }

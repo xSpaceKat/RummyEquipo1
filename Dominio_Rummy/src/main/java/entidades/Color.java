@@ -15,4 +15,14 @@ public class Color {
     public Color(String hexadecimalColor) {
         this.hexadecimalColor = hexadecimalColor;
     }
+
+    public String getHexadecimalColor() {
+        return hexadecimalColor;
+    }
+
+    public void setHexadecimalColor(String hexadecimalColor) {
+        this.hexadecimalColor = hexadecimalColor;
+    }
+    
+    
 }

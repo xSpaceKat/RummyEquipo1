@@ -13,13 +13,13 @@ import java.util.List;
 public class Jugador {
     private String nombre;
     private String avatar;
-    private List<Color> coloresGrupo;
+    private List<Grupo> coloresGrupo;
     private List<Ficha> fichas;
     private boolean preparado;
     private int turno;
 
     // Constructor
-    public Jugador(String nombre, String avatar, List<Color> coloresGrupo, List<Ficha> fichas, boolean preparado, int turno) {
+    public Jugador(String nombre, String avatar, List<Grupo> coloresGrupo, List<Ficha> fichas, boolean preparado, int turno) {
         this.nombre = nombre;
         this.avatar = avatar;
         this.coloresGrupo = coloresGrupo;
@@ -44,11 +44,11 @@ public class Jugador {
         this.avatar = avatar;
     }
 
-    public List<Color> getColoresGrupo() {
+    public List<Grupo> getColoresGrupo() {
         return coloresGrupo;
     }
 
-    public void setColoresGrupo(List<Color> coloresGrupo) {
+    public void setColoresGrupo(List<Grupo> coloresGrupo) {
         this.coloresGrupo = coloresGrupo;
     }
 
