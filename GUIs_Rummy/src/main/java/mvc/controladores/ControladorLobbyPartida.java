@@ -30,4 +30,8 @@ public class ControladorLobbyPartida {
     public void mostrarCrearPartida() {
         m.mostrarCrearPartida();
     }
+    
+    public void evtCambioEstado(){
+        m.cambiarEstadoListo();
+    }
 }

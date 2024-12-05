@@ -102,5 +102,15 @@ public class Partida implements Serializable{
         }
         return true;
     }
-    
+
+    public boolean cambiarEstado(String nombreJugador, boolean nuevoEstado) {
+        for (Jugador jugador : this.jugadores) {
+            if (jugador.getNombre().equals(nombreJugador)) {
+                jugador.setEstado(nuevoEstado);
+                System.out.println("Estado del jugador " + nombreJugador + " cambiado a " + nuevoEstado);
+            }
+        }
+        return false;
+    }
+
 }
