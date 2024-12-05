@@ -76,4 +76,18 @@ public interface IJuegoFachada {
      * @return 2do grupo de combinaciones
      */
     Combinaciones separarGrupo();
+    
+    /**
+     * Metodo que sustituye una ficha para mover otra de la combinacion
+     * 
+     * @return La combinacion modificada
+     */
+    Combinaciones Sustituir();
+    
+    /**
+     * Metodo que mueve un ficha de la combinaciones
+     * 
+     * @return La combinacion cambiada
+     */
+    Combinaciones mover();
 }

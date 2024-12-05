@@ -3,6 +3,7 @@ package mvc.modelos;
 import entidades.Partida;
 import java.util.ArrayList;
 import pyf.cliente.Cliente;
+import pyf.pipebuilders.PipelineConsultarMovimientos;
 import pyf.pipebuilders.PipelineJalarFicha;
 import pyf.pipebuilders.PipelineValidarSeparacion;
 
@@ -20,6 +21,7 @@ public class ModeloTablero implements Observable<ModeloObserver> {
     //Añadan las pipelines aquí
     PipelineJalarFicha pipelineJF;
     PipelineValidarSeparacion pipelineValidarSeparacion;
+    PipelineConsultarMovimientos pipeCM;
 
     /**
      * Constructora del modelo. Crea un modelo, inicializa variables. Crea la
@@ -50,6 +52,13 @@ public class ModeloTablero implements Observable<ModeloObserver> {
         Cliente cliente = Cliente.getInstancia();
         cliente.enviarSerializado(pipelineValidarSeparacion.ejecutar(partidaActual));
         this.notificarObservadores();
+    }
+    
+    public void sustituirFichas(){
+        Partida partidaActual = Partida.obtenerInstancia();
+        Cliente cliente = Cliente.getInstancia();
+         cliente.enviarSerializado(pipeCM.ejecutar(partidaActual));
+         this.notificarObservadores();
     }
 
     /**

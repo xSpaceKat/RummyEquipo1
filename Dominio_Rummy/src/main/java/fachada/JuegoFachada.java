@@ -114,6 +114,29 @@ public class JuegoFachada implements IJuegoFachada {
         return c2;
     }
 
+    public Combinaciones Sustituir() {
+        Combinaciones combinaciones = (Combinaciones) partida.getTablero().getCombinaciones();
+        List<Ficha> combi = combinaciones.getFichas();
+        Ficha ficha = new Ficha();
+
+        combi.add(ficha);
+        Combinaciones co = agregarCombinacion(combi);
+        return co;
+    }
+    
+    public Combinaciones mover(){
+        Ficha ficha = new Ficha();
+        Combinaciones combinaciones = new Combinaciones();
+        
+        List<Ficha> combi = combinaciones.getFichas();
+        ficha.MoverFicha();
+        combi.add(ficha);
+        
+        Combinaciones coc = agregarCombinacion(combi);
+        
+        return coc;
+    }
+
     //Revisa si hay fichas en el mazo o no
     @Override
     public boolean esMazoVacio() {

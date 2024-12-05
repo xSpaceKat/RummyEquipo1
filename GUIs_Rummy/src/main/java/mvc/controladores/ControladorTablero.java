@@ -39,5 +39,9 @@ public class ControladorTablero {
     public void evtSepararGrupo(){
         m.separarGrupo();
     }
+    
+    public void evtSustituir(){
+        m.sustituirFichas();
+    }
 
 }

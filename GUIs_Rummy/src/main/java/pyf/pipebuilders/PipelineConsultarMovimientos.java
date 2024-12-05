@@ -1,8 +1,11 @@
 package pyf.pipebuilders;
 
 import entidades.Combinaciones;
-import entidades.Tablero;
-import pyf.filtros.FiltroConsultarMovimiento;
+import entidades.Ficha;
+import entidades.Partida;
+import pyf.filtros.FiltroMover;
+import pyf.filtros.FiltroSustituir;
+import pyf.filtros.FiltroValidarCombinacion;
 import pyf.filtros.IFilter;
 import pyf.pipas.Pipe;
 
@@ -12,22 +15,65 @@ import pyf.pipas.Pipe;
  */
 public class PipelineConsultarMovimientos {
 
-    private final Pipe<Combinaciones, Tablero> pipeMovimientos;
-    private IFilter filter = (IFilter) new FiltroConsultarMovimiento();
-
+    private static PipelineConsultarMovimientos instancia;
+    private final Pipe<Partida, Boolean> pipeValidarCombinacion;
+    private final Pipe<Partida, Combinaciones> pipeSustituir;
+    private final Pipe<Partida, Combinaciones> pipeMover; 
+    
     public PipelineConsultarMovimientos() {
-        this.pipeMovimientos = new Pipe<>(filter);
+        IFilter<Partida, Boolean> filtroValidarCombinacion = new FiltroValidarCombinacion();
+        IFilter<Partida, Combinaciones> filtroSustituir = new FiltroSustituir();
+        IFilter<Partida, Combinaciones> filtroMover = new FiltroMover();
+        
+        this.pipeValidarCombinacion = new Pipe<>(filtroValidarCombinacion);
+        this.pipeSustituir = new Pipe<>(filtroSustituir);
+        this.pipeMover = new Pipe<>(filtroMover);
     }
 
-    // Quitar void y poner el Tablero
-    public void ejecutar(Combinaciones input) {
-        pipeMovimientos.agregarInfo(input);
-        pipeMovimientos.enviar();
+    public static PipelineConsultarMovimientos getInstancia() {
+        if (instancia == null) {
+            instancia = new PipelineConsultarMovimientos();
+        }
+        return instancia;
+    }
 
-//        Deberua ser con el tablero en vez de la partida
-//        Cliente cliente= Cliente.getInstancia();
-//        cliente.enviarSerializado(partida);
-//        return cliente.getPartidaCliente();
+    public Partida ejecutar(Partida partida) {
+        System.out.println("Iniciando pipeline...");
+        
+        // 1. Valida
+        System.out.println("Validando la combinacion...");
+        pipeValidarCombinacion.agregarInfo(partida);
+        pipeValidarCombinacion.enviar();
+        Boolean combinacionValidada = pipeValidarCombinacion.obtenerInfo();
+        
+        if (combinacionValidada) {
+            System.out.println("La combinacion no es valida para realizar esta accion!");
+            return partida; // Salir
+        }
+        
+        // 2. Agregar la ficha a la combinacion.
+        System.out.println("Realizando la sustitucion...");
+        pipeSustituir.agregarInfo(partida);
+        pipeSustituir.enviar();
+        Combinaciones c = pipeSustituir.obtenerInfo();
+        
+        if(c == null){
+            System.out.println("No se logro realizar la sustitucion.");
+            return partida;
+        }
+        
+        // 3. Mover la Ficha.
+        System.out.println("Moviendo la ficha...");
+        pipeMover.agregarInfo(partida);
+        pipeMover.enviar();
+        Combinaciones f = pipeMover.obtenerInfo();
+        
+        if(f == null){
+            System.out.println("No se pudo realizar el cambio");
+            return partida;
+        }
+  
+        return partida;
     }
 
 }

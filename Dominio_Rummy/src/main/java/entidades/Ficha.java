@@ -15,4 +15,7 @@ public class Ficha implements Serializable{
     public Ficha() {
     }
     
+    public void MoverFicha(){
+    }
+    
 }
