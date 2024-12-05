@@ -21,6 +21,10 @@ public class Grupo implements Serializable{
         this.color = color;
         this.numeroGrupo = numeroGrupo;
     }
+
+    public Grupo(int numeroGrupo) {
+        this.numeroGrupo = numeroGrupo;
+    }
     
     public Color getColor() {
         return color;

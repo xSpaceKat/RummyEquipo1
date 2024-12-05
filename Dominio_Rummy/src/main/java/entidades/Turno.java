@@ -17,13 +17,13 @@ public class Turno implements Serializable{
     int turnoActual;
 
     public Turno() {
-        turnoActual=1;
+        turnoActual=0;
         jugadores= new ArrayList<>();
     }
 
-    public Turno(List<Jugador> jugadores, int turnoActual) {
+    public Turno(List<Jugador> jugadores) {
         this.jugadores = jugadores;
-        this.turnoActual = turnoActual;
+        turnoActual=0;
     }
 
     public List<Jugador> getJugadores() {

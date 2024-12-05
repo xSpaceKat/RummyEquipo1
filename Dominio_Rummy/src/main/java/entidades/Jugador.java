@@ -5,6 +5,7 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,20 +17,45 @@ public class Jugador implements Serializable{
     private String avatar;
     private List<Grupo> coloresGrupo;
     private List<Ficha> fichas;
-    private boolean preparado;
+    private boolean estado;
     private int turno;
 
     // Constructor
-    public Jugador(String nombre, String avatar, List<Grupo> coloresGrupo, List<Ficha> fichas, boolean preparado, int turno) {
+    public Jugador(String nombre, String avatar) {
         this.nombre = nombre;
         this.avatar = avatar;
-        this.coloresGrupo = coloresGrupo;
-        this.fichas = fichas;
-        this.preparado = preparado;
-        this.turno = turno;
+        this.coloresGrupo = List.of(
+            new Grupo(new Color("#0000FF"),1), // Azul
+            new Grupo(new Color("#FF0000"),2), // Rojo
+            new Grupo(new Color("#00FF00"),3), // Verde
+            new Grupo(new Color("#FFFF00"),4)  // Amarillo
+        );
+        fichas= new ArrayList<>();
+        estado=false;
     }
 
     public Jugador() {
+        // Crear los 4 grupos con colores predefinidos
+        this.coloresGrupo = List.of(
+            new Grupo(new Color("#0000FF"),1), // Azul
+            new Grupo(new Color("#FF0000"),2), // Rojo
+            new Grupo(new Color("#00FF00"),3), // Verde
+            new Grupo(new Color("#FFFF00"),4)  // Amarillo
+        );
+        fichas= new ArrayList<>();
+        estado=false;
+    }
+    
+    // Método para cambiar el color de un grupo específico
+    public void cambiarColorGrupo(int numeroGrupo, Color nuevoColor) {
+        for (Grupo grupo : this.coloresGrupo) {
+            if (grupo.getNumeroGrupo() == numeroGrupo) {
+                grupo.setColor(nuevoColor);
+                System.out.println("Color del grupo " + numeroGrupo + " cambiado a " + nuevoColor.getHexadecimalColor());
+                return;
+            }
+        }
+        throw new IllegalArgumentException("El número de grupo " + numeroGrupo + " no existe.");
     }
     
     public String getNombre() {
@@ -64,12 +90,12 @@ public class Jugador implements Serializable{
         this.fichas = fichas;
     }
 
-    public boolean isPreparado() {
-        return preparado;
+    public boolean getEstado() {
+        return estado;
     }
 
-    public void setPreparado(boolean preparado) {
-        this.preparado = preparado;
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
     public int getTurno() {

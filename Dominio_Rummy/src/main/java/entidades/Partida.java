@@ -17,13 +17,16 @@ public class Partida implements Serializable{
     private boolean estado;
     private String codigo;
     private Mazo mazo;
+    private Turno turnos;
+    private Tablero tablero;
 
-    // Constructor
-    public Partida(List<Jugador> jugadores, boolean estado, String codigo, Mazo mazo) {
+    public Partida(List<Jugador> jugadores, boolean estado, String codigo, Mazo mazo, Turno turnos, Tablero tablero) {
         this.jugadores = jugadores;
         this.estado = estado;
         this.codigo = codigo;
         this.mazo = mazo;
+        this.turnos = turnos;
+        this.tablero = tablero;
     }
 
     public Partida() {
@@ -64,6 +67,34 @@ public class Partida implements Serializable{
     
     public void unirJugador(Jugador jugador){
         jugadores.add(jugador);
+    }
+
+    public Turno getTurnos() {
+        return turnos;
+    }
+
+    public void setTurnos(Turno turnos) {
+        this.turnos = turnos;
+    }
+
+    public Tablero getTablero() {
+        return tablero;
+    }
+
+    public void setTablero(Tablero tablero) {
+        this.tablero = tablero;
+    }
+    
+    
+    
+    //Verifica si es que todos los jugadores estan listos para empezar la partida
+    public boolean verificarEstados(){
+        for (Jugador jugador : jugadores) {
+            if (!jugador.getEstado()) {
+                return false;
+            }
+        }
+        return true;
     }
     
 }

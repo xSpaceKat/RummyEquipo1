@@ -4,10 +4,51 @@
  */
 package fachada;
 
+import entidades.Jugador;
+import entidades.Partida;
+
 /**
  *
  * @author galan
  */
 public class LobbyFachada {
-    
+    private Partida partida;
+
+    // Constructor que recibe la partida
+    public LobbyFachada(Partida partida) {
+        this.partida = partida;
+    }
+
+    // Validar si la sala está llena
+    public boolean validarSalaLlena() {
+        if (partida.getJugadores().size() >= 4) {
+            System.out.println("La sala está llena.");
+            return true;
+        } else {
+            System.out.println("La sala tiene espacio.");
+            return false;
+        }
+    }
+
+    // Validar si el juego ha iniciado
+    public boolean validarJuegoIniciado() {
+        if (partida.isEstado()) {
+            System.out.println("El juego ya ha comenzado.");
+            return true;
+        } else {
+            System.out.println("El juego no ha comenzado.");
+            return false;
+        }
+    }
+
+    // Verificar si el estado de los jugadores es válido
+    public boolean verificarEstados() {
+        return partida.verificarEstados();
+    }
+
+    // Unir un jugador a la partida
+    public void unirJugador(Jugador jugador) {
+        partida.unirJugador(jugador);
+        System.out.println("Jugador " + jugador.getNombre() + " ha sido unido al juego.");
+    }
 }
