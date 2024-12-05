@@ -13,6 +13,7 @@ public class ModeloTablero implements Observable<ModeloObserver> {
 
     //Aquí añadiremos la liste de nuestros observadores
     private ArrayList<ModeloObserver> observadores;
+    //Añadan las pipelines aquí
 
     /**
      * Constructora del modelo. Crea un modelo, inicializa variables. Crea la
@@ -26,8 +27,8 @@ public class ModeloTablero implements Observable<ModeloObserver> {
     /**
      * Funcion sumar. Incrementa el valor.
      */
-    public void mostrarMenu() {
-        notificarObservadoresCambioVentana(ConstantesVentanas.JMENU);
+    public void mostrarResultados() {
+        notificarObservadoresCambioVentana(ConstantesVentanas.JRESULTADOS);
     }
 
 

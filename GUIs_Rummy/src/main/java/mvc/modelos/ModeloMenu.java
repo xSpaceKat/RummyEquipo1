@@ -1,6 +1,9 @@
 package mvc.modelos;
 
+import entidades.Jugador;
 import java.util.ArrayList;
+import pyf.cliente.Cliente;
+import pyf.pipebuilders.PipelineUnirJugador;
 
 /**
  * Modelo de mi programa, aquí estará toda la lógica y el funcionamiento interno
@@ -34,6 +37,9 @@ public class ModeloMenu implements Observable<ModeloObserver> {
      * Funcion sumar. Incrementa el valor.
      */
     public void mostrarUnirsePartida() {
+        PipelineUnirJugador pipeline= new PipelineUnirJugador();
+        Cliente cliente= Cliente.getInstancia();
+        cliente.enviarSerializado(pipeline.ejecutar(new Jugador("Anonimo", "")));
         notificarObservadoresCambioVentana(ConstantesVentanas.JUNIRSEPARTIDA);
     }
 

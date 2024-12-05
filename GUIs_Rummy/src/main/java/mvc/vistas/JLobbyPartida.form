@@ -76,6 +76,34 @@
         </Constraint>
       </Constraints>
     </Component>
+    <Component class="javax.swing.JLabel" name="labelJugador1">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="40" y="230" width="200" height="30"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelJugador2">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="320" y="140" width="200" height="40"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelJugador3">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="320" y="230" width="200" height="30"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelJugador4">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="320" y="320" width="200" height="30"/>
+        </Constraint>
+      </Constraints>
+    </Component>
     <Component class="javax.swing.JLabel" name="labelFondo">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
