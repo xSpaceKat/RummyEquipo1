@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package mvc.controladores;
 
 import mvc.modelos.ModeloPerfil;
@@ -12,6 +8,7 @@ import mvc.modelos.ModeloPerfil;
  * @author galan
  */
 public class ControladorPerfil {
+    
     ModeloPerfil m; //Nuestra lógica del programa
     
     /**

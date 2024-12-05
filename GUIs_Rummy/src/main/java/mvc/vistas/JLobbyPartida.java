@@ -35,46 +35,61 @@ public class JLobbyPartida extends javax.swing.JFrame implements ModeloObserver{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnAtras = new javax.swing.JButton();
         btnPerfil = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
         btnListo = new javax.swing.JButton();
         labelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnPerfil.setBorderPainted(false);
-        btnPerfil.setContentAreaFilled(false);
-        btnPerfil.addActionListener(new java.awt.event.ActionListener() {
+        btnAtras.setBorder(null);
+        btnAtras.setBorderPainted(false);
+        btnAtras.setContentAreaFilled(false);
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPerfilActionPerformed(evt);
+                btnAtrasActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 400, 180, 60));
+
+        btnPerfil.setBorder(null);
+        btnPerfil.setBorderPainted(false);
+        btnPerfil.setContentAreaFilled(false);
         getContentPane().add(btnPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 40, 90, 130));
 
-        btnBack.setBorderPainted(false);
-        btnBack.setContentAreaFilled(false);
-        getContentPane().add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 190, 60));
-
+        btnListo.setBorder(null);
         btnListo.setBorderPainted(false);
         btnListo.setContentAreaFilled(false);
+        btnListo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListoActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnListo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 400, 180, 60));
 
-        labelFondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\OMEN\\Documents\\GitHub\\RummyEquipo6\\GUIs_Rummy\\src\\main\\java\\recursos\\fondos\\LobbyPartidaImg.png")); // NOI18N
+        labelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/recursos/fondos/LobbyPartidaImg.png"))); // NOI18N
         getContentPane().add(labelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
-        // TODO add your handling code here:
+    private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         controlador.mostrarPerfil();
-    }//GEN-LAST:event_btnPerfilActionPerformed
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnListoActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnListo;
     private javax.swing.JButton btnPerfil;
     private javax.swing.JLabel labelFondo;

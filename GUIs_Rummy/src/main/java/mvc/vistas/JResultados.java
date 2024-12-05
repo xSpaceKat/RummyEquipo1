@@ -23,16 +23,53 @@ public class JResultados extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtTercero = new javax.swing.JLabel();
+        txtGanador = new javax.swing.JLabel();
+        txtSegundo = new javax.swing.JLabel();
+        btnRegresarMenu = new javax.swing.JButton();
         labelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        labelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/fondos/ResultadosImg.png"))); // NOI18N
+        txtTercero.setFont(new java.awt.Font("Franklin Gothic Demi Cond", 0, 24)); // NOI18N
+        txtTercero.setForeground(new java.awt.Color(255, 255, 255));
+        txtTercero.setText("JugadorTercero");
+        getContentPane().add(txtTercero, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 360, -1, 30));
+
+        txtGanador.setFont(new java.awt.Font("Franklin Gothic Demi Cond", 0, 24)); // NOI18N
+        txtGanador.setForeground(new java.awt.Color(255, 255, 255));
+        txtGanador.setText("JugadorGanador");
+        txtGanador.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                txtGanadorAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        getContentPane().add(txtGanador, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, -1, 30));
+
+        txtSegundo.setFont(new java.awt.Font("Franklin Gothic Demi Cond", 0, 24)); // NOI18N
+        txtSegundo.setForeground(new java.awt.Color(255, 255, 255));
+        txtSegundo.setText("JugadorSegundo");
+        getContentPane().add(txtSegundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, 30));
+
+        btnRegresarMenu.setBorder(null);
+        btnRegresarMenu.setBorderPainted(false);
+        btnRegresarMenu.setContentAreaFilled(false);
+        getContentPane().add(btnRegresarMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 210, 90));
+
+        labelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/recursos/fondos/ResultadosImg.png"))); // NOI18N
         getContentPane().add(labelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtGanadorAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_txtGanadorAncestorAdded
+        
+    }//GEN-LAST:event_txtGanadorAncestorAdded
 
     /**
      * @param args the command line arguments
@@ -68,8 +105,13 @@ public class JResultados extends javax.swing.JFrame {
             }
         });
     }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegresarMenu;
     private javax.swing.JLabel labelFondo;
+    private javax.swing.JLabel txtGanador;
+    private javax.swing.JLabel txtSegundo;
+    private javax.swing.JLabel txtTercero;
     // End of variables declaration//GEN-END:variables
 }

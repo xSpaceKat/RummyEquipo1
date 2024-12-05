@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package mvc.cambioFrames;
 
 /**
@@ -9,6 +5,7 @@ package mvc.cambioFrames;
  * @author galan
  */
 public class CambioFrameCrearPartida {
+
     private int rangoFichas, comodines;
 
     public CambioFrameCrearPartida(int rangoFichas, int comodines) {
@@ -31,6 +28,5 @@ public class CambioFrameCrearPartida {
     public void setComodines(int comodines) {
         this.comodines = comodines;
     }
-    
-    
+
 }

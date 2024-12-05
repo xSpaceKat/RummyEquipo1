@@ -1,10 +1,8 @@
 package mvc.vistas;
 
-import mvc.controladores.ControladorCrearPartida;
 import mvc.controladores.ControladorPerfil;
 import mvc.controladores.ControladorUnirsePartida;
 import mvc.modelos.ConstantesVentanas;
-import mvc.modelos.ModeloCrearPartida;
 import mvc.modelos.ModeloObserver;
 import mvc.modelos.ModeloUnirsePartida;
 import mvc.modelos.Observable;
@@ -36,11 +34,49 @@ public class JPerfil extends javax.swing.JFrame implements ModeloObserver{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnBuho = new javax.swing.JButton();
+        btnPanda = new javax.swing.JButton();
+        btnMapache = new javax.swing.JButton();
+        btnZorro = new javax.swing.JButton();
+        btnLobo = new javax.swing.JButton();
+        btnGallo = new javax.swing.JButton();
         btnConfirmar = new javax.swing.JButton();
+        txtNombre = new javax.swing.JTextField();
         labelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnBuho.setBorder(null);
+        btnBuho.setBorderPainted(false);
+        btnBuho.setContentAreaFilled(false);
+        getContentPane().add(btnBuho, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 60, 50));
+
+        btnPanda.setBorder(null);
+        btnPanda.setBorderPainted(false);
+        btnPanda.setContentAreaFilled(false);
+        getContentPane().add(btnPanda, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, 60, 50));
+
+        btnMapache.setBorder(null);
+        btnMapache.setBorderPainted(false);
+        btnMapache.setContentAreaFilled(false);
+        getContentPane().add(btnMapache, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 220, 60, 60));
+
+        btnZorro.setBorder(null);
+        btnZorro.setBorderPainted(false);
+        btnZorro.setContentAreaFilled(false);
+        getContentPane().add(btnZorro, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 60, 60));
+
+        btnLobo.setToolTipText("");
+        btnLobo.setBorder(null);
+        btnLobo.setBorderPainted(false);
+        btnLobo.setContentAreaFilled(false);
+        getContentPane().add(btnLobo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 293, 60, 50));
+
+        btnGallo.setBorder(null);
+        btnGallo.setBorderPainted(false);
+        btnGallo.setContentAreaFilled(false);
+        getContentPane().add(btnGallo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 60, 60));
 
         btnConfirmar.setBorderPainted(false);
         btnConfirmar.setContentAreaFilled(false);
@@ -51,7 +87,18 @@ public class JPerfil extends javax.swing.JFrame implements ModeloObserver{
         });
         getContentPane().add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 270, 80));
 
-        labelFondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\OMEN\\Documents\\GitHub\\RummyEquipo6\\GUIs_Rummy\\src\\main\\java\\recursos\\fondos\\Perfilimg.png")); // NOI18N
+        txtNombre.setBackground(new java.awt.Color(137, 91, 91));
+        txtNombre.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 0, 24)); // NOI18N
+        txtNombre.setForeground(new java.awt.Color(255, 255, 255));
+        txtNombre.setBorder(null);
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 220, 40));
+
+        labelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/recursos/fondos/Perfilimg.png"))); // NOI18N
         getContentPane().add(labelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -62,14 +109,25 @@ public class JPerfil extends javax.swing.JFrame implements ModeloObserver{
         controlador.mostrarUnirsePartida();
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        
+    }//GEN-LAST:event_txtNombreActionPerformed
+
     /**
      * @param args the command line arguments
      */
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuho;
     private javax.swing.JButton btnConfirmar;
+    private javax.swing.JButton btnGallo;
+    private javax.swing.JButton btnLobo;
+    private javax.swing.JButton btnMapache;
+    private javax.swing.JButton btnPanda;
+    private javax.swing.JButton btnZorro;
     private javax.swing.JLabel labelFondo;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 
     @Override

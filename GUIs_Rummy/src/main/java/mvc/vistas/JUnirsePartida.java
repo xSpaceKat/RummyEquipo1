@@ -23,7 +23,6 @@ public class JUnirsePartida extends javax.swing.JFrame implements ModeloObserver
         initComponents();
         this.setLocationRelativeTo(null);
         this.controlador = controlador;
-        this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
 
@@ -71,7 +70,7 @@ public class JUnirsePartida extends javax.swing.JFrame implements ModeloObserver
         });
         getContentPane().add(btnListo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 400, 190, 60));
 
-        labelFondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\OMEN\\Documents\\GitHub\\RummyEquipo6\\GUIs_Rummy\\src\\main\\java\\recursos\\fondos\\UnirsePartidaImg.png")); // NOI18N
+        labelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/recursos/fondos/UnirsePartidaImg.png"))); // NOI18N
         getContentPane().add(labelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
