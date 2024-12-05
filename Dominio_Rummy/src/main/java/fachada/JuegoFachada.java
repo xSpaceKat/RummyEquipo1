@@ -94,5 +94,12 @@ public class JuegoFachada implements IJuegoFachada{
         //Accede al mazo de la partida
         return partida.getMazo().esMazoVacio();
     }
+
+    //Revisa si el jugador en turno se ha quedado sin fichas
+    @Override
+    public boolean verificarCantidadFichas() {
+        int turnoActual = partida.getTurnos().getTurnoActual();
+        return partida.getTurnos().getJugadores().get(turnoActual).getFichas().isEmpty();
+    }
     
 }

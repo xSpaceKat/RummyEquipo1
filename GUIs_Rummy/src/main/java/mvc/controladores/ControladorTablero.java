@@ -34,4 +34,8 @@ public class ControladorTablero {
         m.jalarFicha();
     }
     
+    public void evtTerminarTurno(){
+        m.verificarCantidadFicha();
+    }
+    
 }

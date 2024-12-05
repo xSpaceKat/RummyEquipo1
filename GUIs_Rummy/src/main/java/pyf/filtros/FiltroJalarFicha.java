@@ -17,8 +17,7 @@ public class FiltroJalarFicha implements IFilter<Partida, Ficha>{
 
     @Override
     public Ficha procesar(Partida input) {
-        Partida p = Partida.obtenerInstancia();
-        IJuegoFachada jf = new JuegoFachada(p);
+        IJuegoFachada jf = new JuegoFachada(input);
         return jf.extraerFicha();
     }
     
