@@ -17,9 +17,13 @@ public class PipelineConsultarSeleccionNombre {
         this.pipa = new Pipe<>(filter);
     }
 
-    public void ejecutar(String nombre) {
+    public Boolean ejecutar(String nombre) {
         pipa.agregarInfo(nombre);
         pipa.enviar();
+
+        boolean n = pipa.obtenerInfo();
+
+        return n;
     }
 
 }
