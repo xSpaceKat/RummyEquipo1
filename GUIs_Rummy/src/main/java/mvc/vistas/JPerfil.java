@@ -169,7 +169,7 @@ public class JPerfil extends javax.swing.JFrame implements ModeloObserver {
     }//GEN-LAST:event_btnLoboActionPerformed
 
     private void btnGalloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGalloActionPerformed
-        avatar = "gallo.png";
+        avatar = "gallina.png";
         verificarSeleccionAvatar();
     }//GEN-LAST:event_btnGalloActionPerformed
 
