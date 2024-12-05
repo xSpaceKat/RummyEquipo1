@@ -12,9 +12,10 @@ import java.util.List;
  *
  * @author galan
  */
-public class Partida implements Serializable{
+public class Partida implements Serializable {
+
     private static Partida instancia;
-    
+
     private List<Jugador> jugadores;
     private boolean estado;
     private String codigo;
@@ -31,12 +32,16 @@ public class Partida implements Serializable{
     }
 
     // Método para actualizar la instancia actual de la partida
-    public static void actualizarInstancia(Partida nuevaPartida) {
-        instancia = nuevaPartida;
+    public void actualizarInstancia(Partida nuevaPartida) {
+        this.jugadores = nuevaPartida.getJugadores();
+        this.mazo = nuevaPartida.getMazo();
+        this.estado=nuevaPartida.isEstado();
+        this.turnos=nuevaPartida.getTurnos();
+        this.tablero=nuevaPartida.getTablero();
     }
 
     public Partida() {
-        jugadores= new ArrayList<>();
+        jugadores = new ArrayList<>();
     }
 
     public List<Jugador> getJugadores() {
@@ -70,9 +75,14 @@ public class Partida implements Serializable{
     public void setMazo(Mazo mazo) {
         this.mazo = mazo;
     }
-    
-    public void unirJugador(Jugador jugador){
-        jugadores.add(jugador);
+
+    public void unirJugador(Jugador jugador) {
+        if (!jugadores.contains(jugador)) {
+            jugadores.add(jugador);
+            System.out.println("Jugador unido: " + jugador.getNombre());
+        } else {
+            System.out.println("Jugador ya estaba unido: " + jugador.getNombre());
+        }
     }
 
     public Turno getTurnos() {
@@ -90,11 +100,9 @@ public class Partida implements Serializable{
     public void setTablero(Tablero tablero) {
         this.tablero = tablero;
     }
-    
-    
-    
+
     //Verifica si es que todos los jugadores estan listos para empezar la partida
-    public boolean verificarEstados(){
+    public boolean verificarEstados() {
         for (Jugador jugador : jugadores) {
             if (!jugador.getEstado()) {
                 return false;
@@ -102,5 +110,5 @@ public class Partida implements Serializable{
         }
         return true;
     }
-    
+
 }
