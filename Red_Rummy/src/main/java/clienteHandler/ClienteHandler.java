@@ -47,6 +47,8 @@ public class ClienteHandler implements Runnable {
             server.clients.remove(this);  // Eliminar cliente al desconectarse
         }
     }
+    
+    
 
     // Enviar un mensaje al cliente
     public void enviarMensaje(Object mensaje) {

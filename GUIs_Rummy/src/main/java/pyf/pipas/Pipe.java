@@ -4,6 +4,8 @@
  */
 package pyf.pipas;
 
+import pyf.filtros.IFilter;
+
 /**
  *
  * @author Paco
@@ -26,7 +28,7 @@ public class Pipe<TIn, TOut> {
     // Método para obtener información procesada
     public TOut obtenerInfo() {
         if (filter != null && data != null) {
-            return filter.procesar(data);
+            return filter.procesar(data);  // Ahora retorna el resultado procesado
         } else {
             throw new IllegalStateException("No hay datos o el filtro no está configurado.");
         }
@@ -34,7 +36,7 @@ public class Pipe<TIn, TOut> {
 
     // Método para enviar los datos procesados
     public void enviar() {
-        TOut result = obtenerInfo();
-        System.out.println("Enviando datos procesados: " + result);
+        TOut result = obtenerInfo();  // Obtener el resultado procesado
+        System.out.println("Enviando datos procesados: " + result);  // Mostrar el resultado
     }
 }
