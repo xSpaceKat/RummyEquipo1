@@ -1,6 +1,6 @@
 package pyf.pipebuilders;
 
-import pyf.filtros.FiltroConsultarSeleccionNombre;
+import pyf.filtros.FiltroConsultarSeleccionAvatar;
 import pyf.filtros.IFilter;
 import pyf.pipas.Pipe;
 
@@ -11,14 +11,13 @@ import pyf.pipas.Pipe;
 public class PipelineConsultarSeleccionAvatar {
 
     private final Pipe<String, Boolean> pipa;
-    private IFilter filter = new FiltroConsultarSeleccionNombre();
+    private IFilter filter = new FiltroConsultarSeleccionAvatar();
 
     public PipelineConsultarSeleccionAvatar() {
         this.pipa = new Pipe<>(filter);
     }
 
-    public void ejecutar(String nombre, String avatar) {
-        pipa.agregarInfo(nombre);
+    public void ejecutar(String avatar) {
         pipa.agregarInfo(avatar);
         pipa.enviar();
     }
