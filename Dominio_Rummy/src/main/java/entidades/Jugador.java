@@ -56,8 +56,8 @@ public class Jugador implements Serializable{
             }
         }
         throw new IllegalArgumentException("El número de grupo " + numeroGrupo + " no existe.");
-    }
-    
+    } 
+   
     public String getNombre() {
         return nombre;
     }

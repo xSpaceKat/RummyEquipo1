@@ -13,6 +13,8 @@ import java.util.List;
  * @author galan
  */
 public class Partida implements Serializable{
+    private static Partida instancia;
+    
     private List<Jugador> jugadores;
     private boolean estado;
     private String codigo;
@@ -20,13 +22,17 @@ public class Partida implements Serializable{
     private Turno turnos;
     private Tablero tablero;
 
-    public Partida(List<Jugador> jugadores, boolean estado, String codigo, Mazo mazo, Turno turnos, Tablero tablero) {
-        this.jugadores = jugadores;
-        this.estado = estado;
-        this.codigo = codigo;
-        this.mazo = mazo;
-        this.turnos = turnos;
-        this.tablero = tablero;
+    // Método para obtener la instancia única de la clase
+    public static Partida obtenerInstancia() {
+        if (instancia == null) {
+            instancia = new Partida();
+        }
+        return instancia;
+    }
+
+    // Método para actualizar la instancia actual de la partida
+    public static void actualizarInstancia(Partida nuevaPartida) {
+        instancia = nuevaPartida;
     }
 
     public Partida() {

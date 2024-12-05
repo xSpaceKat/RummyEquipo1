@@ -1,8 +1,11 @@
 package mvc.modelos;
 
+import entidades.Jugador;
 import mvc.cambioFrames.CambioFrameCrearPartida;
 import java.util.ArrayList;
 import javax.swing.JLabel;
+import mvc.dto.MazoDTO;
+import pyf.pipebuilders.PipelineCrearPartida;
 
 /**
  * Modelo de mi programa, aquí estará toda la lógica y el funcionamiento interno
@@ -25,8 +28,8 @@ public class ModeloCrearPartida implements Observable<ModeloObserver> {
     public ModeloCrearPartida() {
         //Inicializamos atributos...
         observadores = new ArrayList<ModeloObserver>();
-        rangoFichas = 0;
-        comodines = 0;
+        rangoFichas = 10;
+        comodines = 2;
     }
 
     /**
@@ -36,7 +39,11 @@ public class ModeloCrearPartida implements Observable<ModeloObserver> {
         notificarObservadoresCambioVentana(ConstantesVentanas.JMENU);
     }
     
-    public void mostrarLobbyPartida() {
+    public void crearPartida() {
+        PipelineCrearPartida pipelineCrearPartida= new PipelineCrearPartida();
+        Jugador jugador= new Jugador("Jugador", "xd");
+        MazoDTO mazoDTO= new MazoDTO(rangoFichas, comodines, jugador);
+        pipelineCrearPartida.ejecutar(mazoDTO);
         notificarObservadoresCambioVentana(ConstantesVentanas.JLOBBYPARTY);
     }
 
@@ -44,7 +51,13 @@ public class ModeloCrearPartida implements Observable<ModeloObserver> {
      * Funcion sumar. Incrementa el valor del rango de fichas.
      */
     public void sumarRangoFichas() {
-        rangoFichas++;
+        if(rangoFichas<10){
+            
+        }else if(rangoFichas>13){
+            
+        }else{
+            rangoFichas++;
+        }
         notificarObservadores();
     }
 
@@ -119,5 +132,7 @@ public class ModeloCrearPartida implements Observable<ModeloObserver> {
             o.cambiarVentana(ventana);
         }
     }
+    
+    
 
 }

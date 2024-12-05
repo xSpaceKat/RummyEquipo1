@@ -28,7 +28,6 @@ public class GameServer {
 
             while (true) {
                 Socket clientSocket = serverSocket.accept();
-
                 // Verificar si hay espacio para nuevos jugadores
                 synchronized (clients) {
                     if (clients.size() < 4) {

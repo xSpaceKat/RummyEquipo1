@@ -18,24 +18,34 @@ import java.util.logging.Logger;
  * @author galan
  */
 public class Cliente{
-    private Partida partidaCliente= new Partida();
-    private int puerto = 4444;
+    private static Cliente instancia; // Instancia única de la clase
+    private Partida partidaCliente = new Partida();
+    private final int puerto = 4444;
     private Socket socket;
-    ObjectOutputStream out;
-    ObjectInputStream in;
-    final String host = "localhost";
+    private ObjectOutputStream out;
+    private ObjectInputStream in;
+    private final String host = "localhost";
 
-    public Cliente(String host, int port) {
+    // Constructor privado para prevenir la creación de múltiples instancias
+    private Cliente() {
         try {
-            socket = new Socket(host, port);
+            socket = new Socket(host, puerto);
             out = new ObjectOutputStream(socket.getOutputStream());
             in = new ObjectInputStream(socket.getInputStream());
 
-            // Iniciar hilo para recibir mensajes
+            // Iniciar un hilo para recibir mensajes
             new Thread(this::recibirSerializado).start();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    // Método para obtener la instancia única de Cliente
+    public static synchronized Cliente getInstancia() {
+        if (instancia == null) {
+            instancia = new Cliente();
+        }
+        return instancia;
     }
 
     // Método para recibir mensajes del servidor
