@@ -9,6 +9,7 @@ import entidades.Jugador;
  * @author galan
  */
 public class PerfilFachada {
+
     private Jugador jugador;
 
     // Constructor que recibe al jugador que se va a modificar
@@ -32,5 +33,18 @@ public class PerfilFachada {
         grupoActualizado.setColor(nuevoColor);
         grupoActualizado.setNumeroGrupo(numeroGrupo);
         return grupoActualizado;
+    }
+
+    public boolean verificarSeleccionNombre(String dato) {
+        if (dato == null) {
+            System.out.println("El nombre esta vacio!");
+            jugador.setNombre("Jugador");
+            return false;
+        } else {
+            jugador.setNombre(dato);
+            System.out.println("El nombre del jugador se guardo con exito :)");
+            System.out.println(jugador.getNombre().toString());
+            return true;
+        }
     }
 }

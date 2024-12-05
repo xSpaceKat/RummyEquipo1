@@ -3,6 +3,9 @@ package mvc.modelos;
 import java.awt.Color;
 import java.util.ArrayList;
 import pyf.pipebuilders.PipelineConsultarSeleccionColores;
+import entidades.Jugador;
+import fachada.PerfilFachada;
+import pyf.pipebuilders.PipelineConsultarSeleccionNombre;
 
 /**
  * Modelo de mi programa, aquí estará toda la lógica y el funcionamiento interno
@@ -16,6 +19,9 @@ public class ModeloPerfil implements Observable<ModeloObserver> {
     //Aquí añadiremos la liste de nuestros observadores
     private ArrayList<ModeloObserver> observadores;
     PipelineConsultarSeleccionColores colorsito = new PipelineConsultarSeleccionColores();
+    Jugador jugador = new Jugador();
+    PerfilFachada perfilFachada = new PerfilFachada(jugador);
+    PipelineConsultarSeleccionNombre pipelineConsultarSeleccion = new PipelineConsultarSeleccionNombre();
 
     /**
      * Constructora del modelo. Crea un modelo, inicializa variables. Crea la
@@ -30,7 +36,6 @@ public class ModeloPerfil implements Observable<ModeloObserver> {
     /**
      * Funcion sumar. Incrementa el valor.
      */
-    
     public void mostrarUnirsePartida() {
         notificarObservadoresCambioVentana(ConstantesVentanas.JUNIRSEPARTIDA);
     }
@@ -40,6 +45,26 @@ public class ModeloPerfil implements Observable<ModeloObserver> {
         colorsito.ejecutar(2, ccolor2);
         colorsito.ejecutar(3, ccolor3);
         colorsito.ejecutar(4, ccolor4);
+    }
+
+    public void mostrarLobbyPartida() {
+        notificarObservadoresCambioVentana(ConstantesVentanas.JLOBBYPARTY);
+    }
+    
+    public void verfificarSeleccionNombre(String nombre) {
+        pipelineConsultarSeleccion.ejecutar(nombre);
+    }
+    
+    public void cambiarNombre(String nombre) {
+        perfilFachada.cambiarNombre(nombre);
+    }
+    
+    public void cambiarAvatar(String avatar) {
+        perfilFachada.cambiarFoto(avatar);
+    }
+    
+    public void cambiarColores(int numGrupo, Color color) {
+        perfilFachada.cambiarColoresFichas(numGrupo, color);
     }
 
     /**
@@ -78,7 +103,7 @@ public class ModeloPerfil implements Observable<ModeloObserver> {
             o.update(this, o);
         }
     }
-
+    
     private void notificarObservadoresCambioVentana(int ventana) {
         for (ModeloObserver o : observadores) {
             //Le a cada observador que el valor se ha cambiado al nuevo valor "t".
@@ -86,7 +111,5 @@ public class ModeloPerfil implements Observable<ModeloObserver> {
             o.cambiarVentana(ventana);
         }
     }
-
     
-
 }
