@@ -3,6 +3,7 @@ package mvc.modelos;
 import entidades.Partida;
 import java.util.ArrayList;
 import pyf.cliente.Cliente;
+import pyf.pipebuilders.PipelineContadorFicha;
 import pyf.pipebuilders.PipelineJalarFicha;
 
 /**
@@ -18,16 +19,21 @@ public class ModeloTablero implements Observable<ModeloObserver> {
     private ArrayList<ModeloObserver> observadores;
     //Añadan las pipelines aquí
     PipelineJalarFicha pipelineJF;
-    
+    PipelineContadorFicha pipelineCF;
 
     /**
      * Constructora del modelo. Crea un modelo, inicializa variables. Crea la
      * lista de los observadores.
      */
     public ModeloTablero() {
-        //Inicializamos atributos...
-        observadores = new ArrayList<ModeloObserver>();
-        pipelineJF.getInstancia();
+        // Inicializamos los atributos.
+        observadores = new ArrayList<>();
+        try {
+            pipelineJF = PipelineJalarFicha.getInstancia();
+//            pipelineCF = PipelineContadorFicha.getInstance();
+        } catch (Exception e) {
+            System.err.println("Error al inicializar pipelines: " + e.getMessage());
+        }
     }
 
     /**
@@ -37,11 +43,24 @@ public class ModeloTablero implements Observable<ModeloObserver> {
         notificarObservadoresCambioVentana(ConstantesVentanas.JRESULTADOS);
     }
 
-    public void jalarFicha(){
+    public void jalarFicha() {
         Partida partidaActual = Partida.obtenerInstancia();
-        Cliente cliente= Cliente.getInstancia();
+        Cliente cliente = Cliente.getInstancia();
         cliente.enviarSerializado(pipelineJF.ejecutar(partidaActual));
         this.notificarObservadores();
+    }
+
+    public void verificarCantidadFicha() {
+        try {
+            Partida partidaActual = Partida.obtenerInstancia();
+            Cliente cliente = Cliente.getInstancia();
+            cliente.enviarSerializado(pipelineCF.ejecutar(partidaActual));
+            this.notificarObservadores();
+            this.notificarObservadoresCambioVentana(0);
+        } catch (Exception e) {
+            System.err.println("Error al verificar la cantidad de fichas: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     /**

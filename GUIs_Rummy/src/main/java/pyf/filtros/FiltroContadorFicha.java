@@ -10,15 +10,14 @@ import iFachada.IJuegoFachada;
 
 /**
  *
- * @author galan
+ * @author PERSONAL
  */
-public class FiltroValidarMazo implements IFilter<Partida, Boolean>{
+public class FiltroContadorFicha implements IFilter<Partida, Boolean>{
 
     @Override
-    public Boolean procesar(Partida input) {;
+    public Boolean procesar(Partida input) {
         IJuegoFachada jf = new JuegoFachada(input);
-        
-        return jf.esMazoVacio();
+        return jf.verificarCantidadFichas();
     }
     
 }
