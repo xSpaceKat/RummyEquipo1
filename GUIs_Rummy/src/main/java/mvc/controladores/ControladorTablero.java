@@ -30,6 +30,8 @@ public class ControladorTablero {
         m.mostrarResultados();
     }
     
-    
+    public void evtJalarFicha(){
+        m.jalarFicha();
+    }
     
 }

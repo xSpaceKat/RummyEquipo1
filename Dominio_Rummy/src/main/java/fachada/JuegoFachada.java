@@ -7,13 +7,14 @@ package fachada;
 import entidades.Partida;
 import entidades.Ficha;
 import entidades.Turno;
+import iFachada.IJuegoFachada;
 import java.util.Collections;
 
 /**
  *
  * @author galan
  */
-public class JuegoFachada {
+public class JuegoFachada implements IJuegoFachada{
 
     private Partida partida;
 
@@ -23,6 +24,7 @@ public class JuegoFachada {
     }
 
     // Inicializar el tablero
+    @Override
     public boolean inicializarTablero() {
         // Implementar la lógica de inicialización del tablero
         System.out.println("Tablero inicializado.");
@@ -30,6 +32,7 @@ public class JuegoFachada {
     }
 
     // Extraer una ficha del mazo
+    @Override
     public Ficha extraerFicha() {
         Ficha ficha = partida.getMazo().sacarFicha();
         System.out.println("Ficha extraída: " + ficha);
@@ -37,6 +40,7 @@ public class JuegoFachada {
     }
 
     // Dar ficha al jugador actual
+    @Override
     public boolean darFichaJugadorActual(Ficha ficha) {
         // Implementar la lógica de asignación de ficha al jugador actual
         System.out.println("Se ha dado la ficha al jugador actual.");
@@ -44,17 +48,20 @@ public class JuegoFachada {
     }
 
     // Pasar el turno
+    @Override
     public void pasarTurno() {
         partida.getTurnos().siguiente();
     }
 
     // Asignar fichas Azar
+    @Override
     public boolean asignarFichasAzar() {
         partida.getMazo().asignarFichas();
         return true;
     }
 
     // Método para asignar turnos al azar
+    @Override
     public boolean asignarTurnos() {
         if (partida.getJugadores() == null || partida.getJugadores().size() == 0) {
             System.out.println("No hay jugadores para asignar turnos.");
@@ -75,8 +82,17 @@ public class JuegoFachada {
     }
 
     // Agregar combinación
+    @Override
     public void agregarCombinacion() {
         // Implementar la lógica para agregar combinación de fichas
         System.out.println("Combinación agregada.");
     }
+    
+    //Revisa si hay fichas en el mazo o no
+    @Override
+    public boolean esMazoVacio(){
+        //Accede al mazo de la partida
+        return partida.getMazo().esMazoVacio();
+    }
+    
 }

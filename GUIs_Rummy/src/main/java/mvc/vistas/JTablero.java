@@ -4,8 +4,10 @@
  */
 package mvc.vistas;
 
+import entidades.Partida;
 import mvc.controladores.ControladorTablero;
 import mvc.modelos.ModeloTablero;
+import pyf.cliente.Cliente;
 
 /**
  *
@@ -14,14 +16,29 @@ import mvc.modelos.ModeloTablero;
 public class JTablero extends javax.swing.JFrame {
 
     ControladorTablero controlador;
-    
+
     /**
      * Creates new form JTablero
      */
-    public JTablero() {
+    public JTablero(ControladorTablero controlador) {
         initComponents();
-        ModeloTablero m = new ModeloTablero();
-        controlador = new ControladorTablero(m);
+        this.setLocationRelativeTo(null);
+        this.controlador = controlador;
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
+        Cliente cliente = Cliente.getInstancia();
+        Partida partida = cliente.getPartidaCliente();
+        for (int i = 0; i < partida.getJugadores().size(); i++) {
+            if (i == 0) {
+                labelJugador1.setText(partida.getJugadores().get(i).getNombre());
+            } else if (i == 1) {
+                labelJugador2.setText(partida.getJugadores().get(i).getNombre());
+            } else if (i == 2) {
+                labelJugador3.setText(partida.getJugadores().get(i).getNombre());
+            } else if (i == 3) {
+                labelJugador4.setText(partida.getJugadores().get(i).getNombre());
+            }
+        }
     }
 
     /**
@@ -34,6 +51,10 @@ public class JTablero extends javax.swing.JFrame {
     private void initComponents() {
 
         btnJalarFicha = new javax.swing.JButton();
+        labelJugador1 = new javax.swing.JLabel();
+        labelJugador2 = new javax.swing.JLabel();
+        labelJugador3 = new javax.swing.JLabel();
+        labelJugador4 = new javax.swing.JLabel();
         labelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,6 +68,10 @@ public class JTablero extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnJalarFicha, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 350, 140, 130));
+        getContentPane().add(labelJugador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 140, 30));
+        getContentPane().add(labelJugador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 140, 30));
+        getContentPane().add(labelJugador3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 140, 30));
+        getContentPane().add(labelJugador4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 140, 30));
 
         labelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/recursos/fondos/fondoTablero.png"))); // NOI18N
         getContentPane().add(labelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -55,12 +80,16 @@ public class JTablero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnJalarFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJalarFichaActionPerformed
-        
+
     }//GEN-LAST:event_btnJalarFichaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnJalarFicha;
     private javax.swing.JLabel labelFondo;
+    private javax.swing.JLabel labelJugador1;
+    private javax.swing.JLabel labelJugador2;
+    private javax.swing.JLabel labelJugador3;
+    private javax.swing.JLabel labelJugador4;
     // End of variables declaration//GEN-END:variables
 }

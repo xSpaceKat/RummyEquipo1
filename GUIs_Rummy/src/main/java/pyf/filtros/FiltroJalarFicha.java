@@ -4,10 +4,22 @@
  */
 package pyf.filtros;
 
+import entidades.Ficha;
+import entidades.Partida;
+import fachada.JuegoFachada;
+import iFachada.IJuegoFachada;
+
 /**
  *
  * @author galan
  */
-public class FiltroJalarFicha {
+public class FiltroJalarFicha implements IFilter<Partida, Ficha>{
+
+    @Override
+    public Ficha procesar(Partida input) {
+        Partida p = Partida.obtenerInstancia();
+        IJuegoFachada jf = new JuegoFachada(p);
+        return jf.extraerFicha();
+    }
     
 }

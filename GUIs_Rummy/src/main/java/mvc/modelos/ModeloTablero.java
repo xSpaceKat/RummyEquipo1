@@ -1,6 +1,9 @@
 package mvc.modelos;
 
+import entidades.Partida;
 import java.util.ArrayList;
+import pyf.cliente.Cliente;
+import pyf.pipebuilders.PipelineJalarFicha;
 
 /**
  * Modelo de mi programa, aquí estará toda la lógica y el funcionamiento interno
@@ -14,6 +17,8 @@ public class ModeloTablero implements Observable<ModeloObserver> {
     //Aquí añadiremos la liste de nuestros observadores
     private ArrayList<ModeloObserver> observadores;
     //Añadan las pipelines aquí
+    PipelineJalarFicha pipelineJF;
+    
 
     /**
      * Constructora del modelo. Crea un modelo, inicializa variables. Crea la
@@ -22,6 +27,7 @@ public class ModeloTablero implements Observable<ModeloObserver> {
     public ModeloTablero() {
         //Inicializamos atributos...
         observadores = new ArrayList<ModeloObserver>();
+        pipelineJF.getInstancia();
     }
 
     /**
@@ -31,6 +37,12 @@ public class ModeloTablero implements Observable<ModeloObserver> {
         notificarObservadoresCambioVentana(ConstantesVentanas.JRESULTADOS);
     }
 
+    public void jalarFicha(){
+        Partida partidaActual = Partida.obtenerInstancia();
+        Cliente cliente= Cliente.getInstancia();
+        cliente.enviarSerializado(pipelineJF.ejecutar(partidaActual));
+        this.notificarObservadores();
+    }
 
     /**
      * addObservador: Añade observadores a nuestro modelo
