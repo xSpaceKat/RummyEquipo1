@@ -1,5 +1,6 @@
 package mvc.vistas;
 
+import entidades.Partida;
 import mvc.controladores.ControladorCrearPartida;
 import mvc.controladores.ControladorLobbyPartida;
 import mvc.controladores.ControladorPerfil;
@@ -8,13 +9,16 @@ import mvc.modelos.ModeloCrearPartida;
 import mvc.modelos.ModeloObserver;
 import mvc.modelos.ModeloPerfil;
 import mvc.modelos.Observable;
+import pyf.cliente.Cliente;
 
 /**
  *
  * @author Katt
  */
-public class JLobbyPartida extends javax.swing.JFrame implements ModeloObserver{
+public class JLobbyPartida extends javax.swing.JFrame implements ModeloObserver {
+
     private ControladorLobbyPartida controlador;
+
     /**
      * Creates new form JLobbyPartida
      */
@@ -24,6 +28,19 @@ public class JLobbyPartida extends javax.swing.JFrame implements ModeloObserver{
         this.controlador = controlador;
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        Cliente cliente = Cliente.getInstancia();
+        Partida partida = cliente.getPartidaCliente();
+        for (int i = 0; i < partida.getJugadores().size(); i++) {
+            if (i == 0) {
+                labelJugador1.setText(partida.getJugadores().get(i).getNombre());
+            } else if (i == 1) {
+                labelJugador2.setText(partida.getJugadores().get(i).getNombre());
+            }else if (i == 2) {
+                labelJugador3.setText(partida.getJugadores().get(i).getNombre());
+            }else if (i == 3) {
+                labelJugador4.setText(partida.getJugadores().get(i).getNombre());
+            }
+        }
     }
 
     /**
@@ -38,6 +55,10 @@ public class JLobbyPartida extends javax.swing.JFrame implements ModeloObserver{
         btnAtras = new javax.swing.JButton();
         btnPerfil = new javax.swing.JButton();
         btnListo = new javax.swing.JButton();
+        labelJugador1 = new javax.swing.JLabel();
+        labelJugador2 = new javax.swing.JLabel();
+        labelJugador3 = new javax.swing.JLabel();
+        labelJugador4 = new javax.swing.JLabel();
         labelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -67,6 +88,10 @@ public class JLobbyPartida extends javax.swing.JFrame implements ModeloObserver{
             }
         });
         getContentPane().add(btnListo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 400, 180, 60));
+        getContentPane().add(labelJugador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 200, 30));
+        getContentPane().add(labelJugador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 200, 40));
+        getContentPane().add(labelJugador3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 200, 30));
+        getContentPane().add(labelJugador4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 200, 30));
 
         labelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/recursos/fondos/LobbyPartidaImg.png"))); // NOI18N
         getContentPane().add(labelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -87,17 +112,20 @@ public class JLobbyPartida extends javax.swing.JFrame implements ModeloObserver{
     }//GEN-LAST:event_btnListoActionPerformed
 
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnListo;
     private javax.swing.JButton btnPerfil;
     private javax.swing.JLabel labelFondo;
+    private javax.swing.JLabel labelJugador1;
+    private javax.swing.JLabel labelJugador2;
+    private javax.swing.JLabel labelJugador3;
+    private javax.swing.JLabel labelJugador4;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void update(Observable o, Object arg) {
-        
+
     }
 
     @Override
@@ -120,6 +148,6 @@ public class JLobbyPartida extends javax.swing.JFrame implements ModeloObserver{
             JPerfil v = new JPerfil(c);
             //añadimos observadores al modelo. En este caso, dos vistas.
             m.addObservador(v);
-        } 
+        }
     }
 }

@@ -1,5 +1,6 @@
 package mvc.vistas;
 
+import entidades.Partida;
 import mvc.controladores.ControladorMenu;
 import mvc.controladores.ControladorPerfil;
 import mvc.controladores.ControladorUnirsePartida;
@@ -8,6 +9,7 @@ import mvc.modelos.ModeloMenu;
 import mvc.modelos.ModeloObserver;
 import mvc.modelos.ModeloPerfil;
 import mvc.modelos.Observable;
+import pyf.cliente.Cliente;
 
 /**
  *
@@ -24,6 +26,19 @@ public class JUnirsePartida extends javax.swing.JFrame implements ModeloObserver
         this.setLocationRelativeTo(null);
         this.controlador = controlador;
         this.setVisible(true);
+        Cliente cliente = Cliente.getInstancia();
+        Partida partida = cliente.getPartidaCliente();
+        for (int i = 0; i < partida.getJugadores().size(); i++) {
+            if (i == 0) {
+                labelJugador1.setText(partida.getJugadores().get(i).getNombre());
+            } else if (i == 1) {
+                labelJugador2.setText(partida.getJugadores().get(i).getNombre());
+            }else if (i == 2) {
+                labelJugador3.setText(partida.getJugadores().get(i).getNombre());
+            }else if (i == 3) {
+                labelJugador4.setText(partida.getJugadores().get(i).getNombre());
+            }
+        }
     }
 
     /**
@@ -38,6 +53,10 @@ public class JUnirsePartida extends javax.swing.JFrame implements ModeloObserver
         btnPerfil = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         btnListo = new javax.swing.JButton();
+        labelJugador1 = new javax.swing.JLabel();
+        labelJugador3 = new javax.swing.JLabel();
+        labelJugador4 = new javax.swing.JLabel();
+        labelJugador2 = new javax.swing.JLabel();
         labelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,6 +88,10 @@ public class JUnirsePartida extends javax.swing.JFrame implements ModeloObserver
             }
         });
         getContentPane().add(btnListo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 400, 190, 60));
+        getContentPane().add(labelJugador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 200, 30));
+        getContentPane().add(labelJugador3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 200, 30));
+        getContentPane().add(labelJugador4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 200, 30));
+        getContentPane().add(labelJugador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 200, 40));
 
         labelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/recursos/fondos/UnirsePartidaImg.png"))); // NOI18N
         getContentPane().add(labelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -100,6 +123,10 @@ public class JUnirsePartida extends javax.swing.JFrame implements ModeloObserver
     private javax.swing.JButton btnListo;
     private javax.swing.JButton btnPerfil;
     private javax.swing.JLabel labelFondo;
+    private javax.swing.JLabel labelJugador1;
+    private javax.swing.JLabel labelJugador2;
+    private javax.swing.JLabel labelJugador3;
+    private javax.swing.JLabel labelJugador4;
     // End of variables declaration//GEN-END:variables
 
     @Override

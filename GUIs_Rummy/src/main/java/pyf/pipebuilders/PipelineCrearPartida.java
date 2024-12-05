@@ -20,6 +20,7 @@ import pyf.pipas.Pipe;
  * @author galan
  */
 public class PipelineCrearPartida {
+
     private final Pipe<MazoDTO, Partida> pipeCrearMazo;     // Pipa para convertir MazoDTO a Partida
     private final Pipe<Partida, Partida> pipeCrearPartida; // Pipa para procesar la Partida
 
@@ -40,17 +41,14 @@ public class PipelineCrearPartida {
         System.out.println("Procesando con FiltroCrearMazo...");
         pipeCrearMazo.agregarInfo(input);
         pipeCrearMazo.enviar();
-        Partida partida= pipeCrearMazo.obtenerInfo();
+        Partida partida = pipeCrearMazo.obtenerInfo();
 
         // 2. Paso por la segunda pipa (Mazo -> Partida)
         System.out.println("Procesando con FiltroCrearPartida...");
         pipeCrearPartida.agregarInfo(partida);
         pipeCrearPartida.enviar();
         Partida partida2 = pipeCrearPartida.obtenerInfo();
-
         System.out.println("Pipeline finalizado.");
-        Cliente cliente= Cliente.getInstancia();
-        cliente.enviarSerializado(partida);
-        return cliente.getPartidaCliente();
+        return partida2;
     }
 }

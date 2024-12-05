@@ -5,6 +5,7 @@ import mvc.cambioFrames.CambioFrameCrearPartida;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import mvc.dto.MazoDTO;
+import pyf.cliente.Cliente;
 import pyf.pipebuilders.PipelineCrearPartida;
 
 /**
@@ -41,9 +42,10 @@ public class ModeloCrearPartida implements Observable<ModeloObserver> {
     
     public void crearPartida() {
         PipelineCrearPartida pipelineCrearPartida= new PipelineCrearPartida();
-        Jugador jugador= new Jugador("Jugador", "xd");
+        Jugador jugador= new Jugador("Anonimo", "");
         MazoDTO mazoDTO= new MazoDTO(rangoFichas, comodines, jugador);
-        pipelineCrearPartida.ejecutar(mazoDTO);
+        Cliente cliente= Cliente.getInstancia();
+        cliente.enviarSerializado(pipelineCrearPartida.ejecutar(mazoDTO));
         notificarObservadoresCambioVentana(ConstantesVentanas.JLOBBYPARTY);
     }
 

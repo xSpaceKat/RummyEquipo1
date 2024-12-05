@@ -4,10 +4,41 @@
  */
 package pyf.pipebuilders;
 
+import entidades.Jugador;
+import entidades.Partida;
+import pyf.cliente.Cliente;
+import pyf.filtros.FiltroUnirJugador;
+import pyf.filtros.IFilter;
+import pyf.pipas.Pipe;
+
 /**
  *
  * @author galan
  */
 public class PipelineUnirJugador {
-    
+    private final Pipe<Jugador, Partida> pipeUnirJugador; 
+
+    public PipelineUnirJugador() {
+        // Crear e inicializar los filtros
+        IFilter<Jugador, Partida> filtroUnirJugador = new FiltroUnirJugador();
+
+        // Inicializar las pipas con los filtros
+        this.pipeUnirJugador = new Pipe<>(filtroUnirJugador);
+
+    }
+
+    public Partida ejecutar(Jugador input) {
+        System.out.println("Iniciando pipeline...");
+
+        // 1. Paso por la primera pipa (MazoDTO -> Mazo)
+        System.out.println("Procesando con FiltroCrearMazo...");
+        pipeUnirJugador.agregarInfo(input);
+        pipeUnirJugador.enviar();
+        Partida partida= pipeUnirJugador.obtenerInfo();
+
+        System.out.println("Pipeline finalizado.");
+        Cliente cliente= Cliente.getInstancia();
+        cliente.enviarSerializado(partida);
+        return cliente.getPartidaCliente();
+    }
 }

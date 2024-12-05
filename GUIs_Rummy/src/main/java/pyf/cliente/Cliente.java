@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class Cliente{
     private static Cliente instancia; // Instancia única de la clase
-    private Partida partidaCliente = new Partida();
+    private Partida partidaCliente = Partida.obtenerInstancia();
     private final int puerto = 4444;
     private Socket socket;
     private ObjectOutputStream out;
@@ -62,7 +62,7 @@ public class Cliente{
 
     // Deserializar el mensaje recibido
     public void deserializarMensaje(Object mensaje) {
-        partidaCliente= (Partida) mensaje;
+        partidaCliente.actualizarInstancia((Partida) mensaje);
     }
 
     // Enviar un mensaje serializado al servidor
