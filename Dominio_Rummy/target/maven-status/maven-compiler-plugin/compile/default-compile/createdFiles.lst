@@ -1,12 +1,12 @@
+entidades\Mazo.class
+entidades\Comodin.class
+entidades\Jugador.class
+entidades\Ficha.class
+pruebas\Pruebas.class
 entidades\Turno.class
 entidades\Combinaciones.class
 entidades\Grupo.class
 entidades\Partida.class
-entidades\Mazo.class
-entidades\Comodin.class
 entidades\FichaNormal.class
 entidades\Color.class
-entidades\Jugador.class
 entidades\Tablero.class
-entidades\Ficha.class
-pruebas\Pruebas.class

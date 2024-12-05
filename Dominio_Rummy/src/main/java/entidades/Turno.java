@@ -4,6 +4,7 @@
  */
 package entidades;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
  *
  * @author galan
  */
-public class Turno {
+public class Turno implements Serializable{
     List<Jugador> jugadores;
     int turnoActual;
 

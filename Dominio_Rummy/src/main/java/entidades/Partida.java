@@ -4,13 +4,15 @@
  */
 package entidades;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author galan
  */
-public class Partida {
+public class Partida implements Serializable{
     private List<Jugador> jugadores;
     private boolean estado;
     private String codigo;
@@ -22,6 +24,10 @@ public class Partida {
         this.estado = estado;
         this.codigo = codigo;
         this.mazo = mazo;
+    }
+
+    public Partida() {
+        jugadores= new ArrayList<>();
     }
 
     public List<Jugador> getJugadores() {
@@ -56,5 +62,8 @@ public class Partida {
         this.mazo = mazo;
     }
     
+    public void unirJugador(Jugador jugador){
+        jugadores.add(jugador);
+    }
     
 }

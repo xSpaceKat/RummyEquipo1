@@ -4,11 +4,13 @@
  */
 package entidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author galan
  */
-public class Ficha {
+public class Ficha implements Serializable{
 
     public Ficha() {
     }

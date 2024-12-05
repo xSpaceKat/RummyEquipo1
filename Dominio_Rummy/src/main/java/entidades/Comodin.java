@@ -4,11 +4,13 @@
  */
 package entidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author galan
  */
-public class Comodin extends Ficha{
+public class Comodin extends Ficha implements Serializable{
 
     public Comodin() {
     }

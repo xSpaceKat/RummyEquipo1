@@ -4,11 +4,13 @@
  */
 package entidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author galan
  */
-public class FichaNormal extends Ficha{
+public class FichaNormal extends Ficha implements Serializable{
     private int valor;
     private Grupo grupo;
 

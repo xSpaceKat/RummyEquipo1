@@ -4,11 +4,13 @@
  */
 package entidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author galan
  */
-public class Grupo {
+public class Grupo implements Serializable{
     private Color color;
     private int numeroGrupo;
 

@@ -4,13 +4,14 @@
  */
 package entidades;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author galan
  */
-public class Iguales extends Combinaciones{
+public class Iguales extends Combinaciones implements Serializable{
     private int numero;
 
     public Iguales(List<Ficha> fichas, Jugador dueno) {

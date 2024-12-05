@@ -4,13 +4,14 @@
  */
 package entidades;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author galan
  */
-public class Secuenciales extends Combinaciones{
+public class Secuenciales extends Combinaciones implements Serializable{
     private Grupo grupo;
 
     public Secuenciales(List<Ficha> fichas, Jugador dueno) {

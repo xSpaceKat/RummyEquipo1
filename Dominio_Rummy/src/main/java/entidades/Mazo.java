@@ -4,6 +4,7 @@
  */
 package entidades;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Random;
 
@@ -11,7 +12,7 @@ import java.util.Random;
  *
  * @author galan
  */
-class Mazo {
+class Mazo implements Serializable{
     private List<Ficha> mazo;
     private int rangos;
     private int cantidadComodines;

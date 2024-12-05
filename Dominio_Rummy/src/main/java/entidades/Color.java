@@ -4,11 +4,13 @@
  */
 package entidades;
 
+import java.io.Serializable;
+
 /**
  *
  * @author galan
  */
-public class Color {
+public class Color implements Serializable{
     private String hexadecimalColor;
 
     // Constructor

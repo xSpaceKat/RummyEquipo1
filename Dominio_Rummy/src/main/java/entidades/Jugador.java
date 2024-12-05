@@ -4,13 +4,14 @@
  */
 package entidades;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author galan
  */
-public class Jugador {
+public class Jugador implements Serializable{
     private String nombre;
     private String avatar;
     private List<Grupo> coloresGrupo;
@@ -28,6 +29,9 @@ public class Jugador {
         this.turno = turno;
     }
 
+    public Jugador() {
+    }
+    
     public String getNombre() {
         return nombre;
     }
