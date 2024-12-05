@@ -30,7 +30,7 @@ public class ModeloTablero implements Observable<ModeloObserver> {
         observadores = new ArrayList<>();
         try {
             pipelineJF = PipelineJalarFicha.getInstancia();
-            pipelineCF = PipelineContadorFicha.getInstance();
+//            pipelineCF = PipelineContadorFicha.getInstance();
         } catch (Exception e) {
             System.err.println("Error al inicializar pipelines: " + e.getMessage());
         }

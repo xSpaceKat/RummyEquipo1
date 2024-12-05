@@ -62,7 +62,9 @@ public class Cliente{
 
     // Deserializar el mensaje recibido
     public void deserializarMensaje(Object mensaje) {
-        partidaCliente.actualizarInstancia((Partida) mensaje);
+        Partida partidaRecibida = (Partida) mensaje;
+        System.out.println("Partida actualizada recibida con " + partidaRecibida.getJugadores().size() + " jugadores.");
+        partidaCliente.actualizarInstancia(partidaRecibida);
     }
 
     // Enviar un mensaje serializado al servidor
