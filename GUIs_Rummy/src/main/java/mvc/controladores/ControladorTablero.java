@@ -5,6 +5,7 @@
 package mvc.controladores;
 
 import mvc.modelos.ModeloMenu;
+import mvc.modelos.ModeloTablero;
 
 /**
  * Controlador del MVC. Se encuentra dentro de la vista y es llamado por esta para controlar a la lógica.
@@ -12,13 +13,13 @@ import mvc.modelos.ModeloMenu;
  * @author galan
  */
 public class ControladorTablero {
-    ModeloMenu m; //Nuestra lógica del programa
+    ModeloTablero m; //Nuestra lógica del programa
     
     /**
      * Constructora del controlador. Creará un controlador, y se le asignará el modelo correspondiente.
      * @param m 
      */
-    public ControladorTablero(ModeloMenu m){
+    public ControladorTablero(ModeloTablero m){
         this.m = m;
     }
 
@@ -26,14 +27,9 @@ public class ControladorTablero {
      * 
      */
     public void mostrarCrearPartida() {
-        m.mostrarCrearPartida();
+        m.mostrarResultados();
     }
     
-    /**
-     * 
-     */
-    public void mostrarUnirsePartida() {
-        m.mostrarUnirsePartida();
-    }
+    
     
 }
