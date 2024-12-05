@@ -1,13 +1,13 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package pyf.filtros;
 
 /**
  *
- * @author galan
+ * @author Paco
  */
-public class IFilter {
-    
+public interface IFilter<TIn, TOut> {
+    void procesar(TIn input, Pipe<TOut> outputPipe);
 }
