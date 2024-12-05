@@ -1,8 +1,9 @@
 package pyf.pipebuilders;
 
 import entidades.Combinaciones;
-import entidades.Tablero;
-import pyf.filtros.FiltroValidarSeparacion;
+import entidades.Partida;
+import pyf.filtros.FiltroSepararGrupo;
+import pyf.filtros.FiltroValidarCombinacion;
 import pyf.filtros.IFilter;
 import pyf.pipas.Pipe;
 
@@ -12,27 +13,53 @@ import pyf.pipas.Pipe;
  */
 public class PipelineValidarSeparacion {
 
-    private final Pipe<Combinaciones, Tablero> pipeSeparar;
-    private IFilter filter = (IFilter) new FiltroValidarSeparacion();
+    private static PipelineValidarSeparacion instancia;
+    private final Pipe<Partida, Boolean> pipeValidarCombinacion;
+    private final Pipe<Partida, Combinaciones> pipeSeparar;
 
-    public PipelineValidarSeparacion(Pipe<Combinaciones, Tablero> pipeSeparar) {
-        this.pipeSeparar = new Pipe<>(filter);
+    private PipelineValidarSeparacion() {
+        IFilter<Partida, Boolean> filtroValidarCombinacion = new FiltroValidarCombinacion();
+        IFilter<Partida, Combinaciones> filtroSeparar = new FiltroSepararGrupo();
+
+        this.pipeValidarCombinacion = new Pipe<>(filtroValidarCombinacion);
+        this.pipeSeparar = new Pipe<>(filtroSeparar);
     }
-    
-    // cambiar por tablero
-    public void ejecutar(Combinaciones input){
-        pipeSeparar.agregarInfo(input);
+
+    // Método estático para obtener la única instancia
+    public static PipelineValidarSeparacion getInstancia() {
+        if (instancia == null) {
+            instancia = new PipelineValidarSeparacion();
+        }
+        return instancia;
+    }
+
+    public Partida ejecutar(Partida partida) {
+        System.out.println("Iniciando pipeline...");
+
+        // 1. Valida
+        System.out.println("Validando la combinacion...");
+        pipeValidarCombinacion.agregarInfo(partida);
+        pipeValidarCombinacion.enviar();
+        Boolean combinacionValidada = pipeValidarCombinacion.obtenerInfo();
         
+        if (combinacionValidada) {
+            System.out.println("La combinacion no es valida para realizar esta accion!");
+            return partida; // Salir
+        }
+        
+        //2. Separa los grupos
+        System.out.println("Separando los grupos de combinacion...");
+        pipeSeparar.agregarInfo(partida);
         pipeSeparar.enviar();
-
-//        Deberia ser con el tablero en vez de la partida
-//        Cliente cliente= Cliente.getInstancia();
-//        cliente.enviarSerializado(partida);
-//        return cliente.getPartidaCliente();
+        Combinaciones c2 = pipeSeparar.obtenerInfo();
         
+        if (c2 == null) {
+            System.out.println("No se pudo separar la combinacion.");
+            return partida; // Salir
+        }
         
+        System.out.println("Pipeline finalizado.");
+        return partida;
     }
-    
-    
 
 }

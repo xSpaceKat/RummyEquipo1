@@ -4,6 +4,7 @@ import entidades.Partida;
 import java.util.ArrayList;
 import pyf.cliente.Cliente;
 import pyf.pipebuilders.PipelineJalarFicha;
+import pyf.pipebuilders.PipelineValidarSeparacion;
 
 /**
  * Modelo de mi programa, aquí estará toda la lógica y el funcionamiento interno
@@ -18,7 +19,7 @@ public class ModeloTablero implements Observable<ModeloObserver> {
     private ArrayList<ModeloObserver> observadores;
     //Añadan las pipelines aquí
     PipelineJalarFicha pipelineJF;
-    
+    PipelineValidarSeparacion pipelineValidarSeparacion;
 
     /**
      * Constructora del modelo. Crea un modelo, inicializa variables. Crea la
@@ -37,10 +38,17 @@ public class ModeloTablero implements Observable<ModeloObserver> {
         notificarObservadoresCambioVentana(ConstantesVentanas.JRESULTADOS);
     }
 
-    public void jalarFicha(){
+    public void jalarFicha() {
         Partida partidaActual = Partida.obtenerInstancia();
-        Cliente cliente= Cliente.getInstancia();
+        Cliente cliente = Cliente.getInstancia();
         cliente.enviarSerializado(pipelineJF.ejecutar(partidaActual));
+        this.notificarObservadores();
+    }
+
+    public void separarGrupo() {
+        Partida partidaActual = Partida.obtenerInstancia();
+        Cliente cliente = Cliente.getInstancia();
+        cliente.enviarSerializado(pipelineValidarSeparacion.ejecutar(partidaActual));
         this.notificarObservadores();
     }
 

@@ -1,10 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 package iFachada;
 
+import entidades.Combinaciones;
 import entidades.Ficha;
+import java.util.List;
 
 /**
  *
@@ -56,7 +54,7 @@ public interface IJuegoFachada {
     /**
      * Agrega una combinación de fichas al juego.
      */
-    void agregarCombinacion();
+    Combinaciones agregarCombinacion(List<Ficha> fichas);
 
     /**
      * Verifica si el mazo está vacío.
@@ -64,4 +62,18 @@ public interface IJuegoFachada {
      * @return true si el mazo está vacío, false en caso contrario.
      */
     boolean esMazoVacio();
+    
+    /**
+     * Verifica que la combinacion sea adecuada
+     * 
+     * @return true si la combinacion es valida, false en caso contrario.
+     */
+     boolean validaCombinacion();
+    
+    /**
+     * Metodo que separa las fichas en dos grupos/combinaciones.
+     * 
+     * @return 2do grupo de combinaciones
+     */
+    Combinaciones separarGrupo();
 }

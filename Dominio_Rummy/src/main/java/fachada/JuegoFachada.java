@@ -1,22 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package fachada;
 
+import entidades.Combinaciones;
 import entidades.Partida;
 import entidades.Ficha;
+import entidades.Grupo;
 import entidades.Turno;
 import iFachada.IJuegoFachada;
 import java.util.Collections;
+import java.util.List;
 
 /**
  *
  * @author galan
  */
-public class JuegoFachada implements IJuegoFachada{
+public class JuegoFachada implements IJuegoFachada {
 
     private Partida partida;
+    private Grupo grupo;
 
     // Constructor que recibe la partida
     public JuegoFachada(Partida partida) {
@@ -83,16 +83,42 @@ public class JuegoFachada implements IJuegoFachada{
 
     // Agregar combinación
     @Override
-    public void agregarCombinacion() {
-        // Implementar la lógica para agregar combinación de fichas
-        System.out.println("Combinación agregada.");
+    public Combinaciones agregarCombinacion(List<Ficha> fichas) {
+        Combinaciones c = new Combinaciones();
+        c.setFichas(fichas);
+        return c;
     }
-    
+
+    public boolean validaCombinacion() {
+        return partida.getTablero().getCombinaciones().contains(grupo.getNumeroGrupo());
+    }
+
+    public Combinaciones separarGrupo() {
+        Combinaciones combinaciones = (Combinaciones) partida.getTablero().getCombinaciones();
+        List<Ficha> combi = combinaciones.getFichas();
+
+        List<Ficha> primerosTres = null;
+        List<Ficha> ultimosTres = null;
+
+        for (int i = 0; i < 3; i++) {
+            primerosTres.add(combi.get(i));
+        }
+
+        for (int i = combi.size() - 3; i < combi.size(); i++) {
+            ultimosTres.add(combi.get(i));
+        }
+
+        Combinaciones c1 = agregarCombinacion(primerosTres);
+        Combinaciones c2 = agregarCombinacion(ultimosTres);
+
+        return c2;
+    }
+
     //Revisa si hay fichas en el mazo o no
     @Override
-    public boolean esMazoVacio(){
+    public boolean esMazoVacio() {
         //Accede al mazo de la partida
         return partida.getMazo().esMazoVacio();
     }
-    
+
 }
