@@ -1,12 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package mvc.pruebas;
 
-import mvc.controladores.ControladorMenu;
-import mvc.modelos.ModeloMenu;
-import mvc.vistas.JMenu;
+import mvc.controladores.ControladorPerfil;
+import mvc.modelos.ModeloPerfil;
+import mvc.vistas.JPerfil;
 
 /**
  *
@@ -19,13 +15,13 @@ public class Prueba {
      */
     public static void main(String[] args) {
         //Cargamos modelo
-        ModeloMenu m = new ModeloMenu();
+        ModeloPerfil m = new ModeloPerfil();
         
         //Cargamos controlador y le asignamos qué modelo controlar
-        ControladorMenu c = new ControladorMenu(m);
+        ControladorPerfil c = new ControladorPerfil(m);
         
         //Cargamos 2 vistas y asignamos cual queremos que sea su controlador 
-        JMenu v = new JMenu(c);
+        JPerfil v = new JPerfil(c);
         
         //añadimos observadores al modelo. En este caso, dos vistas.
         m.addObservador(v);

@@ -1,8 +1,10 @@
 package mvc.vistas;
 
+import mvc.controladores.ControladorLobbyPartida;
 import mvc.controladores.ControladorPerfil;
 import mvc.controladores.ControladorUnirsePartida;
 import mvc.modelos.ConstantesVentanas;
+import mvc.modelos.ModeloLobbyPartida;
 import mvc.modelos.ModeloObserver;
 import mvc.modelos.ModeloUnirsePartida;
 import mvc.modelos.Observable;
@@ -11,10 +13,11 @@ import mvc.modelos.Observable;
  *
  * @author Katt
  */
-public class JPerfil extends javax.swing.JFrame implements ModeloObserver{
+public class JPerfil extends javax.swing.JFrame implements ModeloObserver {
+
     private ControladorPerfil controlador;
-    
-    
+    String avatar;
+
     /**
      * Creates new form JPerfil
      */
@@ -50,32 +53,62 @@ public class JPerfil extends javax.swing.JFrame implements ModeloObserver{
         btnBuho.setBorder(null);
         btnBuho.setBorderPainted(false);
         btnBuho.setContentAreaFilled(false);
+        btnBuho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuhoActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnBuho, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 60, 50));
 
         btnPanda.setBorder(null);
         btnPanda.setBorderPainted(false);
         btnPanda.setContentAreaFilled(false);
+        btnPanda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPandaActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnPanda, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, 60, 50));
 
         btnMapache.setBorder(null);
         btnMapache.setBorderPainted(false);
         btnMapache.setContentAreaFilled(false);
+        btnMapache.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMapacheActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnMapache, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 220, 60, 60));
 
         btnZorro.setBorder(null);
         btnZorro.setBorderPainted(false);
         btnZorro.setContentAreaFilled(false);
+        btnZorro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZorroActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnZorro, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 60, 60));
 
         btnLobo.setToolTipText("");
         btnLobo.setBorder(null);
         btnLobo.setBorderPainted(false);
         btnLobo.setContentAreaFilled(false);
+        btnLobo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoboActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnLobo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 293, 60, 50));
 
         btnGallo.setBorder(null);
         btnGallo.setBorderPainted(false);
         btnGallo.setContentAreaFilled(false);
+        btnGallo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGalloActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnGallo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 60, 60));
 
         btnConfirmar.setBorderPainted(false);
@@ -97,26 +130,54 @@ public class JPerfil extends javax.swing.JFrame implements ModeloObserver{
             }
         });
         getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 220, 40));
-
-        labelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/recursos/fondos/Perfilimg.png"))); // NOI18N
         getContentPane().add(labelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-        // TODO add your handling code here:
-        controlador.mostrarUnirsePartida();
+        verificarSeleccionNombre();
+
+        controlador.mostrarLobbyPartida();
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        
+
     }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void btnBuhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuhoActionPerformed
+        avatar = "buho.png";
+    }//GEN-LAST:event_btnBuhoActionPerformed
+
+    private void btnPandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPandaActionPerformed
+        avatar = "panda.png";
+    }//GEN-LAST:event_btnPandaActionPerformed
+
+    private void btnMapacheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMapacheActionPerformed
+        avatar = "mapache.png";
+    }//GEN-LAST:event_btnMapacheActionPerformed
+
+    private void btnZorroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZorroActionPerformed
+        avatar = "zorro.png";
+    }//GEN-LAST:event_btnZorroActionPerformed
+
+    private void btnLoboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoboActionPerformed
+        avatar = "lobo.png";
+    }//GEN-LAST:event_btnLoboActionPerformed
+
+    private void btnGalloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGalloActionPerformed
+        avatar = "gallo.png";
+    }//GEN-LAST:event_btnGalloActionPerformed
+
+    public void verificarSeleccionNombre() {
+        String nombre = txtNombre.getText();
+
+        controlador.verificarSeleccionNombre(nombre);
+    }
 
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuho;
@@ -132,7 +193,7 @@ public class JPerfil extends javax.swing.JFrame implements ModeloObserver{
 
     @Override
     public void update(Observable o, Object arg) {
-        
+
     }
 
     @Override
@@ -144,6 +205,15 @@ public class JPerfil extends javax.swing.JFrame implements ModeloObserver{
             ControladorUnirsePartida c = new ControladorUnirsePartida(m);
             //Cargamos 2 vistas y asignamos cual queremos que sea su controlador 
             JUnirsePartida v = new JUnirsePartida(c);
+            //añadimos observadores al modelo. En este caso, dos vistas.
+            m.addObservador(v);
+        } else if (ventana == ConstantesVentanas.JLOBBYPARTY) {
+            this.setVisible(false);
+            ModeloLobbyPartida m = new ModeloLobbyPartida();
+            //Cargamos controlador y le asignamos qué modelo controlar
+            ControladorLobbyPartida c = new ControladorLobbyPartida(m);
+            //Cargamos 2 vistas y asignamos cual queremos que sea su controlador 
+            JLobbyPartida v = new JLobbyPartida(c);
             //añadimos observadores al modelo. En este caso, dos vistas.
             m.addObservador(v);
         }

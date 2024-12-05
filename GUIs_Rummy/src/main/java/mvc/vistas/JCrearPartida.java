@@ -118,7 +118,7 @@ public class JCrearPartida extends javax.swing.JFrame implements ModeloObserver 
         });
         getContentPane().add(btnListo, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, 170, 50));
 
-        labelFondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\OMEN\\Documents\\GitHub\\RummyEquipo6\\GUIs_Rummy\\src\\main\\java\\recursos\\fondos\\CrearPartidaImg.png")); // NOI18N
+        labelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/recursos/fondos/CrearPartidaImg.png"))); // NOI18N
         getContentPane().add(labelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 450));
 
         pack();

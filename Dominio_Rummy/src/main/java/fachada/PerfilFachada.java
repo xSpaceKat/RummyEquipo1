@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package fachada;
 
 import entidades.Color;
@@ -12,6 +8,7 @@ import entidades.Jugador;
  * @author galan
  */
 public class PerfilFachada {
+
     private Jugador jugador;
 
     // Constructor que recibe al jugador que se va a modificar
@@ -32,5 +29,18 @@ public class PerfilFachada {
     public void cambiarColoresFichas(int numeroGrupo, Color nuevoColor) {
         jugador.cambiarColorGrupo(numeroGrupo, nuevoColor);
         System.out.println("Color de ficha cambiados con éxito.");
+    }
+
+    public boolean verificarSeleccionNombre(String dato) {
+        if (dato == null) {
+            System.out.println("El nombre esta vacio!");
+            jugador.setNombre("Jugador");
+            return false;
+        } else {
+            jugador.setNombre(dato);
+            System.out.println("El nombre del jugador se guardo con exito :)");
+            System.out.println(jugador.getNombre().toString());
+            return true;
+        }
     }
 }
