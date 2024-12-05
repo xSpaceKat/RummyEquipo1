@@ -26,7 +26,8 @@ public class ControladorCrearPartida {
      * 
      */
     public void mostrarMenu() {
-        m.mostrarMenu();
+        ControladorMenu cm = new ControladorMenu();
+        cm.mostrarMenu();
     }
     
     public void mostrarLobbyPartida() {

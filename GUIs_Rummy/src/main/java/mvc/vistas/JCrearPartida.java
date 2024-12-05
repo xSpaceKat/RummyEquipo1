@@ -38,16 +38,19 @@ public class JCrearPartida extends javax.swing.JFrame implements ModeloObserver 
     private void initComponents() {
 
         btnAtras = new javax.swing.JButton();
-        labelRangoFichas = new javax.swing.JLabel();
-        labelComodines = new javax.swing.JLabel();
-        btnIRestarRango = new javax.swing.JButton();
-        btnIncrementarRango = new javax.swing.JButton();
-        btnIncrementarComodin = new javax.swing.JButton();
-        btnRestarComodin = new javax.swing.JButton();
-        btnListo = new javax.swing.JButton();
+        btnAumentarRangoComodines = new javax.swing.JButton();
+        btnAumentarRangoFichas1 = new javax.swing.JButton();
+        btnListo1 = new javax.swing.JButton();
+        btnDisminuirRangoFichas1 = new javax.swing.JButton();
+        btnDisminuirRangoComodines1 = new javax.swing.JButton();
+        lblRangoMaximoComodines = new javax.swing.JLabel();
+        lblRangoMaximoFichas = new javax.swing.JLabel();
         labelFondo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(847, 485));
+        setSize(new java.awt.Dimension(847, 485));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnAtras.setBorderPainted(false);
@@ -59,107 +62,115 @@ public class JCrearPartida extends javax.swing.JFrame implements ModeloObserver 
         });
         getContentPane().add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 160, 60));
 
-        labelRangoFichas.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        labelRangoFichas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelRangoFichas.setText("0");
-        getContentPane().add(labelRangoFichas, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, 50, 50));
-
-        labelComodines.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        labelComodines.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelComodines.setText("0");
-        getContentPane().add(labelComodines, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 50, -1));
-
-        btnIRestarRango.setText("jButton1");
-        btnIRestarRango.setBorderPainted(false);
-        btnIRestarRango.setContentAreaFilled(false);
-        btnIRestarRango.addActionListener(new java.awt.event.ActionListener() {
+        btnAumentarRangoComodines.setBorderPainted(false);
+        btnAumentarRangoComodines.setContentAreaFilled(false);
+        btnAumentarRangoComodines.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIRestarRangoActionPerformed(evt);
+                btnAumentarRangoComodinesActionPerformed(evt);
             }
         });
-        getContentPane().add(btnIRestarRango, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, 30, 20));
+        getContentPane().add(btnAumentarRangoComodines, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, 30, 30));
 
-        btnIncrementarRango.setText("jButton1");
-        btnIncrementarRango.setBorderPainted(false);
-        btnIncrementarRango.setContentAreaFilled(false);
-        btnIncrementarRango.addActionListener(new java.awt.event.ActionListener() {
+        btnAumentarRangoFichas1.setBorderPainted(false);
+        btnAumentarRangoFichas1.setContentAreaFilled(false);
+        btnAumentarRangoFichas1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIncrementarRangoActionPerformed(evt);
+                btnAumentarRangoFichas1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnIncrementarRango, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 163, 30, 30));
+        getContentPane().add(btnAumentarRangoFichas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, 30, 20));
 
-        btnIncrementarComodin.setText("jButton1");
-        btnIncrementarComodin.setBorderPainted(false);
-        btnIncrementarComodin.setContentAreaFilled(false);
-        btnIncrementarComodin.addActionListener(new java.awt.event.ActionListener() {
+        btnListo1.setBorderPainted(false);
+        btnListo1.setContentAreaFilled(false);
+        btnListo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIncrementarComodinActionPerformed(evt);
+                btnListo1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnIncrementarComodin, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, 30, 30));
+        getContentPane().add(btnListo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, 170, 50));
 
-        btnRestarComodin.setText("jButton1");
-        btnRestarComodin.setBorderPainted(false);
-        btnRestarComodin.setContentAreaFilled(false);
-        btnRestarComodin.addActionListener(new java.awt.event.ActionListener() {
+        btnDisminuirRangoFichas1.setBorderPainted(false);
+        btnDisminuirRangoFichas1.setContentAreaFilled(false);
+        btnDisminuirRangoFichas1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRestarComodinActionPerformed(evt);
+                btnDisminuirRangoFichas1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRestarComodin, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 30, 20));
+        getContentPane().add(btnDisminuirRangoFichas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 170, 30, 20));
 
-        btnListo.setBorderPainted(false);
-        btnListo.setContentAreaFilled(false);
-        btnListo.addActionListener(new java.awt.event.ActionListener() {
+        btnDisminuirRangoComodines1.setBorderPainted(false);
+        btnDisminuirRangoComodines1.setContentAreaFilled(false);
+        btnDisminuirRangoComodines1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListoActionPerformed(evt);
+                btnDisminuirRangoComodines1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnListo, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, 170, 50));
+        getContentPane().add(btnDisminuirRangoComodines1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 40, 20));
 
-        labelFondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\OMEN\\Documents\\GitHub\\RummyEquipo6\\GUIs_Rummy\\src\\main\\java\\recursos\\fondos\\CrearPartidaImg.png")); // NOI18N
-        getContentPane().add(labelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 450));
+        lblRangoMaximoComodines.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblRangoMaximoComodines.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblRangoMaximoComodines.setText("2");
+        getContentPane().add(lblRangoMaximoComodines, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, 50, 30));
+
+        lblRangoMaximoFichas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblRangoMaximoFichas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblRangoMaximoFichas.setText("10");
+        getContentPane().add(lblRangoMaximoFichas, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, 50, 30));
+
+        labelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/recursos/fondos/CrearPartidaImg.png"))); // NOI18N
+        getContentPane().add(labelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 450));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAumentarRangoComodinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAumentarRangoComodinesActionPerformed
+        int valorActual = Integer.parseInt(lblRangoMaximoComodines.getText());
+        if(valorActual != 8){
+            controlador.sumarComodines();
+        }
+    }//GEN-LAST:event_btnAumentarRangoComodinesActionPerformed
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
         controlador.mostrarMenu();
     }//GEN-LAST:event_btnAtrasActionPerformed
 
-    private void btnIncrementarRangoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncrementarRangoActionPerformed
-        controlador.sumarRangoFichas();
-    }//GEN-LAST:event_btnIncrementarRangoActionPerformed
-
-    private void btnIRestarRangoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIRestarRangoActionPerformed
-        controlador.restarRangoFichas();
-    }//GEN-LAST:event_btnIRestarRangoActionPerformed
-
-    private void btnRestarComodinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestarComodinActionPerformed
-        controlador.restarComodines();
-    }//GEN-LAST:event_btnRestarComodinActionPerformed
-
-    private void btnIncrementarComodinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncrementarComodinActionPerformed
-        controlador.sumarComodines();
-    }//GEN-LAST:event_btnIncrementarComodinActionPerformed
-
-    private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
+    private void btnListo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListo1ActionPerformed
         // TODO add your handling code here:
-         controlador.mostrarLobbyPartida();
-    }//GEN-LAST:event_btnListoActionPerformed
+    }//GEN-LAST:event_btnListo1ActionPerformed
+
+    private void btnAumentarRangoFichas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAumentarRangoFichas1ActionPerformed
+        if(Integer.parseInt(lblRangoMaximoFichas.getText()) != 13){
+            controlador.sumarRangoFichas();
+        }
+    }//GEN-LAST:event_btnAumentarRangoFichas1ActionPerformed
+
+    private void btnDisminuirRangoFichas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDisminuirRangoFichas1ActionPerformed
+        if(Integer.parseInt(lblRangoMaximoFichas.getText()) != 10){
+            controlador.restarRangoFichas();
+        }
+    }//GEN-LAST:event_btnDisminuirRangoFichas1ActionPerformed
+
+    private void btnDisminuirRangoComodines1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDisminuirRangoComodines1ActionPerformed
+        int valorActual = Integer.parseInt(lblRangoMaximoComodines.getText());
+        if(valorActual != 2){
+            controlador.restarComodines();
+        }
+    }//GEN-LAST:event_btnDisminuirRangoComodines1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
-    private javax.swing.JButton btnIRestarRango;
-    private javax.swing.JButton btnIncrementarComodin;
-    private javax.swing.JButton btnIncrementarRango;
-    private javax.swing.JButton btnListo;
-    private javax.swing.JButton btnRestarComodin;
-    private javax.swing.JLabel labelComodines;
+    private javax.swing.JButton btnAumentarRangoComodines;
+    private javax.swing.JButton btnAumentarRangoFichas1;
+    private javax.swing.JButton btnDisminuirRangoComodines1;
+    private javax.swing.JButton btnDisminuirRangoFichas1;
+    private javax.swing.JButton btnListo1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel labelFondo;
-    private javax.swing.JLabel labelRangoFichas;
+    private javax.swing.JLabel lblRangoMaximoComodines;
+    private javax.swing.JLabel lblRangoMaximoFichas;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -172,8 +183,8 @@ public class JCrearPartida extends javax.swing.JFrame implements ModeloObserver 
             System.out.println("Comodines: " + cf.getComodines());
 
             // Actualizamos el valor del JLabel
-            labelRangoFichas.setText(String.valueOf(cf.getRangoFichas()));
-            labelComodines.setText(String.valueOf(cf.getComodines()));
+            lblRangoMaximoFichas.setText(String.valueOf(cf.getRangoFichas()));
+            lblRangoMaximoComodines.setText(String.valueOf(cf.getComodines()));
 
             // Fuerza la actualización visual
             this.revalidate();

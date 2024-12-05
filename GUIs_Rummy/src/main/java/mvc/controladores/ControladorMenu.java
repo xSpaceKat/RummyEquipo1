@@ -6,6 +6,7 @@ package mvc.controladores;
 
 import mvc.modelos.ModeloMenu;
 import mvc.vistas.JCrearPartida;
+import mvc.vistas.JMenu;
 
 /**
  * Controlador del MVC. Se encuentra dentro de la vista y es llamado por esta para controlar a la lógica.
@@ -23,6 +24,9 @@ public class ControladorMenu {
         this.m = m;
     }
 
+    public ControladorMenu() {
+    }
+
     /**
      * 
      */
@@ -37,4 +41,8 @@ public class ControladorMenu {
         m.mostrarUnirsePartida();
     }
     
+    public void mostrarMenu(){
+        JMenu frm = new JMenu(new ControladorMenu());
+        frm.setVisible(true);
+    }
 }

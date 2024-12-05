@@ -76,6 +76,11 @@ public class JPerfil extends javax.swing.JFrame implements ModeloObserver{
         btnGallo.setBorder(null);
         btnGallo.setBorderPainted(false);
         btnGallo.setContentAreaFilled(false);
+        btnGallo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGalloActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnGallo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 60, 60));
 
         btnConfirmar.setBorderPainted(false);
@@ -112,6 +117,10 @@ public class JPerfil extends javax.swing.JFrame implements ModeloObserver{
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         
     }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void btnGalloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGalloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGalloActionPerformed
 
     /**
      * @param args the command line arguments
