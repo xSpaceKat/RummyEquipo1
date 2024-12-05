@@ -90,4 +90,25 @@ public interface IJuegoFachada {
      * @return La combinacion cambiada
      */
     Combinaciones mover();
+    
+    /**
+     * Verifica que los extremos de una combinacion se hayan agregado correctamente
+     * 
+     * @return True si son extremos, false en caso contrario
+     */
+    boolean verificarExtremos();
+    
+    /**
+     * 
+     * 
+     * @return 
+     */
+    Combinaciones arrastrarExtremo();
+    
+    /**
+     * 
+     * 
+     * @return 
+     */
+    Combinaciones cambiarFichaExtremo();
 }

@@ -123,17 +123,17 @@ public class JuegoFachada implements IJuegoFachada {
         Combinaciones co = agregarCombinacion(combi);
         return co;
     }
-    
-    public Combinaciones mover(){
+
+    public Combinaciones mover() {
         Ficha ficha = new Ficha();
         Combinaciones combinaciones = new Combinaciones();
-        
+
         List<Ficha> combi = combinaciones.getFichas();
         ficha.MoverFicha();
         combi.add(ficha);
-        
+
         Combinaciones coc = agregarCombinacion(combi);
-        
+
         return coc;
     }
 
@@ -142,6 +142,44 @@ public class JuegoFachada implements IJuegoFachada {
     public boolean esMazoVacio() {
         //Accede al mazo de la partida
         return partida.getMazo().esMazoVacio();
+    }
+
+    public boolean verificarExtremos() {
+        List<Combinaciones> c = partida.getTablero().getCombinaciones();
+        Combinaciones primero = c.getFirst();
+        Combinaciones ultimo = c.getLast();
+
+        if (primero.equals(c.getFirst()) && ultimo.equals(c.getLast())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public Combinaciones arrastrarExtremo() {
+        Ficha ficha = new Ficha();
+        Combinaciones combinaciones = new Combinaciones();
+
+        List<Ficha> combi = combinaciones.getFichas();
+        ficha.MoverFicha();
+        combi.add(ficha);
+
+        Combinaciones coc = agregarCombinacion(combi);
+        verificarExtremos();
+        return coc;
+    }
+
+    public Combinaciones cambiarFichaExtremo() {
+        Ficha ficha = new Ficha();
+        Combinaciones combinaciones = new Combinaciones();
+
+        List<Ficha> combi = (List<Ficha>) combinaciones.getFichas().getLast();
+        ficha.MoverFicha();
+        combi.remove(ficha);
+
+        Combinaciones coc = agregarCombinacion(combi);
+
+        return coc;
     }
 
 }

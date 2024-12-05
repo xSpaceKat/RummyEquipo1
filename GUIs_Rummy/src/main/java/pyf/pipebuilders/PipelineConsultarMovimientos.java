@@ -1,7 +1,6 @@
 package pyf.pipebuilders;
 
 import entidades.Combinaciones;
-import entidades.Ficha;
 import entidades.Partida;
 import pyf.filtros.FiltroMover;
 import pyf.filtros.FiltroSustituir;

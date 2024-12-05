@@ -43,5 +43,9 @@ public class ControladorTablero {
     public void evtSustituir(){
         m.sustituirFichas();
     }
+    
+    public void evtCambiar(){
+        m.cambiarFicha();
+    }
 
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import pyf.cliente.Cliente;
 import pyf.pipebuilders.PipelineConsultarMovimientos;
 import pyf.pipebuilders.PipelineJalarFicha;
+import pyf.pipebuilders.PipelineValidaExtremos;
 import pyf.pipebuilders.PipelineValidarSeparacion;
 
 /**
@@ -22,6 +23,7 @@ public class ModeloTablero implements Observable<ModeloObserver> {
     PipelineJalarFicha pipelineJF;
     PipelineValidarSeparacion pipelineValidarSeparacion;
     PipelineConsultarMovimientos pipeCM;
+    PipelineValidaExtremos extremos;
 
     /**
      * Constructora del modelo. Crea un modelo, inicializa variables. Crea la
@@ -31,6 +33,9 @@ public class ModeloTablero implements Observable<ModeloObserver> {
         //Inicializamos atributos...
         observadores = new ArrayList<ModeloObserver>();
         pipelineJF.getInstancia();
+        pipelineValidarSeparacion.getInstancia();
+        pipeCM.getInstancia();
+        extremos.getInstancia();
     }
 
     /**
@@ -53,12 +58,20 @@ public class ModeloTablero implements Observable<ModeloObserver> {
         cliente.enviarSerializado(pipelineValidarSeparacion.ejecutar(partidaActual));
         this.notificarObservadores();
     }
-    
-    public void sustituirFichas(){
+
+    public void sustituirFichas() {
         Partida partidaActual = Partida.obtenerInstancia();
         Cliente cliente = Cliente.getInstancia();
-         cliente.enviarSerializado(pipeCM.ejecutar(partidaActual));
-         this.notificarObservadores();
+        cliente.enviarSerializado(pipeCM.ejecutar(partidaActual));
+        this.notificarObservadores();
+    }
+
+    public void cambiarFicha() {
+        Partida partidaActual = Partida.obtenerInstancia();
+        Cliente cliente = Cliente.getInstancia();
+        cliente.enviarSerializado(extremos.ejecutar(partidaActual)
+        );
+        this.notificarObservadores();
     }
 
     /**
