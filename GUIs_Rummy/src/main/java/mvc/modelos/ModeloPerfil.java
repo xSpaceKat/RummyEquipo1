@@ -1,9 +1,8 @@
 package mvc.modelos;
 
-import entidades.Color;
 import entidades.Jugador;
-import fachada.PerfilFachada;
 import java.util.ArrayList;
+import pyf.pipebuilders.PipelineConsultarSeleccionAvatar;
 import pyf.pipebuilders.PipelineConsultarSeleccionNombre;
 
 /**
@@ -18,8 +17,8 @@ public class ModeloPerfil implements Observable<ModeloObserver> {
     //Aquí añadiremos la liste de nuestros observadores
     private ArrayList<ModeloObserver> observadores;
     Jugador jugador = new Jugador();
-    PerfilFachada perfilFachada = new PerfilFachada(jugador);
     PipelineConsultarSeleccionNombre pipelineConsultarSeleccion = new PipelineConsultarSeleccionNombre();
+    PipelineConsultarSeleccionAvatar pipelineConsultarSeleccionAvatar = new PipelineConsultarSeleccionAvatar();
 
     /**
      * Constructora del modelo. Crea un modelo, inicializa variables. Crea la
@@ -36,31 +35,23 @@ public class ModeloPerfil implements Observable<ModeloObserver> {
     public void mostrarUnirsePartida() {
         notificarObservadoresCambioVentana(ConstantesVentanas.JUNIRSEPARTIDA);
     }
-    
+
     public void mostrarLobbyPartida() {
         notificarObservadoresCambioVentana(ConstantesVentanas.JLOBBYPARTY);
     }
-    
+
     public void verfificarSeleccionNombre(String nombre) {
         pipelineConsultarSeleccion.ejecutar(nombre);
+    }
+
+    public void verificarSeleccionAvatar(String avatar) {
+        pipelineConsultarSeleccionAvatar.ejecutar(avatar);
     }
 
 //    public void verificarSeleccionColores(){
 //        
 //    }
     
-    public void cambiarNombre(String nombre) {
-        perfilFachada.cambiarNombre(nombre);
-    }
-    
-    public void cambiarAvatar(String avatar) {
-        perfilFachada.cambiarFoto(avatar);
-    }
-    
-    public void cambiarColores(int numGrupo, Color color) {
-        perfilFachada.cambiarColoresFichas(numGrupo, color);
-    }
-
     /**
      * addObservador: Añade observadores a nuestro modelo
      *
@@ -97,7 +88,7 @@ public class ModeloPerfil implements Observable<ModeloObserver> {
             o.update(this, o);
         }
     }
-    
+
     private void notificarObservadoresCambioVentana(int ventana) {
         for (ModeloObserver o : observadores) {
             //Le a cada observador que el valor se ha cambiado al nuevo valor "t".
@@ -105,5 +96,5 @@ public class ModeloPerfil implements Observable<ModeloObserver> {
             o.cambiarVentana(ventana);
         }
     }
-    
+
 }

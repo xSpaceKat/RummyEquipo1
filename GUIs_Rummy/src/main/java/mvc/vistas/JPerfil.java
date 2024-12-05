@@ -81,8 +81,6 @@ public class JPerfil extends javax.swing.JFrame implements ModeloObserver {
         getContentPane().add(btnMapache, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 220, 60, 60));
 
         btnZorro.setBorder(null);
-        btnZorro.setBorderPainted(false);
-        btnZorro.setContentAreaFilled(false);
         btnZorro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnZorroActionPerformed(evt);
@@ -147,32 +145,42 @@ public class JPerfil extends javax.swing.JFrame implements ModeloObserver {
 
     private void btnBuhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuhoActionPerformed
         avatar = "buho.png";
+        verificarSeleccionAvatar();
     }//GEN-LAST:event_btnBuhoActionPerformed
 
     private void btnPandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPandaActionPerformed
         avatar = "panda.png";
+        verificarSeleccionAvatar();
     }//GEN-LAST:event_btnPandaActionPerformed
 
     private void btnMapacheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMapacheActionPerformed
         avatar = "mapache.png";
+        verificarSeleccionAvatar();
     }//GEN-LAST:event_btnMapacheActionPerformed
 
     private void btnZorroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZorroActionPerformed
         avatar = "zorro.png";
+        verificarSeleccionAvatar();
     }//GEN-LAST:event_btnZorroActionPerformed
 
     private void btnLoboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoboActionPerformed
         avatar = "lobo.png";
+        verificarSeleccionAvatar();
     }//GEN-LAST:event_btnLoboActionPerformed
 
     private void btnGalloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGalloActionPerformed
         avatar = "gallo.png";
+        verificarSeleccionAvatar();
     }//GEN-LAST:event_btnGalloActionPerformed
 
     public void verificarSeleccionNombre() {
         String nombre = txtNombre.getText();
 
         controlador.verificarSeleccionNombre(nombre);
+    }
+
+    public void verificarSeleccionAvatar() {
+        controlador.verificarSeleccionAvatar(avatar);
     }
 
     /**

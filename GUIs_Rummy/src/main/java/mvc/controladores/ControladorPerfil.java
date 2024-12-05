@@ -36,20 +36,12 @@ public class ControladorPerfil {
     public void verificarSeleccionNombre(String nombre) {
         m.verfificarSeleccionNombre(nombre);
     }
-    
+
+    public void verificarSeleccionAvatar(String avatar) {
+        m.verificarSeleccionAvatar(avatar);
+    }
+
 //    public void verificarSeleccionColores(){
 //   
 //    }
-
-    public void cambiarNombre(String nombre) {
-        m.cambiarNombre(nombre);
-    }
-
-    public void cambiarAvatar(String avatar) {
-        m.cambiarAvatar(avatar);
-    }
-
-    public void cambiarColores(int numGrupo, Color color) {
-        m.cambiarColores(numGrupo, color);
-    }
 }
