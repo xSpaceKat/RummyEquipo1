@@ -201,6 +201,6 @@ public class JCrearPartida extends javax.swing.JFrame implements ModeloObserver 
             JLobbyPartida v = new JLobbyPartida(c);
             //añadimos observadores al modelo. En este caso, dos vistas.
             m.addObservador(v);
-        } 
+        }
     }
 }
