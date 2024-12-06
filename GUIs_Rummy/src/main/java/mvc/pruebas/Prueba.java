@@ -19,13 +19,13 @@ public class Prueba {
         Partida partida= Partida.obtenerInstancia();
         
         //Cargamos modelo
-        ModeloPerfil m = new ModeloPerfil();
+        ModeloMenu m = new ModeloMenu();
         
         //Cargamos controlador y le asignamos qué modelo controlar
-        ControladorPerfil c = new ControladorPerfil(m);
+        ControladorMenu c = new ControladorMenu(m);
         
         //Cargamos 2 vistas y asignamos cual queremos que sea su controlador 
-        JPerfil v = new JPerfil(c);
+        JMenu v = new JMenu(c);
         
         //añadimos observadores al modelo. En este caso, dos vistas.
         m.addObservador(v);
