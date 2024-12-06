@@ -77,6 +77,11 @@ public class JLobbyPartida extends javax.swing.JFrame implements ModeloObserver 
         btnPerfil.setBorder(null);
         btnPerfil.setBorderPainted(false);
         btnPerfil.setContentAreaFilled(false);
+        btnPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPerfilActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 40, 90, 130));
 
         btnListo.setBorder(null);

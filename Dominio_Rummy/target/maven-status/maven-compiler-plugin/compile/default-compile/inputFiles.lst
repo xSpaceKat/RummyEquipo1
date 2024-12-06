@@ -1,27 +1,3 @@
-<<<<<<< HEAD
-C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Combinaciones.java
-C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Iguales.java
-C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Ficha.java
-C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\iFachada\ILobbyFachada.java
-C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Jugador.java
-C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Tablero.java
-C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Turno.java
-C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Mazo.java
-C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Partida.java
-C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\iFachada\IPerfilFachada.java
-C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\FichaNormal.java
-C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Secuenciales.java
-C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\fachada\JuegoFachada.java
-C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\fachada\PerfilFachada.java
-C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Comodin.java
-C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Color.java
-C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\fachada\LobbyFachada.java
-C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\iFachada\IConfigurarPartidaFachada.java
-C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\fachada\ConfigurarPartidaFachada.java
-C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Grupo.java
-C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\iFachada\IJuegoFachada.java
-C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\pruebas\Pruebas.java
-=======
 D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Color.java
 D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Combinaciones.java
 D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Comodin.java
@@ -44,4 +20,3 @@ D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\iFachada\IJuegoFach
 D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\iFachada\ILobbyFachada.java
 D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\iFachada\IPerfilFachada.java
 D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\pruebas\Pruebas.java
->>>>>>> 733c4ba1270cb32abc1ccef26ab19760c21c351c
