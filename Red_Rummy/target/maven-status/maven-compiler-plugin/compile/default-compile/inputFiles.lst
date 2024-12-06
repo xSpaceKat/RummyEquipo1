@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Red_Rummy\src\main\java\clienteHandler\ClienteHandler.java
 C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Red_Rummy\src\main\java\servidor\MainServer.java
 C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Red_Rummy\src\main\java\servidor\GameServer.java
+=======
+D:\Documents\GitHub\RummyEquipo6\Red_Rummy\src\main\java\clienteHandler\ClienteHandler.java
+D:\Documents\GitHub\RummyEquipo6\Red_Rummy\src\main\java\servidor\GameServer.java
+D:\Documents\GitHub\RummyEquipo6\Red_Rummy\src\main\java\servidor\MainServer.java
+>>>>>>> 733c4ba1270cb32abc1ccef26ab19760c21c351c

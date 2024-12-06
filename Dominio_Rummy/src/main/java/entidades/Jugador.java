@@ -1,13 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package entidades;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.awt.Color;
 
 /**
  *
@@ -27,10 +24,10 @@ public class Jugador implements Serializable {
         this.nombre = nombre;
         this.avatar = avatar;
         this.coloresGrupo = List.of(
-                new Grupo(new Color("#0000FF"), 1), // Azul
-                new Grupo(new Color("#FF0000"), 2), // Rojo
-                new Grupo(new Color("#00FF00"), 3), // Verde
-                new Grupo(new Color("#FFFF00"), 4) // Amarillo
+                new Grupo(Color.BLUE, 1), // Azul
+                new Grupo(Color.RED, 2), // Rojo
+                new Grupo(Color.GREEN, 3), // Verde
+                new Grupo(Color.YELLOW, 4) // Amarillo
         );
         fichas = new ArrayList<>();
         estado = false;
@@ -39,10 +36,10 @@ public class Jugador implements Serializable {
     public Jugador() {
         // Crear los 4 grupos con colores predefinidos
         this.coloresGrupo = List.of(
-                new Grupo(new Color("#0000FF"), 1), // Azul
-                new Grupo(new Color("#FF0000"), 2), // Rojo
-                new Grupo(new Color("#00FF00"), 3), // Verde
-                new Grupo(new Color("#FFFF00"), 4) // Amarillo
+                new Grupo(Color.BLUE, 1), // Azul
+                new Grupo(Color.RED, 2), // Rojo
+                new Grupo(Color.GREEN, 3), // Verde
+                new Grupo(Color.YELLOW, 4) // Amarillo
         );
         fichas = new ArrayList<>();
         estado = false;
@@ -53,7 +50,7 @@ public class Jugador implements Serializable {
         for (Grupo grupo : this.coloresGrupo) {
             if (grupo.getNumeroGrupo() == numeroGrupo) {
                 grupo.setColor(nuevoColor);
-                System.out.println("Color del grupo " + numeroGrupo + " cambiado a " + nuevoColor.getHexadecimalColor());
+                System.out.println("Color del grupo " + numeroGrupo + " cambiado a " + nuevoColor);
                 return;
             }
         }

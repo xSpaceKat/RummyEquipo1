@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Combinaciones.java
 C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Iguales.java
 C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Ficha.java
@@ -20,3 +21,27 @@ C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Domini
 C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Grupo.java
 C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\iFachada\IJuegoFachada.java
 C:\Documentos\ITSON\Quinto Semestre\Arquitectura de Software\RummyEquipo6\Dominio_Rummy\src\main\java\pruebas\Pruebas.java
+=======
+D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Color.java
+D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Combinaciones.java
+D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Comodin.java
+D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Ficha.java
+D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\FichaNormal.java
+D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Grupo.java
+D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Iguales.java
+D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Jugador.java
+D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Mazo.java
+D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Partida.java
+D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Secuenciales.java
+D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Tablero.java
+D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\entidades\Turno.java
+D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\fachada\ConfigurarPartidaFachada.java
+D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\fachada\JuegoFachada.java
+D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\fachada\LobbyFachada.java
+D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\fachada\PerfilFachada.java
+D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\iFachada\IConfigurarPartidaFachada.java
+D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\iFachada\IJuegoFachada.java
+D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\iFachada\ILobbyFachada.java
+D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\iFachada\IPerfilFachada.java
+D:\Documents\GitHub\RummyEquipo6\Dominio_Rummy\src\main\java\pruebas\Pruebas.java
+>>>>>>> 733c4ba1270cb32abc1ccef26ab19760c21c351c

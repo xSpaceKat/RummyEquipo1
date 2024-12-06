@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package entidades;
 
 import java.io.Serializable;
@@ -9,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.awt.Color;
 
 /**
  *
@@ -123,7 +120,7 @@ public class Mazo implements Serializable {
                 FichaNormal fichaNormal = (FichaNormal) ficha;
                 System.out.println("Ficha Normal: Número " + fichaNormal.getValor()
                         + ", Grupo: " + fichaNormal.getGrupo().getNumeroGrupo()
-                        + ", Color: " + fichaNormal.getGrupo().getColor().getHexadecimalColor());
+                        + ", Color: " + fichaNormal.getGrupo().getColor());
             } else if (ficha instanceof Comodin) {
                 System.out.println("Comodín");
             }
