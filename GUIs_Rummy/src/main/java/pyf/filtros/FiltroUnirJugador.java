@@ -8,6 +8,7 @@ import entidades.Jugador;
 import entidades.Mazo;
 import entidades.Partida;
 import fachada.LobbyFachada;
+import pyf.cliente.Cliente;
 
 /**
  *
@@ -20,7 +21,7 @@ public class FiltroUnirJugador implements IFilter<Jugador, Partida>{
 
     @Override
     public Partida procesar(Jugador input) {
-        Partida partida= Partida.obtenerInstancia();
+        Partida partida= Cliente.getInstancia().getPartidaCliente();
         LobbyFachada fachada= new LobbyFachada(partida);
         partida.unirJugador(input);
         return partida;

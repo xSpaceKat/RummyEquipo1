@@ -2,6 +2,7 @@ package mvc.modelos;
 
 import entidades.Jugador;
 import java.util.ArrayList;
+import java.util.Random;
 import pyf.cliente.Cliente;
 import pyf.pipebuilders.PipelineUnirJugador;
 
@@ -32,14 +33,27 @@ public class ModeloMenu implements Observable<ModeloObserver> {
     public void mostrarCrearPartida() {
         notificarObservadoresCambioVentana(ConstantesVentanas.JCREARPARTIDA);
     }
-    
+
     /**
      * Funcion sumar. Incrementa el valor.
      */
     public void mostrarUnirsePartida() {
-        PipelineUnirJugador pipeline= new PipelineUnirJugador();
-        Cliente cliente= Cliente.getInstancia();
-        cliente.enviarSerializado(pipeline.ejecutar(new Jugador("Anonimo", "")));
+        String[] SUSTANTIVOS = {
+            "Lobo", "Águila", "Tigre", "León", "Halcón", "Dragón", "Pantera", "Fénix"};
+        String[] ADJETIVOS = {
+            "Rápido", "Fuerte", "Valiente", "Ingenioso", "Astuto", "Ágil", "Sereno", "Sabio"
+        };
+        Random random = new Random();
+        String adjetivo = ADJETIVOS[random.nextInt(ADJETIVOS.length)];
+        String sustantivo = SUSTANTIVOS[random.nextInt(SUSTANTIVOS.length)];
+        int numero = random.nextInt(1000); // Número al azar para evitar duplicados
+        String nombre= adjetivo + sustantivo + numero;
+        PipelineUnirJugador pipeline = new PipelineUnirJugador();
+        Cliente cliente = Cliente.getInstancia();
+
+        cliente.enviarSerializado(pipeline.ejecutar(new Jugador(nombre, "")));
+        
+        System.out.println(cliente.getPartidaCliente().getJugadores().size());
         notificarObservadoresCambioVentana(ConstantesVentanas.JUNIRSEPARTIDA);
     }
 
