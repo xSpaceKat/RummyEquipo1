@@ -1,6 +1,8 @@
 package mvc.modelos;
 
+import java.awt.Color;
 import java.util.ArrayList;
+import pyf.pipebuilders.PipelineConsultarSeleccionColores;
 
 /**
  * Modelo de mi programa, aquí estará toda la lógica y el funcionamiento interno
@@ -13,6 +15,7 @@ public class ModeloPerfil implements Observable<ModeloObserver> {
 
     //Aquí añadiremos la liste de nuestros observadores
     private ArrayList<ModeloObserver> observadores;
+    PipelineConsultarSeleccionColores colorsito = new PipelineConsultarSeleccionColores();
 
     /**
      * Constructora del modelo. Crea un modelo, inicializa variables. Crea la
@@ -21,6 +24,7 @@ public class ModeloPerfil implements Observable<ModeloObserver> {
     public ModeloPerfil() {
         //Inicializamos atributos...
         observadores = new ArrayList<ModeloObserver>();
+        colorsito.getInstancia();
     }
 
     /**
@@ -29,6 +33,13 @@ public class ModeloPerfil implements Observable<ModeloObserver> {
     
     public void mostrarUnirsePartida() {
         notificarObservadoresCambioVentana(ConstantesVentanas.JUNIRSEPARTIDA);
+    }
+    
+    public void agregarColores(Color ccolor1, Color ccolor2, Color ccolor3, Color ccolor4){
+        colorsito.ejecutar(1, ccolor1);
+        colorsito.ejecutar(2, ccolor2);
+        colorsito.ejecutar(3, ccolor3);
+        colorsito.ejecutar(4, ccolor4);
     }
 
     /**

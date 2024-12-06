@@ -1,5 +1,6 @@
 package mvc.controladores;
 
+import java.awt.Color;
 import mvc.modelos.ModeloPerfil;
 
 /**
@@ -21,6 +22,10 @@ public class ControladorPerfil {
 
     public void mostrarUnirsePartida() {
         m.mostrarUnirsePartida();
+    }
+    
+    public void agregarColores(Color ccolor1, Color ccolor2, Color ccolor3, Color ccolor4){
+        m.agregarColores(ccolor1, ccolor2, ccolor3, ccolor4);
     }
 
     /**

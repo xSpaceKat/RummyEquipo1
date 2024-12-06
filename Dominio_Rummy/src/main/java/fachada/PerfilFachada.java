@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package fachada;
 
-import entidades.Color;
+import entidades.Grupo;
+import java.awt.Color;
 import entidades.Jugador;
 
 /**
@@ -29,8 +26,11 @@ public class PerfilFachada {
         System.out.println("Nombre cambiado con éxito.");
     }
 
-    public void cambiarColoresFichas(int numeroGrupo, Color nuevoColor) {
+    public Grupo cambiarColoresFichas(int numeroGrupo, Color nuevoColor) {
         jugador.cambiarColorGrupo(numeroGrupo, nuevoColor);
-        System.out.println("Color de ficha cambiados con éxito.");
+        Grupo grupoActualizado = new Grupo();
+        grupoActualizado.setColor(nuevoColor);
+        grupoActualizado.setNumeroGrupo(numeroGrupo);
+        return grupoActualizado;
     }
 }
