@@ -4,7 +4,17 @@
  */
 package mvc.vistas;
 
+import entidades.Ficha;
+import entidades.FichaNormal;
+import entidades.Grupo;
+import entidades.Jugador;
 import entidades.Partida;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.util.List;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import mvc.controladores.ControladorTablero;
 import mvc.modelos.ModeloObserver;
 import mvc.modelos.ModeloTablero;
@@ -57,6 +67,8 @@ public class JTablero extends javax.swing.JFrame implements ModeloObserver {
         labelJugador2 = new javax.swing.JLabel();
         labelJugador3 = new javax.swing.JLabel();
         labelJugador4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
         labelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,6 +87,12 @@ public class JTablero extends javax.swing.JFrame implements ModeloObserver {
         getContentPane().add(labelJugador3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 140, 30));
         getContentPane().add(labelJugador4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 140, 30));
 
+        jScrollPane1.setBackground(new java.awt.Color(165, 73, 15));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 610, 110));
+
+        jPanel1.setBackground(new java.awt.Color(47, 148, 5));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 640, 300));
+
         labelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/recursos/fondos/fondoTablero.png"))); // NOI18N
         getContentPane().add(labelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -89,6 +107,8 @@ public class JTablero extends javax.swing.JFrame implements ModeloObserver {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnJalarFicha;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelFondo;
     private javax.swing.JLabel labelJugador1;
     private javax.swing.JLabel labelJugador2;
@@ -100,10 +120,74 @@ public class JTablero extends javax.swing.JFrame implements ModeloObserver {
     public void update(Observable o, Object arg) {
 
         //Lógica específica para actualizar componentes
-        
         // Fuerza la actualización visual
         this.revalidate();
         this.repaint();
+    }
+
+    public void mostrarMano(Jugador jugador) {
+        // Obtener las fichas del jugador y sus preferencias de colores
+        List<Ficha> fichas = jugador.getFichas();
+        List<Grupo> preferenciasColor = jugador.getColoresGrupo();
+
+        // Limpiar el contenedor de fichas antes de agregar las nuevas
+        jScrollPane1.removeAll();
+
+        // Iterar sobre las fichas del jugador
+        for (Ficha ficha : fichas) {
+            JLabel fichaLabel = new JLabel();
+            fichaLabel.setOpaque(true);
+            fichaLabel.setHorizontalAlignment(SwingConstants.CENTER);
+            fichaLabel.setPreferredSize(new Dimension(50, 70));
+
+            // Verificar el tipo de ficha y personalizar su apariencia
+            if (ficha.getTipoFicha().equalsIgnoreCase("Comodin")) {
+                // Configurar apariencia para Comodín
+                fichaLabel.setBackground(Color.WHITE);
+                fichaLabel.setText("C");
+            } else if (ficha.getTipoFicha().equalsIgnoreCase("FichaNormal")) {
+                // Configurar apariencia para FichaNormal
+                FichaNormal fichaNormal = (FichaNormal) ficha;
+                Color colorFicha = obtenerColorFicha(fichaNormal.getGrupo(), preferenciasColor);
+                fichaLabel.setBackground(colorFicha);
+                fichaLabel.setText(String.valueOf(fichaNormal.getValor()));
+            }
+
+            // Agregar el JLabel al contenedor de fichas
+            jScrollPane1.add(fichaLabel);
+        }
+
+        // Actualizar la interfaz gráfica
+        jScrollPane1.revalidate();
+        jScrollPane1.repaint();
+    }
+
+    private Color obtenerColorFicha(Grupo grupoFicha, List<Grupo> preferenciasColor) {
+        for (Grupo grupo : preferenciasColor) {
+            if (grupo.getNumeroGrupo() == grupoFicha.getNumeroGrupo()) {
+                return grupo.getColor();
+            }
+        }
+        return Color.GRAY; // Color por defecto si no se encuentra el grupo
+    }
+
+    public void mostrarJugadores(List<Jugador> jugadores) {
+        if (!SwingUtilities.isEventDispatchThread()) {
+            SwingUtilities.invokeLater(() -> mostrarJugadores(jugadores));
+            return;
+        }
+
+        String j1 = jugadores.size() > 0 && jugadores.get(0) != null ? jugadores.get(0).getNombre() : "- - -";
+        labelJugador1.setText(j1);
+
+        String j2 = jugadores.size() > 1 && jugadores.get(1) != null ? jugadores.get(1).getNombre() : "- - -";
+        labelJugador2.setText(j2);
+
+        String j3 = jugadores.size() > 2 && jugadores.get(2) != null ? jugadores.get(2).getNombre() : "- - -";
+        labelJugador3.setText(j3);
+
+        String j4 = jugadores.size() > 3 && jugadores.get(3) != null ? jugadores.get(3).getNombre() : "- - -";
+        labelJugador4.setText(j4);
     }
 
     @Override

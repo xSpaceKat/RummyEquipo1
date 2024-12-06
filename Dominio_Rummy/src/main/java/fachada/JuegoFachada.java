@@ -6,15 +6,17 @@ package fachada;
 
 import entidades.Partida;
 import entidades.Ficha;
+import entidades.Jugador;
 import entidades.Turno;
 import iFachada.IJuegoFachada;
 import java.util.Collections;
+import java.util.List;
 
 /**
  *
  * @author galan
  */
-public class JuegoFachada implements IJuegoFachada{
+public class JuegoFachada implements IJuegoFachada {
 
     private Partida partida;
 
@@ -87,10 +89,10 @@ public class JuegoFachada implements IJuegoFachada{
         // Implementar la lógica para agregar combinación de fichas
         System.out.println("Combinación agregada.");
     }
-    
+
     //Revisa si hay fichas en el mazo o no
     @Override
-    public boolean esMazoVacio(){
+    public boolean esMazoVacio() {
         //Accede al mazo de la partida
         return partida.getMazo().esMazoVacio();
     }
@@ -101,5 +103,14 @@ public class JuegoFachada implements IJuegoFachada{
         int turnoActual = partida.getTurnos().getTurnoActual();
         return partida.getTurnos().getJugadores().get(turnoActual).getFichas().isEmpty();
     }
-    
+
+    @Override
+    public List<Ficha> obtenerFichasJugador(String nombreJugador) {
+        for (Jugador j : partida.getJugadores()) {
+            if (nombreJugador.equals(j.getNombre())) {
+                return j.getFichas();
+            }
+        }
+        return null;
+    }
 }

@@ -1,7 +1,11 @@
 package mvc.modelos;
 
+import entidades.Ficha;
 import entidades.Partida;
+import fachada.JuegoFachada;
+import iFachada.IJuegoFachada;
 import java.util.ArrayList;
+import java.util.List;
 import pyf.cliente.Cliente;
 import pyf.pipebuilders.PipelineContadorFicha;
 import pyf.pipebuilders.PipelineJalarFicha;
@@ -61,6 +65,12 @@ public class ModeloTablero implements Observable<ModeloObserver> {
             System.err.println("Error al verificar la cantidad de fichas: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+    
+    public List<Ficha> manoJugador(String nombreJugador){
+        Partida partidaActual = Partida.obtenerInstancia();
+        IJuegoFachada jf = new JuegoFachada(partidaActual);
+        return jf.obtenerFichasJugador(nombreJugador);
     }
 
     /**

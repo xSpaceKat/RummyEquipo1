@@ -5,6 +5,7 @@
 package mvc.controladores;
 
 import mvc.modelos.ModeloMenu;
+import mvc.modelos.ModeloPerfil;
 import mvc.vistas.JCrearPartida;
 
 /**
@@ -36,5 +37,11 @@ public class ControladorMenu {
     public void mostrarUnirsePartida() {
         m.mostrarUnirsePartida();
     }
+    
+//    public void mostrarPanelJugador(){
+//        ModeloPerfil mP = new ModeloPerfil();
+//        ControladorPerfil cPer = new ControladorPerfil(mP);
+//        cPer.mostrar();
+//    }
     
 }

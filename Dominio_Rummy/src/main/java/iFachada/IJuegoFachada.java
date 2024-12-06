@@ -5,6 +5,7 @@
 package iFachada;
 
 import entidades.Ficha;
+import java.util.List;
 
 /**
  *
@@ -70,4 +71,11 @@ public interface IJuegoFachada {
      * @return true si el jugador ya no cuenta con fichas.
      */
     public boolean verificarCantidadFichas();
+    
+    /**
+     * Obtiene las fichas del jugador que coincida en nombre con el parámetro.
+     * @param nombreJugador El nombre del jugador.
+     * @return 
+     */
+    public List<Ficha> obtenerFichasJugador(String nombreJugador);
 }

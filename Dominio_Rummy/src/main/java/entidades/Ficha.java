@@ -15,4 +15,14 @@ public class Ficha implements Serializable{
     public Ficha() {
     }
     
+    public String getTipoFicha() {
+        if (this instanceof FichaNormal) {
+            return "FichaNormal";
+        } else if (this instanceof Comodin) {
+            return "Comodin";
+        } else {
+            return "";
+        }
+    }
+    
 }
