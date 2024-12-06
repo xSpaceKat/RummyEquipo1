@@ -19,7 +19,7 @@ public class GameServer {
 
     private ServerSocket serverSocket;
     public List<ClienteHandler> clients = Collections.synchronizedList(new ArrayList<>());
-    private Partida partida = Partida.obtenerInstancia();
+    private Partida partida = new Partida();
 
     public GameServer() {
         try {
@@ -58,8 +58,7 @@ public class GameServer {
 
     public synchronized void manejarMensaje(Object mensaje, ClienteHandler sender) {
         if (mensaje instanceof Partida) {
-            System.out.println("manejar mensaje" + ((Partida) mensaje).getJugadores().size());
-            partida.actualizarInstancia((Partida) mensaje);  // Actualiza el estado de la partida
+            partida = (Partida) mensaje;  // Actualiza el estado de la partida
             enviarMensaje();  // Notifica a todos los clientes
         } else {
             System.out.println("Mensaje recibido no es del tipo esperado (Partida).");
@@ -70,7 +69,6 @@ public class GameServer {
     public void enviarMensaje() {
         synchronized (clients) {
             for (ClienteHandler client : clients) {
-                System.out.println("Enviar partida a clientes" + partida.getJugadores().size());
                 client.enviarMensaje(partida);
             }
         }

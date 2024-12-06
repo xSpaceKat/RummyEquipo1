@@ -96,5 +96,5 @@ public class PipelineJalarFicha {
         System.out.println("Pipeline finalizado.");
         return partidaActualizada;
     }
-    
+
 }

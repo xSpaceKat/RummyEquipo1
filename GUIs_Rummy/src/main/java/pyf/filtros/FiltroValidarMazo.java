@@ -15,8 +15,9 @@ import iFachada.IJuegoFachada;
 public class FiltroValidarMazo implements IFilter<Partida, Boolean>{
 
     @Override
-    public Boolean procesar(Partida input) {;
-        IJuegoFachada jf = new JuegoFachada(input);
+    public Boolean procesar(Partida input) {
+        Partida p = Partida.obtenerInstancia();
+        IJuegoFachada jf = new JuegoFachada(p);
         
         return jf.esMazoVacio();
     }

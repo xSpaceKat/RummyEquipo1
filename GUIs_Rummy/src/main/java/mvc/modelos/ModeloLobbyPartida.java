@@ -1,9 +1,6 @@
 package mvc.modelos;
 
-import entidades.Partida;
 import java.util.ArrayList;
-import pyf.cliente.Cliente;
-import pyf.pipebuilders.PipelineCambiarEstadoListo;
 
 /**
  *
@@ -13,7 +10,6 @@ public class ModeloLobbyPartida implements Observable<ModeloObserver>{
     //Aquí añadiremos la liste de nuestros observadores
     private ArrayList<ModeloObserver> observadores;
 
-    PipelineCambiarEstadoListo pipelineLF;
     /**
      * Constructora del modelo. Crea un modelo, inicializa variables. Crea la
      * lista de los observadores.
@@ -29,13 +25,6 @@ public class ModeloLobbyPartida implements Observable<ModeloObserver>{
 
     public void mostrarPerfil() {
         notificarObservadoresCambioVentana(ConstantesVentanas.JPERFIL);
-    }
-    
-    public void cambiarEstadoListo(){
-        Partida lobby = Partida.obtenerInstancia();
-        Cliente cliente= Cliente.getInstancia();
-        cliente.enviarSerializado(pipelineLF.ejecutar(lobby));
-        this.notificarObservadores();
     }
     
     @Override

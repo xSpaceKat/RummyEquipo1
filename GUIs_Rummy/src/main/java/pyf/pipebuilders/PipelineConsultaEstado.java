@@ -4,12 +4,6 @@
  */
 package pyf.pipebuilders;
 
-import entidades.Partida;
-import pyf.filtros.FiltroCambiarEstadoListo;
-import pyf.filtros.FiltroValidarMazo;
-import pyf.filtros.IFilter;
-import pyf.pipas.Pipe;
-
 /**
  *
  * @author galan
