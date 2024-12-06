@@ -94,6 +94,8 @@ public class JPerfil extends javax.swing.JFrame implements ModeloObserver {
         getContentPane().add(btnMapache, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 220, 60, 60));
 
         btnZorro.setBorder(null);
+        btnZorro.setBorderPainted(false);
+        btnZorro.setContentAreaFilled(false);
         btnZorro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnZorroActionPerformed(evt);

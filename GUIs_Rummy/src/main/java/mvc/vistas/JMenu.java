@@ -53,6 +53,8 @@ public class JMenu extends javax.swing.JFrame implements ModeloObserver {
         });
         getContentPane().add(btnCrearPartida, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 140, 200));
 
+        btnUnirsePartida.setBorderPainted(false);
+        btnUnirsePartida.setContentAreaFilled(false);
         btnUnirsePartida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUnirsePartidaActionPerformed(evt);
@@ -68,6 +70,8 @@ public class JMenu extends javax.swing.JFrame implements ModeloObserver {
             }
         });
         getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 100, 140));
+
+        labelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/recursos/fondos/MenuImg.png"))); // NOI18N
         getContentPane().add(labelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();

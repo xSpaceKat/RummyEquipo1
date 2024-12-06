@@ -74,7 +74,7 @@ public class JLobbyPartida extends javax.swing.JFrame implements ModeloObserver 
         });
         getContentPane().add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 400, 180, 60));
 
-        btnPerfil.setBorder(null);
+        btnPerfil.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnPerfil.setBorderPainted(false);
         btnPerfil.setContentAreaFilled(false);
         btnPerfil.addActionListener(new java.awt.event.ActionListener() {
@@ -109,7 +109,7 @@ public class JLobbyPartida extends javax.swing.JFrame implements ModeloObserver 
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-        // TODO add your handling code here:
+        controlador.mostrarCrearPartida();
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
