@@ -8,6 +8,6 @@ package pyf.pipebuilders;
  *
  * @author galan
  */
-public class PipelineValidaExtremos {
+public class PipelineConsultarSeleccion {
     
 }

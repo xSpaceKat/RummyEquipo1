@@ -4,10 +4,20 @@
  */
 package pyf.filtros;
 
+import entidades.Mazo;
+import entidades.Partida;
+import fachada.JuegoFachada;
+import mvc.dto.MazoDTO;
+
 /**
  *
  * @author galan
  */
-public class FiltroCrearPartida {
-    
+public class FiltroCrearPartida implements IFilter<Partida, Partida> {
+   
+    @Override
+    public Partida procesar(Partida input) {
+        return input;
+    }
+        
 }

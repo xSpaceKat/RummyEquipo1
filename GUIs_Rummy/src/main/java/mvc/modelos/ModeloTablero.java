@@ -3,10 +3,8 @@ package mvc.modelos;
 import entidades.Partida;
 import java.util.ArrayList;
 import pyf.cliente.Cliente;
-import pyf.pipebuilders.PipelineConsultarMovimientos;
+import pyf.pipebuilders.PipelineContadorFicha;
 import pyf.pipebuilders.PipelineJalarFicha;
-import pyf.pipebuilders.PipelineValidaExtremos;
-import pyf.pipebuilders.PipelineValidarSeparacion;
 
 /**
  * Modelo de mi programa, aquí estará toda la lógica y el funcionamiento interno
@@ -21,21 +19,21 @@ public class ModeloTablero implements Observable<ModeloObserver> {
     private ArrayList<ModeloObserver> observadores;
     //Añadan las pipelines aquí
     PipelineJalarFicha pipelineJF;
-    PipelineValidarSeparacion pipelineValidarSeparacion;
-    PipelineConsultarMovimientos pipeCM;
-    PipelineValidaExtremos extremos;
+    PipelineContadorFicha pipelineCF;
 
     /**
      * Constructora del modelo. Crea un modelo, inicializa variables. Crea la
      * lista de los observadores.
      */
     public ModeloTablero() {
-        //Inicializamos atributos...
-        observadores = new ArrayList<ModeloObserver>();
-        pipelineJF.getInstancia();
-        pipelineValidarSeparacion.getInstancia();
-        pipeCM.getInstancia();
-        extremos.getInstancia();
+        // Inicializamos los atributos.
+        observadores = new ArrayList<>();
+        try {
+            pipelineJF = PipelineJalarFicha.getInstancia();
+//            pipelineCF = PipelineContadorFicha.getInstance();
+        } catch (Exception e) {
+            System.err.println("Error al inicializar pipelines: " + e.getMessage());
+        }
     }
 
     /**
@@ -52,26 +50,17 @@ public class ModeloTablero implements Observable<ModeloObserver> {
         this.notificarObservadores();
     }
 
-    public void separarGrupo() {
-        Partida partidaActual = Partida.obtenerInstancia();
-        Cliente cliente = Cliente.getInstancia();
-        cliente.enviarSerializado(pipelineValidarSeparacion.ejecutar(partidaActual));
-        this.notificarObservadores();
-    }
-
-    public void sustituirFichas() {
-        Partida partidaActual = Partida.obtenerInstancia();
-        Cliente cliente = Cliente.getInstancia();
-        cliente.enviarSerializado(pipeCM.ejecutar(partidaActual));
-        this.notificarObservadores();
-    }
-
-    public void cambiarFicha() {
-        Partida partidaActual = Partida.obtenerInstancia();
-        Cliente cliente = Cliente.getInstancia();
-        cliente.enviarSerializado(extremos.ejecutar(partidaActual)
-        );
-        this.notificarObservadores();
+    public void verificarCantidadFicha() {
+        try {
+            Partida partidaActual = Partida.obtenerInstancia();
+            Cliente cliente = Cliente.getInstancia();
+            cliente.enviarSerializado(pipelineCF.ejecutar(partidaActual));
+            this.notificarObservadores();
+            this.notificarObservadoresCambioVentana(0);
+        } catch (Exception e) {
+            System.err.println("Error al verificar la cantidad de fichas: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     /**

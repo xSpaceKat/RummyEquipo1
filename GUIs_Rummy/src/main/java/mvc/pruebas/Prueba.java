@@ -1,5 +1,6 @@
 package mvc.pruebas;
 
+import entidades.Partida;
 import mvc.controladores.ControladorMenu;
 import mvc.modelos.ModeloMenu;
 import mvc.vistas.JMenu;
@@ -14,6 +15,9 @@ public class Prueba {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        Partida partida= Partida.obtenerInstancia();
+        
         //Cargamos modelo
         ModeloMenu m = new ModeloMenu();
         

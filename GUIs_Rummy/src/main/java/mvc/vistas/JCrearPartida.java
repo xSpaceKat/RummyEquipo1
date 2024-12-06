@@ -145,8 +145,7 @@ public class JCrearPartida extends javax.swing.JFrame implements ModeloObserver 
     }//GEN-LAST:event_btnIncrementarComodinActionPerformed
 
     private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
-        // TODO add your handling code here:
-         controlador.mostrarLobbyPartida();
+        controlador.crearPartida();
     }//GEN-LAST:event_btnListoActionPerformed
 
 
