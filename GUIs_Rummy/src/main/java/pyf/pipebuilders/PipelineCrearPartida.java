@@ -40,14 +40,12 @@ public class PipelineCrearPartida {
         // 1. Paso por la primera pipa (MazoDTO -> Mazo)
         System.out.println("Procesando con FiltroCrearMazo...");
         pipeCrearMazo.agregarInfo(input);
-        pipeCrearMazo.enviar();
-        Partida partida = pipeCrearMazo.obtenerInfo();
+        Partida partida = pipeCrearMazo.enviar();
 
         // 2. Paso por la segunda pipa (Mazo -> Partida)
         System.out.println("Procesando con FiltroCrearPartida...");
         pipeCrearPartida.agregarInfo(partida);
-        pipeCrearPartida.enviar();
-        Partida partida2 = pipeCrearPartida.obtenerInfo();
+        Partida partida2 = pipeCrearPartida.enviar();
         System.out.println("Pipeline finalizado.");
         return partida2;
     }

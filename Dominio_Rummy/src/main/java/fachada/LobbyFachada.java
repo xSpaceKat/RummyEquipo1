@@ -6,12 +6,13 @@ package fachada;
 
 import entidades.Jugador;
 import entidades.Partida;
+import iFachada.ILobbyFachada;
 
 /**
  *
  * @author galan
  */
-public class LobbyFachada {
+public class LobbyFachada implements ILobbyFachada{
     private Partida partida;
 
     // Constructor que recibe la partida
@@ -57,5 +58,10 @@ public class LobbyFachada {
     public void unirJugador(Jugador jugador) {
         partida.unirJugador(jugador);
         System.out.println("Jugador " + jugador.getNombre() + " ha sido unido al juego.");
+    }
+
+    @Override
+    public boolean estaListo() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

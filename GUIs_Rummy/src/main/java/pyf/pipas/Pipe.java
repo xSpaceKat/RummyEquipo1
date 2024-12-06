@@ -35,8 +35,8 @@ public class Pipe<TIn, TOut> {
     }
 
     // Método para enviar los datos procesados
-    public void enviar() {
+    public TOut enviar() {
         TOut result = obtenerInfo();  // Obtener el resultado procesado
-        System.out.println("Enviando datos procesados: " + result);  // Mostrar el resultado
+        return result;
     }
 }

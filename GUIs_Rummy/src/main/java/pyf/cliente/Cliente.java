@@ -1,46 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package pyf.cliente;
 
-import entidades.Jugador;
 import entidades.Partida;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- *
- * @author galan
- */
-public class Cliente{
-    private static Cliente instancia; // Instancia única de la clase
-    private Partida partidaCliente = Partida.obtenerInstancia();
+public class Cliente {
+
+    private static Cliente instancia; // Singleton
+    private Partida partidaCliente = new Partida(); // Instancia local de la partida
     private final int puerto = 4444;
     private Socket socket;
     private ObjectOutputStream out;
     private ObjectInputStream in;
-    private final String host = "localhost";
 
-    // Constructor privado para prevenir la creación de múltiples instancias
     private Cliente() {
         try {
-            socket = new Socket(host, puerto);
+            socket = new Socket("localhost", puerto);
             out = new ObjectOutputStream(socket.getOutputStream());
             in = new ObjectInputStream(socket.getInputStream());
 
-            // Iniciar un hilo para recibir mensajes
+            // Hilo para recibir mensajes del servidor
             new Thread(this::recibirSerializado).start();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    // Método para obtener la instancia única de Cliente
     public static synchronized Cliente getInstancia() {
         if (instancia == null) {
             instancia = new Cliente();
@@ -48,28 +35,38 @@ public class Cliente{
         return instancia;
     }
 
-    // Método para recibir mensajes del servidor
-    public void recibirSerializado() {
+    // Escuchar mensajes del servidor
+    private void recibirSerializado() {
         try {
             while (true) {
-                Object mensaje = in.readObject();  // Recibe mensaje serializado
-                deserializarMensaje(mensaje);
+                Object mensaje = in.readObject(); // No es necesario sincronizar esta línea
+                if (mensaje instanceof Partida) {
+                    Partida partidaRecibida = (Partida) mensaje;
+                    System.out.println("La partida recibida tiene jugadores" + partidaRecibida.getJugadores().size());
+                    actualizarPartidaLocal(partidaRecibida);
+                }
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    // Deserializar el mensaje recibido
-    public void deserializarMensaje(Object mensaje) {
-        Partida partidaRecibida = (Partida) mensaje;
-        System.out.println("Partida actualizada recibida con " + partidaRecibida.getJugadores().size() + " jugadores.");
-        partidaCliente.actualizarInstancia(partidaRecibida);
+    // Actualizar la partida local
+    private synchronized void actualizarPartidaLocal(Partida nuevaPartida) {
+        if (nuevaPartida == null) {
+            System.err.println("La partida recibida es nula.");
+            return;
+        }
+
+        partidaCliente.actualizarInstancia(nuevaPartida);
+        System.out.println("Partida actualizada de cliente local: " + partidaCliente.getJugadores().size() + " jugadores.");
     }
 
-    // Enviar un mensaje serializado al servidor
-    public void enviarSerializado(Object mensaje) {
+    // Enviar actualizaciones al servidor
+    public synchronized void enviarSerializado(Object mensaje) {
         try {
+            Partida partidaRecibida = (Partida) mensaje;
+            System.out.println("La partida enviada tiene jugadores" + partidaRecibida.getJugadores().size());
             out.writeObject(mensaje);
             out.flush();
         } catch (IOException e) {
@@ -80,5 +77,4 @@ public class Cliente{
     public Partida getPartidaCliente() {
         return partidaCliente;
     }
-    
 }

@@ -1,25 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package servidor;
 
 import clienteHandler.ClienteHandler;
-import entidades.Jugador;
 import entidades.Partida;
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-/**
- *
- * @author galan
- */
 public class GameServer {
 
     private ServerSocket serverSocket;
     public List<ClienteHandler> clients = Collections.synchronizedList(new ArrayList<>());
-    private Partida partida = Partida.obtenerInstancia();
+    private Partida partida = new Partida(); // Instancia única de la partida
 
     public GameServer() {
         try {
@@ -28,18 +22,16 @@ public class GameServer {
 
             while (true) {
                 Socket clientSocket = serverSocket.accept();
-                // Verificar si hay espacio para nuevos jugadores
+
                 synchronized (clients) {
-                    if (clients.size() < 4) {
+                    if (clients.size() < 4) { // Limitar a 4 jugadores
                         ClienteHandler clientHandler = new ClienteHandler(clientSocket, this);
                         addClientHandler(clientHandler);
-                        System.out.println("Cliente aceptado");
                         new Thread(clientHandler).start();
+                        System.out.println("Nuevo cliente conectado. Total: " + clients.size());
                     } else {
-                        // Rechazar conexión
-                        System.out.println("No se permite el ingreso de un jugador más. Límite 4");
-                        ObjectOutputStream out = new ObjectOutputStream(clientSocket.getOutputStream());
-                        out.close();
+                        // Rechazar conexiones adicionales
+                        System.out.println("Límite de jugadores alcanzado. Rechazando cliente...");
                         clientSocket.close();
                     }
                 }
@@ -49,29 +41,44 @@ public class GameServer {
         }
     }
 
-    // Agregar un nuevo cliente a la lista de manejadores
+    // Añadir un cliente a la lista
     public synchronized void addClientHandler(ClienteHandler clientHandler) {
         clients.add(clientHandler);
-        System.out.println("Cliente conectado. Total clientes: " + clients.size());
+        enviarMensajeClientes(); // Enviar el estado actual a todos los clientes
     }
 
+    // Manejar un mensaje recibido desde un cliente
     public synchronized void manejarMensaje(Object mensaje, ClienteHandler sender) {
         if (mensaje instanceof Partida) {
-            System.out.println("manejar mensaje" + ((Partida) mensaje).getJugadores().size());
-            partida.actualizarInstancia((Partida) mensaje);  // Actualiza el estado de la partida
-            enviarMensaje();  // Notifica a todos los clientes
+            Partida nuevaPartida = (Partida) mensaje;
+
+            // Actualizar la partida en el servidor
+            synchronized (partida) { // Sincronizamos solo la actualización de la partida
+                partida.actualizarInstancia(nuevaPartida);
+            }
+            System.out.println("Partida actualizada por un cliente: Jugadores:" + partida.getJugadores().size());
+
+            // Enviar la actualización a todos los clientes
+            enviarMensajeClientes(); 
         } else {
-            System.out.println("Mensaje recibido no es del tipo esperado (Partida).");
+            System.out.println("Mensaje recibido no es del tipo Partida.");
         }
     }
 
-    // Notificar a todos los clientes sobre el estado actualizado
-    public void enviarMensaje() {
+    // Enviar la partida actualizada a todos los clientes
+    public synchronized void enviarMensajeClientes() {
         synchronized (clients) {
             for (ClienteHandler client : clients) {
-                System.out.println("Enviar partida a clientes" + partida.getJugadores().size());
-                client.enviarMensaje(partida);
+                System.out.println("Cliente " + client.toString() + " envio mensajes");
+                client.enviarMensajeCliente(partida);
             }
         }
+    }
+
+    // Manejar la desconexión de un cliente
+    public synchronized void desconectarCliente(ClienteHandler clientHandler) {
+        clients.remove(clientHandler);
+        System.out.println("Cliente desconectado. Total clientes: " + clients.size());
+        enviarMensajeClientes(); // Notificar a los clientes restantes
     }
 }

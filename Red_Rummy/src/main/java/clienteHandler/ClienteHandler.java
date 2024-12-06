@@ -1,18 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package clienteHandler;
 
+import entidades.Partida;
 import java.io.*;
 import java.net.*;
 import servidor.GameServer;
 
-/**
- *
- * @author galan
- */
 public class ClienteHandler implements Runnable {
+
     private Socket socket;
     private GameServer server;
     private ObjectOutputStream out;
@@ -33,8 +27,8 @@ public class ClienteHandler implements Runnable {
     public void run() {
         try {
             while (true) {
-                Object mensaje = in.readObject();  // Recibe mensaje del cliente
-                server.manejarMensaje(mensaje, this);  // Lo envía al servidor para procesar
+                Object mensaje = in.readObject(); // No es necesario sincronizar esta línea
+                server.manejarMensaje(mensaje, this); // Procesar el mensaje en el servidor
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -44,16 +38,17 @@ public class ClienteHandler implements Runnable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            server.clients.remove(this);  // Eliminar cliente al desconectarse
+            server.desconectarCliente(this); // Manejar la desconexión del cliente
         }
     }
-    
-    
 
     // Enviar un mensaje al cliente
-    public void enviarMensaje(Object mensaje) {
+    public synchronized void enviarMensajeCliente(Object mensaje) {
         try {
-            out.writeObject(mensaje);
+            System.out.println("Cliente handler envia info al hilo del cliente");
+            Partida nuevaPartida = (Partida) mensaje;
+            System.out.println("Size jugadores enviados"+ nuevaPartida.getJugadores().size());
+            out.writeObject(nuevaPartida);
             out.flush();
         } catch (IOException e) {
             e.printStackTrace();

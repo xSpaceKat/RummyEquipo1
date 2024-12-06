@@ -8,6 +8,9 @@ import entidades.Jugador;
 import entidades.Mazo;
 import entidades.Partida;
 import fachada.JuegoFachada;
+import fachada.LobbyFachada;
+import iFachada.IJuegoFachada;
+import iFachada.ILobbyFachada;
 import mvc.dto.MazoDTO;
 import pyf.cliente.Cliente;
 
@@ -16,7 +19,8 @@ import pyf.cliente.Cliente;
  * @author galan
  */
 public class FiltroCrearMazo implements IFilter<MazoDTO, Partida> {
-
+    ILobbyFachada lobbyFachada;
+    
     public FiltroCrearMazo() {
     }
 
@@ -24,10 +28,12 @@ public class FiltroCrearMazo implements IFilter<MazoDTO, Partida> {
     public Partida procesar(MazoDTO input) {
         // Lógica para procesar el MazoDTO y crear un Mazo
         Mazo mazo = new Mazo(input.getComodines(),input.getFichas());
-        Partida partida= Cliente.getInstancia().getPartidaCliente();
-        partida.setMazo(mazo);
-        partida.unirJugador(input.getJugador());
-        return partida;
+        Partida partidaCliente= Cliente.getInstancia().getPartidaCliente();
+        lobbyFachada= new LobbyFachada(partidaCliente);
+        partidaCliente.setMazo(mazo);
+        lobbyFachada.unirJugador(input.getJugador());
+        Cliente.getInstancia().getPartidaCliente().actualizarInstancia(partidaCliente);
+        return partidaCliente;
     }
 
 }

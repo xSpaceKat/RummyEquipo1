@@ -21,7 +21,6 @@ public class PipelineUnirJugador {
     public PipelineUnirJugador() {
         // Crear e inicializar los filtros
         IFilter<Jugador, Partida> filtroUnirJugador = new FiltroUnirJugador();
-
         // Inicializar las pipas con los filtros
         this.pipeUnirJugador = new Pipe<>(filtroUnirJugador);
 
