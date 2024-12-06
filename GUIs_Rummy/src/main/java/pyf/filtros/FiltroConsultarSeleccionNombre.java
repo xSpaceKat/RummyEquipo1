@@ -7,19 +7,17 @@ import fachada.PerfilFachada;
  *
  * @author galan
  */
-public class FiltroConsultarSeleccionNombre implements IFilter<String, Boolean> {
+public class FiltroConsultarSeleccionNombre implements IFilter<Jugador, Jugador> {
 
-    Jugador jugador = new Jugador();
-    PerfilFachada perfilFachada = new PerfilFachada(jugador);
-    
     public FiltroConsultarSeleccionNombre() {
     }
 
     @Override
-    public Boolean procesar(String dato) {
-        boolean n = perfilFachada.verificarSeleccionNombre(dato);
-        
-        return n;
+    public Jugador procesar(Jugador dato) {
+        PerfilFachada perfilFachada = new PerfilFachada(dato);
+        Jugador actualizado = perfilFachada.verificarSeleccionNombre(dato.getNombre());
+
+        return actualizado;
     }
 
 }

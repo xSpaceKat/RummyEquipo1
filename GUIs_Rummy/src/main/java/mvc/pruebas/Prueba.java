@@ -1,9 +1,9 @@
 package mvc.pruebas;
 
 import entidades.Partida;
-import mvc.controladores.ControladorMenu;
-import mvc.modelos.ModeloMenu;
-import mvc.vistas.JMenu;
+import mvc.controladores.ControladorPerfil;
+import mvc.modelos.ModeloPerfil;
+import mvc.vistas.JPerfil;
 
 /**
  *
@@ -19,13 +19,13 @@ public class Prueba {
         Partida partida= Partida.obtenerInstancia();
         
         //Cargamos modelo
-        ModeloMenu m = new ModeloMenu();
+        ModeloPerfil m = new ModeloPerfil();
         
         //Cargamos controlador y le asignamos qué modelo controlar
-        ControladorMenu c = new ControladorMenu(m);
+        ControladorPerfil c = new ControladorPerfil(m);
         
         //Cargamos 2 vistas y asignamos cual queremos que sea su controlador 
-        JMenu v = new JMenu(c);
+        JPerfil v = new JPerfil(c);
         
         //añadimos observadores al modelo. En este caso, dos vistas.
         m.addObservador(v);

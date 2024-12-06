@@ -1,15 +1,14 @@
 package mvc.vistas;
 
-import mvc.controladores.ControladorLobbyPartida;
 import mvc.controladores.ControladorPerfil;
-import mvc.controladores.ControladorUnirsePartida;
 import mvc.modelos.ConstantesVentanas;
-import mvc.modelos.ModeloLobbyPartida;
 import mvc.modelos.ModeloObserver;
-import mvc.modelos.ModeloUnirsePartida;
 import mvc.modelos.Observable;
 import java.awt.Color;
 import javax.swing.JColorChooser;
+import javax.swing.JOptionPane;
+import mvc.controladores.ControladorMenu;
+import mvc.modelos.ModeloMenu;
 
 /**
  *
@@ -133,8 +132,6 @@ public class JPerfil extends javax.swing.JFrame implements ModeloObserver {
         });
         getContentPane().add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 270, 80));
 
-        color1.setBackground(new java.awt.Color(255, 255, 255));
-        color1.setForeground(new java.awt.Color(0, 0, 0));
         color1.setBorder(null);
         color1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,8 +140,6 @@ public class JPerfil extends javax.swing.JFrame implements ModeloObserver {
         });
         getContentPane().add(color1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, 70, 100));
 
-        color2.setBackground(new java.awt.Color(255, 255, 255));
-        color2.setForeground(new java.awt.Color(0, 0, 0));
         color2.setBorder(null);
         color2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,8 +148,6 @@ public class JPerfil extends javax.swing.JFrame implements ModeloObserver {
         });
         getContentPane().add(color2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 150, 70, 100));
 
-        color3.setBackground(new java.awt.Color(255, 255, 255));
-        color3.setForeground(new java.awt.Color(0, 0, 0));
         color3.setBorder(null);
         color3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,8 +156,6 @@ public class JPerfil extends javax.swing.JFrame implements ModeloObserver {
         });
         getContentPane().add(color3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 260, 70, 100));
 
-        color4.setBackground(new java.awt.Color(255, 255, 255));
-        color4.setForeground(new java.awt.Color(0, 0, 0));
         color4.setBorder(null);
         color4.setBorderPainted(false);
         color4.addActionListener(new java.awt.event.ActionListener() {
@@ -195,10 +186,12 @@ public class JPerfil extends javax.swing.JFrame implements ModeloObserver {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Monospaced", 1, 16)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Seleccione el color");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 50, 190, 30));
 
         jLabel6.setFont(new java.awt.Font("Monospaced", 1, 16)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText(" de las Fichas");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 80, -1, -1));
 
@@ -221,10 +214,16 @@ public class JPerfil extends javax.swing.JFrame implements ModeloObserver {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-        controlador.agregarColores(ccolor1, ccolor2, ccolor3, ccolor4);
-        verificarSeleccionNombre();
+        String nombre = txtNombre.getText();
+        if (nombre.isBlank() || nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese su nombre de usuario.", "Error", JOptionPane.OK_OPTION);
+        } else {
+            verificarSeleccionNombre();
+            verificarSeleccionColores();
+            verificarSeleccionAvatar();
 
-        controlador.mostrarLobbyPartida();
+            controlador.mostrarMenu();
+        }
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
@@ -259,43 +258,65 @@ public class JPerfil extends javax.swing.JFrame implements ModeloObserver {
         controlador.agregarColores(ccolor1, ccolor2, ccolor3, ccolor4);
     }
     private void btnBuhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuhoActionPerformed
-        avatar = "buho.png";
-        verificarSeleccionAvatar();
+        avatar = "mvc/recursos/iconosPerfil/buho.png";
     }//GEN-LAST:event_btnBuhoActionPerformed
 
     private void btnPandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPandaActionPerformed
-        avatar = "panda.png";
-        verificarSeleccionAvatar();
+        avatar = "mvc/recursos/iconosPerfil/panda.png";
     }//GEN-LAST:event_btnPandaActionPerformed
 
     private void btnMapacheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMapacheActionPerformed
-        avatar = "mapache.png";
-        verificarSeleccionAvatar();
+        avatar = "mvc/recursos/iconosPerfil/mapache.png";
     }//GEN-LAST:event_btnMapacheActionPerformed
 
     private void btnZorroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZorroActionPerformed
-        avatar = "zorro.png";
-        verificarSeleccionAvatar();
+        avatar = "mvc/recursos/iconosPerfil/zorro.png";
     }//GEN-LAST:event_btnZorroActionPerformed
 
     private void btnLoboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoboActionPerformed
-        avatar = "lobo.png";
-        verificarSeleccionAvatar();
+        avatar = "mvc/recursos/iconosPerfil/lobo.png";
     }//GEN-LAST:event_btnLoboActionPerformed
 
     private void btnGalloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGalloActionPerformed
-        avatar = "gallo.png";
-        verificarSeleccionAvatar();
+        avatar = "mvc/recursos/iconosPerfil/gallina.png";
     }//GEN-LAST:event_btnGalloActionPerformed
 
     public void verificarSeleccionNombre() {
         String nombre = txtNombre.getText();
 
-        controlador.verificarSeleccionNombre(nombre);
+        if (nombre.isBlank() || nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese su nombre de usuario.", "Error", JOptionPane.OK_OPTION);
+        } else {
+            controlador.verificarSeleccionNombre(nombre);
+        }
+
     }
 
     public void verificarSeleccionAvatar() {
-        controlador.verificarSeleccionAvatar(avatar);
+        if (avatar.isBlank() || avatar.isEmpty()) {
+            avatar = "mvc/recursos/iconosPerfil/gallina.png";
+            controlador.verificarSeleccionAvatar(avatar);
+        } else {
+            controlador.verificarSeleccionAvatar(avatar);
+        }
+
+    }
+
+    public void verificarSeleccionColores() {
+        // Se les asigna valores si el ususario no registro alguno
+        if (ccolor1 == null) {
+            ccolor1 = Color.RED;
+        }
+        if (ccolor2 == null) {
+            ccolor2 = Color.BLUE;
+        }
+        if (ccolor3 == null) {
+            ccolor3 = Color.GREEN;
+        }
+        if (ccolor4 == null) {
+            ccolor4 = Color.YELLOW;
+        }
+        controlador.agregarColores(ccolor1, ccolor2, ccolor3, ccolor4);
     }
 
     /**
@@ -331,22 +352,13 @@ public class JPerfil extends javax.swing.JFrame implements ModeloObserver {
 
     @Override
     public void cambiarVentana(int ventana) {
-        if (ventana == ConstantesVentanas.JUNIRSEPARTIDA) {
+        if (ventana == ConstantesVentanas.JMENU) {
             this.setVisible(false);
-            ModeloUnirsePartida m = new ModeloUnirsePartida();
+            ModeloMenu m = new ModeloMenu();
             //Cargamos controlador y le asignamos qué modelo controlar
-            ControladorUnirsePartida c = new ControladorUnirsePartida(m);
+            ControladorMenu c = new ControladorMenu(m);
             //Cargamos 2 vistas y asignamos cual queremos que sea su controlador 
-            JUnirsePartida v = new JUnirsePartida(c);
-            //añadimos observadores al modelo. En este caso, dos vistas.
-            m.addObservador(v);
-        } else if (ventana == ConstantesVentanas.JLOBBYPARTY) {
-            this.setVisible(false);
-            ModeloLobbyPartida m = new ModeloLobbyPartida();
-            //Cargamos controlador y le asignamos qué modelo controlar
-            ControladorLobbyPartida c = new ControladorLobbyPartida(m);
-            //Cargamos 2 vistas y asignamos cual queremos que sea su controlador 
-            JLobbyPartida v = new JLobbyPartida(c);
+            JMenu v = new JMenu(c);
             //añadimos observadores al modelo. En este caso, dos vistas.
             m.addObservador(v);
         }

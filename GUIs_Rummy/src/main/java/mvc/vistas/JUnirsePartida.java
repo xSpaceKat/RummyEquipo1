@@ -50,7 +50,6 @@ public class JUnirsePartida extends javax.swing.JFrame implements ModeloObserver
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnPerfil = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         btnListo = new javax.swing.JButton();
         labelJugador1 = new javax.swing.JLabel();
@@ -61,15 +60,6 @@ public class JUnirsePartida extends javax.swing.JFrame implements ModeloObserver
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnPerfil.setBorderPainted(false);
-        btnPerfil.setContentAreaFilled(false);
-        btnPerfil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPerfilActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, 100, 130));
 
         btnBack.setBorderPainted(false);
         btnBack.setContentAreaFilled(false);
@@ -104,11 +94,6 @@ public class JUnirsePartida extends javax.swing.JFrame implements ModeloObserver
         controlador.mostrarMenu();
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
-        // TODO add your handling code here:
-        controlador.mostrarPerfil();
-    }//GEN-LAST:event_btnPerfilActionPerformed
-
     private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnListoActionPerformed
@@ -121,7 +106,6 @@ public class JUnirsePartida extends javax.swing.JFrame implements ModeloObserver
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnListo;
-    private javax.swing.JButton btnPerfil;
     private javax.swing.JLabel labelFondo;
     private javax.swing.JLabel labelJugador1;
     private javax.swing.JLabel labelJugador2;

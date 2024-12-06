@@ -16,7 +16,7 @@ import mvc.modelos.Observable;
 public class JMenu extends javax.swing.JFrame implements ModeloObserver {
 
     private ControladorMenu controlador;
-
+    
     /**
      * Creates new form JMenu
      */

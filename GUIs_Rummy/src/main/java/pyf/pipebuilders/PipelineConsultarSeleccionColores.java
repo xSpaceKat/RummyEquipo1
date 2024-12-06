@@ -1,7 +1,6 @@
 package pyf.pipebuilders;
 
 import entidades.Grupo;
-import entidades.Jugador;
 import java.awt.Color;
 import pyf.filtros.FiltroConsultarSeleccionColores;
 import pyf.filtros.IFilter;

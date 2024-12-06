@@ -53,7 +53,6 @@ public class JLobbyPartida extends javax.swing.JFrame implements ModeloObserver 
     private void initComponents() {
 
         btnAtras = new javax.swing.JButton();
-        btnPerfil = new javax.swing.JButton();
         btnListo = new javax.swing.JButton();
         labelJugador1 = new javax.swing.JLabel();
         labelJugador2 = new javax.swing.JLabel();
@@ -74,16 +73,6 @@ public class JLobbyPartida extends javax.swing.JFrame implements ModeloObserver 
         });
         getContentPane().add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 400, 180, 60));
 
-        btnPerfil.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnPerfil.setBorderPainted(false);
-        btnPerfil.setContentAreaFilled(false);
-        btnPerfil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPerfilActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 40, 90, 130));
-
         btnListo.setBorder(null);
         btnListo.setBorderPainted(false);
         btnListo.setContentAreaFilled(false);
@@ -98,7 +87,7 @@ public class JLobbyPartida extends javax.swing.JFrame implements ModeloObserver 
         getContentPane().add(labelJugador3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 200, 30));
         getContentPane().add(labelJugador4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 200, 30));
 
-        labelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/recursos/fondos/LobbyPartidaImg.png"))); // NOI18N
+        labelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/recursos/fondos/LobbyPartida.png"))); // NOI18N
         getContentPane().add(labelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -121,7 +110,6 @@ public class JLobbyPartida extends javax.swing.JFrame implements ModeloObserver 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnListo;
-    private javax.swing.JButton btnPerfil;
     private javax.swing.JLabel labelFondo;
     private javax.swing.JLabel labelJugador1;
     private javax.swing.JLabel labelJugador2;

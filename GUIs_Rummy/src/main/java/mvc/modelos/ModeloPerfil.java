@@ -3,7 +3,6 @@ package mvc.modelos;
 import java.awt.Color;
 import java.util.ArrayList;
 import pyf.pipebuilders.PipelineConsultarSeleccionColores;
-import fachada.PerfilFachada;
 import entidades.Jugador;
 import pyf.pipebuilders.PipelineConsultarSeleccionAvatar;
 import pyf.pipebuilders.PipelineConsultarSeleccionNombre;
@@ -32,13 +31,14 @@ public class ModeloPerfil implements Observable<ModeloObserver> {
         //Inicializamos atributos...
         observadores = new ArrayList<ModeloObserver>();
         colorsito.getInstancia();
+        pipelineConsultarSeleccion.getInstancia();
     }
 
     /**
      * Funcion sumar. Incrementa el valor.
      */
-    public void mostrarUnirsePartida() {
-        notificarObservadoresCambioVentana(ConstantesVentanas.JUNIRSEPARTIDA);
+    public void mostrarMenu() {
+        notificarObservadoresCambioVentana(ConstantesVentanas.JMENU);
     }
     
     public void agregarColores(Color ccolor1, Color ccolor2, Color ccolor3, Color ccolor4){
@@ -48,11 +48,7 @@ public class ModeloPerfil implements Observable<ModeloObserver> {
         colorsito.ejecutar(4, ccolor4);
     }
 
-    public void mostrarLobbyPartida() {
-        notificarObservadoresCambioVentana(ConstantesVentanas.JLOBBYPARTY);
-    }
-
-    public void verfificarSeleccionNombre(String nombre) {
+    public void verificarSeleccionNombre(String nombre) {
         pipelineConsultarSeleccion.ejecutar(nombre);
     }
 

@@ -35,28 +35,26 @@ public class PerfilFachada {
         return grupoActualizado;
     }
 
-    public boolean verificarSeleccionNombre(String dato) {
+    public Jugador verificarSeleccionNombre(String dato) {
         if (dato == null || dato.isEmpty() || dato.isBlank()) {
             System.out.println("El nombre esta vacio!");
-            cambiarNombre("Jugador");
-            return false;
+            return null;
         } else {
             cambiarNombre(dato);
             System.out.println("El nombre del jugador se guardo con exito :)");
-            System.out.println(jugador.getNombre().toString());
-            return true;
+            System.out.println(jugador.getNombre());
+            return jugador;
         }
     }
 
-    public boolean verificarSeleccionAvatar(String dato) {
+    public Jugador verificarSeleccionAvatar(String dato) {
         if (dato == null || dato.isEmpty() || dato.isBlank()) {
             System.out.println("No se selecciono una imagen");
-            cambiarFoto("gallo.png"); // Foto por default para no dejarlo en null
-            return false;
+            return null;
         } else {
             cambiarFoto(dato);
             System.out.println(jugador.getAvatar() + " Es mi avatar");
-            return true;
+            return jugador;
         }
     }
 }

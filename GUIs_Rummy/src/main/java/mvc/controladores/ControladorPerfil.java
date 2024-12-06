@@ -25,27 +25,19 @@ public class ControladorPerfil {
         this.m = m;
     }
 
-    public void mostrarUnirsePartida() {
-        m.mostrarUnirsePartida();
+    public void mostrarMenu() {
+        m.mostrarMenu();
     }
     
     public void agregarColores(Color ccolor1, Color ccolor2, Color ccolor3, Color ccolor4){
         m.agregarColores(ccolor1, ccolor2, ccolor3, ccolor4);
     }
 
-    public void mostrarLobbyPartida() {
-        m.mostrarLobbyPartida();
-    }
-
     public void verificarSeleccionNombre(String nombre) {
-        m.verfificarSeleccionNombre(nombre);
+        m.verificarSeleccionNombre(nombre);
     }
 
     public void verificarSeleccionAvatar(String avatar) {
         m.verificarSeleccionAvatar(avatar);
     }
-
-//    public void verificarSeleccionColores(){
-//   
-//    }
 }

@@ -7,19 +7,17 @@ import fachada.PerfilFachada;
  *
  * @author galan
  */
-public class FiltroConsultarSeleccionAvatar implements IFilter<String, Boolean> {
-
-    Jugador jugador = new Jugador();
-    PerfilFachada perfilFachada = new PerfilFachada(jugador);
+public class FiltroConsultarSeleccionAvatar implements IFilter<Jugador, Jugador> {
 
     public FiltroConsultarSeleccionAvatar() {
     }
 
     @Override
-    public Boolean procesar(String dato) {
-        boolean n = perfilFachada.verificarSeleccionAvatar(dato);
+    public Jugador procesar(Jugador dato) {
+        PerfilFachada perfilFachada = new PerfilFachada(dato);
+        Jugador actualizado = perfilFachada.verificarSeleccionAvatar(dato.getAvatar());
 
-        return n;
+        return actualizado;
     }
 
 }
