@@ -1,13 +1,8 @@
 package mvc.modelos;
 
-import entidades.Jugador;
 import mvc.cambioFrames.CambioFrameCrearPartida;
 import java.util.ArrayList;
-import java.util.Random;
 import javax.swing.JLabel;
-import mvc.dto.MazoDTO;
-import pyf.cliente.Cliente;
-import pyf.pipebuilders.PipelineCrearPartida;
 
 /**
  * Modelo de mi programa, aquí estará toda la lógica y el funcionamiento interno
@@ -22,8 +17,6 @@ public class ModeloCrearPartida implements Observable<ModeloObserver> {
     private ArrayList<ModeloObserver> observadores;
     private int rangoFichas, comodines;
     private CambioFrameCrearPartida frame;
-    private boolean partidaCreada = false;
-
 
     /**
      * Constructora del modelo. Crea un modelo, inicializa variables. Crea la
@@ -32,8 +25,8 @@ public class ModeloCrearPartida implements Observable<ModeloObserver> {
     public ModeloCrearPartida() {
         //Inicializamos atributos...
         observadores = new ArrayList<ModeloObserver>();
-        rangoFichas = 13;
-        comodines = 2;
+        rangoFichas = 0;
+        comodines = 0;
     }
 
     /**
@@ -42,32 +35,8 @@ public class ModeloCrearPartida implements Observable<ModeloObserver> {
     public void mostrarMenu() {
         notificarObservadoresCambioVentana(ConstantesVentanas.JMENU);
     }
-
-    public void crearPartida() {
-        if (partidaCreada) {
-            System.out.println("La partida ya fue creada para este cliente.");
-            return;
-        }
-        partidaCreada = true;
-        
-        String[] SUSTANTIVOS = {
-            "Lobo", "Águila", "Tigre", "León", "Halcón", "Dragón", "Pantera", "Fénix"};
-        String[] ADJETIVOS = {
-            "Rápido", "Fuerte", "Valiente", "Ingenioso", "Astuto", "Ágil", "Sereno", "Sabio"
-        };
-        Random random = new Random();
-        String adjetivo = ADJETIVOS[random.nextInt(ADJETIVOS.length)];
-        String sustantivo = SUSTANTIVOS[random.nextInt(SUSTANTIVOS.length)];
-        int numero = random.nextInt(1000); // Número al azar para evitar duplicados
-        String nombre= adjetivo + sustantivo + numero;
-
-        PipelineCrearPartida pipelineCrearPartida = new PipelineCrearPartida();
-        Jugador jugador = new Jugador(nombre, "");
-        MazoDTO mazoDTO = new MazoDTO(rangoFichas, comodines, jugador);
-        Cliente cliente = Cliente.getInstancia();
-        cliente.enviarSerializado(pipelineCrearPartida.ejecutar(mazoDTO));
-
-        System.out.println("Número de jugadores en partida local: " + cliente.getPartidaCliente().getJugadores().size());
+    
+    public void mostrarLobbyPartida() {
         notificarObservadoresCambioVentana(ConstantesVentanas.JLOBBYPARTY);
     }
 
@@ -75,13 +44,7 @@ public class ModeloCrearPartida implements Observable<ModeloObserver> {
      * Funcion sumar. Incrementa el valor del rango de fichas.
      */
     public void sumarRangoFichas() {
-        if (rangoFichas < 10) {
-
-        } else if (rangoFichas > 13) {
-
-        } else {
-            rangoFichas++;
-        }
+        rangoFichas++;
         notificarObservadores();
     }
 
@@ -144,7 +107,7 @@ public class ModeloCrearPartida implements Observable<ModeloObserver> {
         for (ModeloObserver o : observadores) {
             //Le a cada observador que el valor se ha cambiado al nuevo valor "t".
             //Recuerdo que para este caso, estamos notificando a cada vista que tengamos
-            frame = new CambioFrameCrearPartida(rangoFichas, comodines);
+            frame= new CambioFrameCrearPartida(rangoFichas, comodines);
             o.update(this, frame);
         }
     }

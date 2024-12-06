@@ -24,12 +24,6 @@ public class Mazo implements Serializable {
         this.cantidadComodines = cantidadComodines;
     }
 
-    public Mazo(int rangos, int cantidadComodines) {
-        this.rangos = rangos;
-        this.cantidadComodines = cantidadComodines;
-    }
-
-    
     public Mazo() {
     }
 

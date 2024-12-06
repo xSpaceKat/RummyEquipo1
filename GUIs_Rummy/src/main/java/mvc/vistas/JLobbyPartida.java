@@ -114,7 +114,6 @@ public class JLobbyPartida extends javax.swing.JFrame implements ModeloObserver 
 
     private void btnListoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListoActionPerformed
         // TODO add your handling code here:
-        controlador.evtCambioEstado();
     }//GEN-LAST:event_btnListoActionPerformed
 
 

@@ -1,21 +1,22 @@
 package pyf.filtros;
 
+import entidades.Combinaciones;
 import entidades.Partida;
 import fachada.JuegoFachada;
 import iFachada.IJuegoFachada;
 
 /**
  *
- * @author galan
+ * @author Katt
  */
-public class FiltroValidarExtremos implements IFilter<Partida, Boolean> {
+public class FiltroArrastrarExtremo implements IFilter<Partida, Combinaciones>{
 
     @Override
-    public Boolean procesar(Partida input) {
+    public Combinaciones procesar(Partida input) {
         Partida p = Partida.obtenerInstancia();
         IJuegoFachada jf = new JuegoFachada(p);
         
-        return jf.verificarExtremos();
+        jf.arrastrarExtremo();
     }
-
+    
 }

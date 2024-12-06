@@ -6,16 +6,16 @@ import iFachada.IJuegoFachada;
 
 /**
  *
- * @author galan
+ * @author Katt
  */
-public class FiltroValidarExtremos implements IFilter<Partida, Boolean> {
+public class FiltroValidarCombinacion implements IFilter<Partida, Boolean> {
 
     @Override
     public Boolean procesar(Partida input) {
         Partida p = Partida.obtenerInstancia();
         IJuegoFachada jf = new JuegoFachada(p);
-        
-        return jf.verificarExtremos();
+
+        return jf.validaCombinacion();
     }
 
 }

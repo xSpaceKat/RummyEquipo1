@@ -29,8 +29,8 @@ public class ControladorCrearPartida {
         m.mostrarMenu();
     }
     
-    public void crearPartida() {
-        m.crearPartida();
+    public void mostrarLobbyPartida() {
+        m.mostrarLobbyPartida();
     }
     
     /**

@@ -46,13 +46,6 @@ public class LobbyFachada implements ILobbyFachada{
     public boolean verificarEstados() {
         return partida.verificarEstados();
     }
-    
-    // Verificar si el estado de los jugadores es válido
-    public boolean cambiarEstado() {
-        
-        return false;
-        
-    }
 
     // Unir un jugador a la partida
     public void unirJugador(Jugador jugador) {

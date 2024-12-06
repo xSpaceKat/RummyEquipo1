@@ -12,10 +12,7 @@ import java.util.List;
  *
  * @author galan
  */
-public class Partida implements Serializable {
-
-    private static Partida instancia;
-
+public class Partida implements Serializable{
     private List<Jugador> jugadores;
     private boolean estado;
     private String codigo;
@@ -23,25 +20,17 @@ public class Partida implements Serializable {
     private Turno turnos;
     private Tablero tablero;
 
-    // Método para obtener la instancia única de la clase
-    public static Partida obtenerInstancia() {
-        if (instancia == null) {
-            instancia = new Partida();
-        }
-        return instancia;
-    }
-
-    // Método para actualizar la instancia actual de la partida
-    public void actualizarInstancia(Partida nuevaPartida) {
-        this.jugadores = nuevaPartida.getJugadores();
-        this.mazo = nuevaPartida.getMazo();
-        this.estado=nuevaPartida.isEstado();
-        this.turnos=nuevaPartida.getTurnos();
-        this.tablero=nuevaPartida.getTablero();
+    public Partida(List<Jugador> jugadores, boolean estado, String codigo, Mazo mazo, Turno turnos, Tablero tablero) {
+        this.jugadores = jugadores;
+        this.estado = estado;
+        this.codigo = codigo;
+        this.mazo = mazo;
+        this.turnos = turnos;
+        this.tablero = tablero;
     }
 
     public Partida() {
-        jugadores = new ArrayList<>();
+        jugadores= new ArrayList<>();
     }
 
     public List<Jugador> getJugadores() {
@@ -75,14 +64,9 @@ public class Partida implements Serializable {
     public void setMazo(Mazo mazo) {
         this.mazo = mazo;
     }
-
-    public void unirJugador(Jugador jugador) {
-        if (!jugadores.contains(jugador)) {
-            jugadores.add(jugador);
-            System.out.println("Jugador unido: " + jugador.getNombre());
-        } else {
-            System.out.println("Jugador ya estaba unido: " + jugador.getNombre());
-        }
+    
+    public void unirJugador(Jugador jugador){
+        jugadores.add(jugador);
     }
 
     public Turno getTurnos() {
@@ -100,9 +84,11 @@ public class Partida implements Serializable {
     public void setTablero(Tablero tablero) {
         this.tablero = tablero;
     }
-
+    
+    
+    
     //Verifica si es que todos los jugadores estan listos para empezar la partida
-    public boolean verificarEstados() {
+    public boolean verificarEstados(){
         for (Jugador jugador : jugadores) {
             if (!jugador.getEstado()) {
                 return false;
@@ -110,14 +96,5 @@ public class Partida implements Serializable {
         }
         return true;
     }
-
-    public boolean cambiarEstado(String nombreJugador, boolean nuevoEstado) {
-        for (Jugador jugador : this.jugadores) {
-            if (jugador.getNombre().equals(nombreJugador)) {
-                jugador.setEstado(nuevoEstado);
-                System.out.println("Estado del jugador " + nombreJugador + " cambiado a " + nuevoEstado);
-            }
-        }
-        return false;
-    }
+    
 }

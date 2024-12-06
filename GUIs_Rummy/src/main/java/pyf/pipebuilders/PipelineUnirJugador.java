@@ -29,12 +29,15 @@ public class PipelineUnirJugador {
     public Partida ejecutar(Jugador input) {
         System.out.println("Iniciando pipeline...");
 
-        System.out.println("Procesando con FIltroUnirJugador...");
+        // 1. Paso por la primera pipa (MazoDTO -> Mazo)
+        System.out.println("Procesando con FiltroCrearMazo...");
         pipeUnirJugador.agregarInfo(input);
         pipeUnirJugador.enviar();
         Partida partida= pipeUnirJugador.obtenerInfo();
 
         System.out.println("Pipeline finalizado.");
-        return partida;
+        Cliente cliente= Cliente.getInstancia();
+        cliente.enviarSerializado(partida);
+        return cliente.getPartidaCliente();
     }
 }

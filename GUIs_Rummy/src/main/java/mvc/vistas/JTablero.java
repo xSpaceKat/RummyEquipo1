@@ -6,16 +6,14 @@ package mvc.vistas;
 
 import entidades.Partida;
 import mvc.controladores.ControladorTablero;
-import mvc.modelos.ModeloObserver;
 import mvc.modelos.ModeloTablero;
-import mvc.modelos.Observable;
 import pyf.cliente.Cliente;
 
 /**
  *
  * @author PERSONAL
  */
-public class JTablero extends javax.swing.JFrame implements ModeloObserver {
+public class JTablero extends javax.swing.JFrame {
 
     ControladorTablero controlador;
 
@@ -82,8 +80,7 @@ public class JTablero extends javax.swing.JFrame implements ModeloObserver {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnJalarFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJalarFichaActionPerformed
-        controlador.evtTerminarTurno();
-        controlador.evtJalarFicha();
+
     }//GEN-LAST:event_btnJalarFichaActionPerformed
 
 
@@ -95,19 +92,4 @@ public class JTablero extends javax.swing.JFrame implements ModeloObserver {
     private javax.swing.JLabel labelJugador3;
     private javax.swing.JLabel labelJugador4;
     // End of variables declaration//GEN-END:variables
-
-    @Override
-    public void update(Observable o, Object arg) {
-
-        //Lógica específica para actualizar componentes
-        
-        // Fuerza la actualización visual
-        this.revalidate();
-        this.repaint();
-    }
-
-    @Override
-    public void cambiarVentana(int ventana) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

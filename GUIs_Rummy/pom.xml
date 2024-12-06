@@ -23,14 +23,4 @@
         <maven.compiler.target>17</maven.compiler.target>
         <exec.mainClass>com.mycompany.guis_rummy.GUIs_Rummy</exec.mainClass>
     </properties>
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>**/*.png</include>
-                </includes>
-            </resource>
-        </resources>
-    </build>
 </project>
